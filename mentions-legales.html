@@ -6,18 +6,114 @@
 <title>Mentions légales | Lebelle Expertise & Audit</title>
 <meta name="description" content="Mentions légales du site du cabinet d'expertise comptable Lebelle Expertise & Audit, Paris 7e.">
 <meta name="robots" content="noindex, follow">
+<!-- Typographies des trois thèmes (Google Fonts + Fontshare) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,87.5,500;0,87.5,600;1,87.5,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-  tailwind.config = { theme: { extend: {
-    colors: { navy: { DEFAULT: '#0F1F3D', 700: '#1E3563', 100: '#E4E8F0' }, ivory: { DEFAULT: '#F7F5F0' }, brass: { DEFAULT: '#B8935A', 400: '#C9A96A', 600: '#9C7A45' }, ink: { DEFAULT: '#1F2433', 600: '#4B5163', 500: '#6B7280' } },
-    fontFamily: { serif: ['"Cormorant Garamond"', 'Georgia', 'serif'], sans: ['Manrope', 'system-ui', 'sans-serif'] },
-    maxWidth: { content: '72rem' }
-  } } }
+  /* Les couleurs et polices pointent vers des variables CSS définies sur :root (voir <style>),
+     ce qui permet de basculer entre les thèmes A / B / C sans recharger la page. */
+  const v = (name) => `rgb(var(${name}) / <alpha-value>)`;
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy:    { DEFAULT: v('--c-primary'), 800: v('--c-primary-2'), 700: v('--c-primary-2'), 100: v('--c-border') },
+          ivory:   { DEFAULT: v('--c-bg'), 50: v('--c-bg'), 200: v('--c-border') },
+          surface: v('--c-surface'),
+          brass:   { DEFAULT: v('--c-detail'), 400: v('--c-accent-dark'), 600: v('--c-accent'), 100: v('--c-tint') },
+          cta:     { DEFAULT: v('--c-cta'), 600: v('--c-cta-2') },
+          ink:     { DEFAULT: v('--c-ink'), 600: v('--c-ink-2'), 500: v('--c-ink-3') }
+        },
+        fontFamily: {
+          serif: ['var(--font-heading)', 'Georgia', 'serif'],
+          sans:  ['var(--font-body)', 'system-ui', 'sans-serif'],
+          data:  ['var(--font-data)', 'monospace']
+        },
+        maxWidth: { content: '72rem' }
+      }
+    }
+  }
 </script>
 <style>
+  /* ============================================================
+     THÈMES : variables CSS sur :root (valeurs RVB pour l'opacité Tailwind)
+     Sélecteur A / B / C en bas à droite de l'écran, mémorisé en localStorage.
+     ============================================================ */
+
+  /* Thème A, « Rigueur financière » (par défaut) */
+  :root, :root[data-theme="a"] {
+    --font-heading: 'Archivo';  --h-weight: 600; --h-stretch: 87.5%; --h-tracking: -0.02em; --h-opsz: normal;
+    --font-body: 'IBM Plex Sans';
+    --font-data: 'IBM Plex Mono'; --data-weight: 500;
+    --c-ink: 22 24 29;        /* #16181D encre */
+    --c-ink-2: 74 78 87;      /* texte secondaire */
+    --c-ink-3: 111 115 123;   /* texte tertiaire, surtitres */
+    --c-bg: 255 255 255;      /* #FFFFFF fond */
+    --c-surface: 244 244 242; /* #F4F4F2 fond secondaire */
+    --c-border: 226 226 223;
+    --c-primary: 22 24 29;    /* sections sombres */
+    --c-primary-2: 42 45 53;
+    --c-accent: 15 92 110;    /* #0F5C6E */
+    --c-accent-dark: 127 195 210; /* accent sur fond sombre */
+    --c-detail: 15 92 110;    /* icônes, filets, coches */
+    --c-tint: 230 240 242;
+    --c-cta: 15 92 110;  --c-cta-2: 11 70 85;
+  }
+  /* Thème B, « Presse économique » */
+  :root[data-theme="b"] {
+    --font-heading: 'Newsreader'; --h-weight: 500; --h-stretch: 100%; --h-tracking: 0; --h-opsz: "opsz" 72;
+    --font-body: 'Public Sans';
+    --font-data: 'Public Sans'; --data-weight: 500;
+    --c-ink: 31 42 39;
+    --c-ink-2: 75 89 85;
+    --c-ink-3: 110 122 118;
+    --c-bg: 243 241 236;      /* #F3F1EC */
+    --c-surface: 251 250 247;
+    --c-border: 221 217 208;
+    --c-primary: 30 59 51;    /* #1E3B33 vert anglais */
+    --c-primary-2: 42 78 68;
+    --c-accent: 181 87 58;    /* #B5573A */
+    --c-accent-dark: 228 167 143;
+    --c-detail: 181 87 58;
+    --c-tint: 244 228 220;
+    --c-cta: 181 87 58;  --c-cta-2: 152 71 48;
+  }
+  /* Thème C, « Maison contemporaine » : accent utilisé avec parcimonie (CTA en encre, icônes en gris) */
+  :root[data-theme="c"] {
+    --font-heading: 'Zodiak'; --h-weight: 500; --h-stretch: 100%; --h-tracking: -0.01em; --h-opsz: normal;
+    --font-body: 'Switzer';
+    --font-data: 'Switzer'; --data-weight: 500;
+    --c-ink: 26 29 36;        /* #1A1D24 */
+    --c-ink-2: 77 80 88;
+    --c-ink-3: 114 117 124;
+    --c-bg: 246 245 242;      /* #F6F5F2 */
+    --c-surface: 255 255 255;
+    --c-border: 227 225 220;
+    --c-primary: 26 29 36;
+    --c-primary-2: 44 48 56;
+    --c-accent: 138 106 59;   /* #8A6A3B */
+    --c-accent-dark: 197 172 130;
+    --c-detail: 77 80 88;
+    --c-tint: 236 233 227;
+    --c-cta: 26 29 36;  --c-cta-2: 13 15 19;
+  }
+
+  /* Titres : famille, graisse, chasse et interlettrage pilotés par le thème */
+  .font-serif { font-family: var(--font-heading), Georgia, serif; font-weight: var(--h-weight) !important; font-stretch: var(--h-stretch); letter-spacing: var(--h-tracking); font-variation-settings: var(--h-opsz); font-optical-sizing: auto; }
+  /* Chiffres clés et données : chiffres tabulaires */
+  .font-data { font-family: var(--font-data), monospace; font-weight: var(--data-weight) !important; font-variant-numeric: tabular-nums; letter-spacing: 0; }
+  /* Lien secondaire souligné avec flèche */
+  .link-arrow { display: inline-flex; align-items: center; gap: .5rem; font-weight: 500; color: rgb(var(--c-ink)); text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; text-decoration-color: rgb(var(--c-ink) / .4); transition: color .2s, text-decoration-color .2s; }
+  .link-arrow:hover { color: rgb(var(--c-accent)); text-decoration-color: currentColor; }
+  .link-arrow svg { transition: transform .2s; } .link-arrow:hover svg { transform: translateX(3px); }
+
+  /* Sélecteur de thème */
+  #theme-switch { position: fixed; right: 1rem; bottom: 1rem; z-index: 60; display: flex; gap: 2px; padding: 2px; background: rgb(var(--c-surface)); border: 1px solid rgb(var(--c-border)); border-radius: 2px; }
+  #theme-switch button { width: 2rem; height: 2rem; font: 500 .8rem/1 var(--font-body), system-ui, sans-serif; color: rgb(var(--c-ink-2)); background: transparent; border: 0; border-radius: 2px; cursor: pointer; }
+  #theme-switch button[aria-pressed="true"] { background: rgb(var(--c-primary)); color: #fff; }
+
   .todo { background: #FFF07A; color: #1F2433; padding: 0 .25em; border-radius: .15em; font-weight: 600; }
 </style>
 </head>
@@ -27,22 +123,27 @@
 <header class="sticky top-0 z-50 bg-ivory/90 backdrop-blur border-b border-navy-100">
   <div class="max-w-content mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
     <a href="index.html" aria-label="Lebelle Expertise & Audit, retour à l'accueil">
-      <!-- IMG : logo (fichier provisoire, à remplacer) -->
-      <img src="assets/logo.svg" alt="Logo Lebelle Expertise & Audit" width="220" height="47" class="h-11 w-auto">
+      <!-- Logo provisoire (SVG inline, couleurs du thème) : à remplacer par le logo officiel -->
+      <svg width="220" height="47" viewBox="0 0 260 56" role="img" aria-label="Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris" class="h-11 w-auto">
+        <rect x="1" y="1" width="54" height="54" rx="2" fill="rgb(var(--c-primary))"/>
+        <text x="28" y="37" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="30" font-weight="600" fill="#fff">L</text>
+        <text x="68" y="26" font-family="var(--font-heading), Georgia, serif" font-size="22" font-weight="600" fill="rgb(var(--c-ink))">Lebelle</text>
+        <text x="68" y="45" font-family="var(--font-body), system-ui, sans-serif" font-size="10.5" font-weight="500" fill="rgb(var(--c-ink-2))" letter-spacing="2">EXPERTISE &amp; AUDIT</text>
+      </svg>
     </a>
     <nav class="hidden sm:flex items-center gap-9 text-[15px] font-medium text-navy" aria-label="Navigation principale">
       <a href="index.html#cabinet" class="hover:text-brass-600">Le cabinet</a>
       <a href="index.html#missions" class="hover:text-brass-600">Missions</a>
       <a href="index.html#methode" class="hover:text-brass-600">Méthode</a>
       <a href="index.html#contact" class="hover:text-brass-600">Contact</a>
-      <a href="index.html#contact" class="ml-2 inline-flex items-center bg-navy text-white px-5 py-2.5 rounded-sm hover:bg-navy-700">Prendre rendez-vous</a>
+      <a href="index.html#contact" class="ml-2 inline-flex items-center bg-cta text-white px-5 py-2.5 rounded-sm hover:bg-cta-600">Prendre rendez-vous</a>
     </nav>
     <a href="index.html" class="sm:hidden text-sm font-medium text-navy">Accueil</a>
   </div>
 </header>
 
 <main class="max-w-3xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
-  <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Informations légales</p>
+  <p class="text-base text-ink-500 mb-4">Informations légales</p>
   <h1 class="font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Mentions légales</h1>
   <p class="mt-6 text-ink-600">Page à compléter avec les informations du cabinet. Les emplacements surlignés sont à renseigner.</p>
 
@@ -76,5 +177,21 @@
     <a href="index.html" class="hover:text-brass-400">Retour à l'accueil</a>
   </div>
 </footer>
+<!-- Sélecteur de thème (maquette) : A Rigueur financière, B Presse économique, C Maison contemporaine -->
+<div id="theme-switch" role="group" aria-label="Choix du thème graphique">
+  <button type="button" data-theme="a" aria-pressed="true" title="Thème A, Rigueur financière">A</button>
+  <button type="button" data-theme="b" aria-pressed="false" title="Thème B, Presse économique">B</button>
+  <button type="button" data-theme="c" aria-pressed="false" title="Thème C, Maison contemporaine">C</button>
+</div>
+<script>
+  // Thèmes : bascule des variables CSS via l'attribut data-theme sur <html>
+  const applyTheme = (t) => {
+    document.documentElement.dataset.theme = t;
+    document.querySelectorAll('#theme-switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.theme === t)));
+    try { localStorage.setItem('lea-theme', t); } catch (e) {}
+  };
+  document.querySelectorAll('#theme-switch button').forEach(b => b.addEventListener('click', () => applyTheme(b.dataset.theme)));
+  try { applyTheme(localStorage.getItem('lea-theme') || 'a'); } catch (e) { applyTheme('a'); }
+</script>
 </body>
 </html>

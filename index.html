@@ -19,29 +19,35 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:image" content="https://www.lebelle-expertise.com/assets/bureau-haussmannien.jpg">
-<meta name="theme-color" content="#0F1F3D">
+<meta name="theme-color" content="#16181D">
 
-<!-- Typographies : Cormorant Garamond (titres) et Manrope (texte) -->
+<!-- Typographies des trois thèmes (Google Fonts + Fontshare) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,87.5,500;0,87.5,600;1,87.5,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@500&f[]=switzer@400,500,600&display=swap" rel="stylesheet">
 
 <!-- Tailwind CSS via CDN + configuration de la palette -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
+  /* Les couleurs et polices pointent vers des variables CSS définies sur :root (voir <style>),
+     ce qui permet de basculer entre les thèmes A / B / C sans recharger la page. */
+  const v = (name) => `rgb(var(${name}) / <alpha-value>)`;
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          /* Palette : bleu marine profond, blanc cassé, laiton doux */
-          navy:  { DEFAULT: '#0F1F3D', 800: '#16294F', 700: '#1E3563', 100: '#E4E8F0' },
-          ivory: { DEFAULT: '#F7F5F0', 50: '#FBFAF7', 200: '#ECE8DF' },
-          brass: { DEFAULT: '#B8935A', 400: '#C9A96A', 600: '#9C7A45', 100: '#F3EBDC' },
-          ink:   { DEFAULT: '#1F2433', 600: '#4B5163', 500: '#6B7280' }
+          navy:    { DEFAULT: v('--c-primary'), 800: v('--c-primary-2'), 700: v('--c-primary-2'), 100: v('--c-border') },
+          ivory:   { DEFAULT: v('--c-bg'), 50: v('--c-bg'), 200: v('--c-border') },
+          surface: v('--c-surface'),
+          brass:   { DEFAULT: v('--c-detail'), 400: v('--c-accent-dark'), 600: v('--c-accent'), 100: v('--c-tint') },
+          cta:     { DEFAULT: v('--c-cta'), 600: v('--c-cta-2') },
+          ink:     { DEFAULT: v('--c-ink'), 600: v('--c-ink-2'), 500: v('--c-ink-3') }
         },
         fontFamily: {
-          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-          sans:  ['Manrope', 'system-ui', 'sans-serif']
+          serif: ['var(--font-heading)', 'Georgia', 'serif'],
+          sans:  ['var(--font-body)', 'system-ui', 'sans-serif'],
+          data:  ['var(--font-data)', 'monospace']
         },
         maxWidth: { content: '72rem' }
       }
@@ -50,6 +56,83 @@
 </script>
 
 <style>
+  /* ============================================================
+     THÈMES : variables CSS sur :root (valeurs RVB pour l'opacité Tailwind)
+     Sélecteur A / B / C en bas à droite de l'écran, mémorisé en localStorage.
+     ============================================================ */
+
+  /* Thème A, « Rigueur financière » (par défaut) */
+  :root, :root[data-theme="a"] {
+    --font-heading: 'Archivo';  --h-weight: 600; --h-stretch: 87.5%; --h-tracking: -0.02em; --h-opsz: normal;
+    --font-body: 'IBM Plex Sans';
+    --font-data: 'IBM Plex Mono'; --data-weight: 500;
+    --c-ink: 22 24 29;        /* #16181D encre */
+    --c-ink-2: 74 78 87;      /* texte secondaire */
+    --c-ink-3: 111 115 123;   /* texte tertiaire, surtitres */
+    --c-bg: 255 255 255;      /* #FFFFFF fond */
+    --c-surface: 244 244 242; /* #F4F4F2 fond secondaire */
+    --c-border: 226 226 223;
+    --c-primary: 22 24 29;    /* sections sombres */
+    --c-primary-2: 42 45 53;
+    --c-accent: 15 92 110;    /* #0F5C6E */
+    --c-accent-dark: 127 195 210; /* accent sur fond sombre */
+    --c-detail: 15 92 110;    /* icônes, filets, coches */
+    --c-tint: 230 240 242;
+    --c-cta: 15 92 110;  --c-cta-2: 11 70 85;
+  }
+  /* Thème B, « Presse économique » */
+  :root[data-theme="b"] {
+    --font-heading: 'Newsreader'; --h-weight: 500; --h-stretch: 100%; --h-tracking: 0; --h-opsz: "opsz" 72;
+    --font-body: 'Public Sans';
+    --font-data: 'Public Sans'; --data-weight: 500;
+    --c-ink: 31 42 39;
+    --c-ink-2: 75 89 85;
+    --c-ink-3: 110 122 118;
+    --c-bg: 243 241 236;      /* #F3F1EC */
+    --c-surface: 251 250 247;
+    --c-border: 221 217 208;
+    --c-primary: 30 59 51;    /* #1E3B33 vert anglais */
+    --c-primary-2: 42 78 68;
+    --c-accent: 181 87 58;    /* #B5573A */
+    --c-accent-dark: 228 167 143;
+    --c-detail: 181 87 58;
+    --c-tint: 244 228 220;
+    --c-cta: 181 87 58;  --c-cta-2: 152 71 48;
+  }
+  /* Thème C, « Maison contemporaine » : accent utilisé avec parcimonie (CTA en encre, icônes en gris) */
+  :root[data-theme="c"] {
+    --font-heading: 'Zodiak'; --h-weight: 500; --h-stretch: 100%; --h-tracking: -0.01em; --h-opsz: normal;
+    --font-body: 'Switzer';
+    --font-data: 'Switzer'; --data-weight: 500;
+    --c-ink: 26 29 36;        /* #1A1D24 */
+    --c-ink-2: 77 80 88;
+    --c-ink-3: 114 117 124;
+    --c-bg: 246 245 242;      /* #F6F5F2 */
+    --c-surface: 255 255 255;
+    --c-border: 227 225 220;
+    --c-primary: 26 29 36;
+    --c-primary-2: 44 48 56;
+    --c-accent: 138 106 59;   /* #8A6A3B */
+    --c-accent-dark: 197 172 130;
+    --c-detail: 77 80 88;
+    --c-tint: 236 233 227;
+    --c-cta: 26 29 36;  --c-cta-2: 13 15 19;
+  }
+
+  /* Titres : famille, graisse, chasse et interlettrage pilotés par le thème */
+  .font-serif { font-family: var(--font-heading), Georgia, serif; font-weight: var(--h-weight) !important; font-stretch: var(--h-stretch); letter-spacing: var(--h-tracking); font-variation-settings: var(--h-opsz); font-optical-sizing: auto; }
+  /* Chiffres clés et données : chiffres tabulaires */
+  .font-data { font-family: var(--font-data), monospace; font-weight: var(--data-weight) !important; font-variant-numeric: tabular-nums; letter-spacing: 0; }
+  /* Lien secondaire souligné avec flèche */
+  .link-arrow { display: inline-flex; align-items: center; gap: .5rem; font-weight: 500; color: rgb(var(--c-ink)); text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; text-decoration-color: rgb(var(--c-ink) / .4); transition: color .2s, text-decoration-color .2s; }
+  .link-arrow:hover { color: rgb(var(--c-accent)); text-decoration-color: currentColor; }
+  .link-arrow svg { transition: transform .2s; } .link-arrow:hover svg { transform: translateX(3px); }
+
+  /* Sélecteur de thème */
+  #theme-switch { position: fixed; right: 1rem; bottom: 1rem; z-index: 60; display: flex; gap: 2px; padding: 2px; background: rgb(var(--c-surface)); border: 1px solid rgb(var(--c-border)); border-radius: 2px; }
+  #theme-switch button { width: 2rem; height: 2rem; font: 500 .8rem/1 var(--font-body), system-ui, sans-serif; color: rgb(var(--c-ink-2)); background: transparent; border: 0; border-radius: 2px; cursor: pointer; }
+  #theme-switch button[aria-pressed="true"] { background: rgb(var(--c-primary)); color: #fff; }
+
   /* Styles complémentaires (hors utilitaires Tailwind) */
   html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
   body { -webkit-font-smoothing: antialiased; }
@@ -60,14 +143,11 @@
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
   /* Emplacements à compléter par le dirigeant */
-  .todo { background: #FFF07A; color: #1F2433; padding: 0 .25em; border-radius: .15em; font-weight: 600; }
 
   /* Filet décoratif laiton sous les titres de section */
-  .rule::after { content: ""; display: block; width: 3rem; height: 1px; background: #B8935A; margin-top: 1rem; }
+  .rule::after { content: ""; display: block; width: 3rem; height: 1px; background: rgb(var(--c-detail)); margin-top: 1rem; }
   .rule-center::after { margin-left: auto; margin-right: auto; }
 
-  /* Trame fine de fond du hero */
-  .grid-bg { background-image: linear-gradient(rgba(15,31,61,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(15,31,61,.045) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%); }
 
   /* Menu mobile */
   #mobile-menu { transition: opacity .25s ease, transform .25s ease; }
@@ -208,8 +288,13 @@
 <header id="header" class="sticky top-0 z-50 bg-ivory/90 backdrop-blur border-b border-transparent transition-colors duration-300">
   <div class="max-w-content mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
     <a href="#top" class="flex items-center" aria-label="Lebelle Expertise & Audit, retour à l'accueil">
-      <!-- IMG : logo (fichier provisoire, à remplacer) -->
-      <img src="assets/logo.svg" alt="Logo Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris" width="220" height="47" class="h-11 w-auto">
+      <!-- Logo provisoire (SVG inline, couleurs du thème) : à remplacer par le logo officiel -->
+      <svg width="220" height="47" viewBox="0 0 260 56" role="img" aria-label="Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris" class="h-11 w-auto">
+        <rect x="1" y="1" width="54" height="54" rx="2" fill="rgb(var(--c-primary))"/>
+        <text x="28" y="37" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="30" font-weight="600" fill="#fff">L</text>
+        <text x="68" y="26" font-family="var(--font-heading), Georgia, serif" font-size="22" font-weight="600" fill="rgb(var(--c-ink))">Lebelle</text>
+        <text x="68" y="45" font-family="var(--font-body), system-ui, sans-serif" font-size="10.5" font-weight="500" fill="rgb(var(--c-ink-2))" letter-spacing="2">EXPERTISE &amp; AUDIT</text>
+      </svg>
     </a>
 
     <nav class="hidden lg:flex items-center gap-9 text-[15px] font-medium text-navy" aria-label="Navigation principale">
@@ -217,7 +302,7 @@
       <a href="#missions" class="hover:text-brass-600 transition-colors">Missions</a>
       <a href="#methode" class="hover:text-brass-600 transition-colors">Méthode</a>
       <a href="#contact" class="hover:text-brass-600 transition-colors">Contact</a>
-      <a href="#contact" class="ml-2 inline-flex items-center gap-2 bg-navy text-white px-5 py-2.5 rounded-sm hover:bg-navy-700 transition-colors">
+      <a href="#contact" class="ml-2 inline-flex items-center gap-2 bg-cta text-white px-5 py-2.5 rounded-sm hover:bg-cta-600 transition-colors">
         Prendre rendez-vous
       </a>
     </nav>
@@ -234,7 +319,7 @@
       <a href="#missions" class="py-3 border-b border-navy-100">Missions</a>
       <a href="#methode" class="py-3 border-b border-navy-100">Méthode</a>
       <a href="#contact" class="py-3">Contact</a>
-      <a href="#contact" class="mt-3 inline-flex justify-center items-center bg-navy text-white px-5 py-3 rounded-sm">Prendre rendez-vous</a>
+      <a href="#contact" class="mt-3 inline-flex justify-center items-center bg-cta text-white px-5 py-3 rounded-sm">Prendre rendez-vous</a>
     </nav>
   </div>
 </header>
@@ -250,23 +335,23 @@
        C. Vos comptes en temps réel. Votre croissance financée.
      ============================================================ -->
 <section id="top" class="relative overflow-hidden">
-  <div class="absolute inset-0 grid-bg pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-content mx-auto px-5 sm:px-8 pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
     <div class="lg:col-span-7">
-      <p class="reveal text-xs sm:text-sm tracking-[0.25em] uppercase text-brass-600 font-semibold mb-6">Expert-comptable, Paris 7e</p>
-      <h1 class="reveal font-serif text-[2.6rem] leading-[1.08] sm:text-6xl lg:text-7xl text-navy font-medium">
+      <p class="reveal text-base text-ink-500 mb-5">Expert-comptable, Paris 7e</p>
+      <h1 class="reveal font-serif text-[2.4rem] leading-[1.08] sm:text-5xl lg:text-6xl text-navy font-medium">
         L'expert-comptable qui parle aussi le langage des banques.
       </h1>
       <p class="reveal mt-7 text-lg sm:text-xl text-ink-600 leading-relaxed max-w-2xl">
         Nous tenons vos comptes sur Pennylane et consacrons notre temps à financer, développer et transmettre votre entreprise, à Paris et en Île-de-France.
       </p>
       <div class="reveal mt-10 flex flex-col sm:flex-row gap-4">
-        <a href="#contact" class="inline-flex justify-center items-center gap-2 bg-brass text-white px-7 py-3.5 rounded-sm font-medium hover:bg-brass-600 transition-colors">
+        <a href="#contact" class="inline-flex justify-center items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-sm font-medium hover:bg-cta-600 transition-colors">
           Prendre rendez-vous
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
         </a>
-        <a href="#missions" class="inline-flex justify-center items-center gap-2 border border-navy text-navy px-7 py-3.5 rounded-sm font-medium hover:bg-navy hover:text-white transition-colors">
+        <a href="#missions" class="link-arrow py-3.5">
           Découvrir nos missions
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
         </a>
       </div>
 
@@ -290,9 +375,8 @@
     <!-- Visuel du hero : bureau haussmannien, cadre laiton décalé -->
     <div class="reveal lg:col-span-5">
       <div class="relative">
-        <span class="absolute -bottom-4 -right-4 w-full h-full border border-brass/70" aria-hidden="true"></span>
         <!-- IMG : bureau -->
-        <img src="assets/bureau-haussmannien.jpg" alt="Bureau d'un cabinet d'expertise comptable dans un appartement haussmannien à Paris, parquet et vue sur les toits" width="1600" height="873" class="relative w-full aspect-[4/3] lg:aspect-[5/6] object-cover rounded-sm shadow-[0_30px_60px_-30px_rgba(15,31,61,.45)]" loading="eager" fetchpriority="high">
+        <img src="assets/bureau-haussmannien.jpg" alt="Bureau d'un cabinet d'expertise comptable dans un appartement haussmannien à Paris, parquet et vue sur les toits" width="1600" height="873" class="w-full aspect-[4/3] lg:aspect-[5/6] object-cover rounded-sm" loading="eager" fetchpriority="high">
       </div>
     </div>
   </div>
@@ -308,19 +392,19 @@
   <div class="absolute inset-0 bg-navy/80" aria-hidden="true"></div>
   <div class="relative max-w-content mx-auto px-5 sm:px-8 py-16 sm:py-20 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
     <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
-      <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none">20<span class="text-3xl align-top">+</span></p>
+      <p class="font-data text-5xl sm:text-6xl text-brass-400 leading-none">20<span class="text-3xl align-top">+</span></p>
       <p class="mt-3 text-sm text-white/75">années d'expérience</p>
     </div>
     <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
-      <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none">10<span class="text-3xl align-top">+</span></p>
+      <p class="font-data text-5xl sm:text-6xl text-brass-400 leading-none">10<span class="text-3xl align-top">+</span></p>
       <p class="mt-3 text-sm text-white/75">années en banque</p>
     </div>
     <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
-      <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none">109</p>
+      <p class="font-data text-5xl sm:text-6xl text-brass-400 leading-none">109</p>
       <p class="mt-3 text-sm text-white/75">clients accompagnés</p>
     </div>
     <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
-      <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none">94</p>
+      <p class="font-data text-5xl sm:text-6xl text-brass-400 leading-none">94</p>
       <p class="mt-3 text-sm text-white/75">opérations de croissance</p>
     </div>
   </div>
@@ -332,7 +416,7 @@
 <section id="missions" class="py-24 sm:py-32">
   <div class="max-w-content mx-auto px-5 sm:px-8">
     <div class="reveal max-w-2xl">
-      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Nos missions</p>
+      <p class="text-base text-ink-500 mb-4">Nos missions</p>
       <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Quatre missions au service de votre croissance</h2>
       <p class="mt-6 text-lg text-ink-600">De la tenue des comptes au financement d'une acquisition, un seul interlocuteur.</p>
     </div>
@@ -373,7 +457,7 @@
       </article>
 
       <!-- Carte : Expertise comptable -->
-      <article class="reveal bg-white border border-navy-100 rounded-sm overflow-hidden flex flex-col">
+      <article class="reveal bg-surface border border-navy-100 rounded-sm overflow-hidden flex flex-col">
         <!-- IMG : expertise comptable -->
         <img src="assets/mission-expertise.jpg" alt="Dirigeant consultant ses tableaux de bord financiers sur mobile et ordinateur à une terrasse parisienne" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
         <div class="p-8 sm:p-10">
@@ -389,7 +473,7 @@
       </article>
 
       <!-- Carte : Contrôle LCB-FT -->
-      <article class="reveal bg-white border border-navy-100 rounded-sm overflow-hidden flex flex-col">
+      <article class="reveal bg-surface border border-navy-100 rounded-sm overflow-hidden flex flex-col">
         <!-- IMG : contrôle LCB-FT -->
         <img src="assets/mission-lcbft.jpg" alt="Loupe examinant un registre de conformité réglementaire sous une lampe de bureau" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
         <div class="p-8 sm:p-10">
@@ -413,19 +497,19 @@
 <section class="relative h-[36vh] min-h-[240px] max-h-[420px] overflow-hidden" aria-label="Le cabinet, avenue Bosquet, Paris 7e">
   <!-- IMG : balcon parisien -->
   <img src="assets/balcon-paris-7e.jpg" alt="Balcon en fer forgé d'un immeuble en pierre de taille, Paris 7e, lumière du soir" width="1600" height="678" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-  <div class="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/55 to-navy/25" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-navy/70" aria-hidden="true"></div>
   <div class="relative h-full max-w-content mx-auto px-5 sm:px-8 flex items-end pb-10">
-    <p class="reveal text-white font-serif text-3xl sm:text-4xl font-medium leading-tight [text-shadow:0_2px_12px_rgba(0,0,0,.45)]">Avenue Bosquet, Paris 7e.<br><span class="text-brass-400">Entre le Champ-de-Mars et les Invalides.</span></p>
+    <p class="reveal text-white font-serif text-3xl sm:text-4xl font-medium leading-tight ">Avenue Bosquet, Paris 7e.<br><span class="text-brass-400">Entre le Champ-de-Mars et les Invalides.</span></p>
   </div>
 </section>
 
 <!-- ============================================================
      5. ACCOMPAGNEMENT DE A À Z (frise horizontale)
      ============================================================ -->
-<section class="bg-white border-y border-navy-100 py-24 sm:py-32">
+<section class="bg-surface border-y border-navy-100 py-24 sm:py-32">
   <div class="max-w-content mx-auto px-5 sm:px-8">
     <div class="reveal max-w-2xl mx-auto text-center">
-      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Accompagnement de A à Z</p>
+      <p class="text-base text-ink-500 mb-4">Accompagnement de A à Z</p>
       <h2 class="rule rule-center font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Présents de la création à la transmission</h2>
     </div>
 
@@ -490,13 +574,13 @@
 <section id="methode" class="py-24 sm:py-32">
   <div class="max-w-content mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 items-center">
     <div class="reveal">
-      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Notre méthode</p>
+      <p class="text-base text-ink-500 mb-4">Notre méthode</p>
       <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Une comptabilité automatisée, du temps pour le conseil</h2>
       <p class="mt-6 text-lg text-ink-600">Votre production comptable est 100&nbsp;% digitalisée sur Pennylane.</p>
 
       <ul class="mt-10 space-y-8">
         <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-clock"/></svg>
           </span>
           <div>
@@ -505,7 +589,7 @@
           </div>
         </li>
         <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-zap"/></svg>
           </span>
           <div>
@@ -514,7 +598,7 @@
           </div>
         </li>
         <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-message"/></svg>
           </span>
           <div>
@@ -528,14 +612,13 @@
     <!-- Visuel : tableau de bord stylisé (CSS uniquement, données fictives d'illustration) -->
     <div class="reveal" aria-hidden="true">
       <div class="relative">
-        <div class="absolute -inset-4 bg-brass/10 rounded-sm -rotate-1" ></div>
-        <div class="relative bg-white border border-navy-100 rounded-sm shadow-[0_30px_60px_-30px_rgba(15,31,61,.35)] p-6 sm:p-8">
+        <div class="relative bg-surface border border-navy-100 rounded-sm p-6 sm:p-8">
           <div class="flex items-center justify-between">
             <div>
               <p class="text-[11px] uppercase tracking-[0.2em] text-ink-500">Trésorerie</p>
-              <p class="mt-1 font-serif text-4xl text-navy">128&nbsp;450&nbsp;€</p>
+              <p class="mt-1 font-data text-4xl text-navy">128&nbsp;450&nbsp;€</p>
             </div>
-            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">+12&nbsp;% ce mois</span>
+            <span class="text-xs font-data text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-sm">+12&nbsp;% ce mois</span>
           </div>
 
           <div class="mt-8 flex items-end gap-2 h-36">
@@ -555,9 +638,9 @@
           <div class="mt-2 flex justify-between text-[10px] uppercase tracking-wider text-ink-500"><span>Janv.</span><span>Juin</span><span>Déc.</span></div>
 
           <div class="mt-8 grid grid-cols-3 gap-4 border-t border-navy-100 pt-6">
-            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">Banque</p><p class="mt-1 text-sm font-semibold text-navy">Synchronisée</p></div>
-            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">Factures</p><p class="mt-1 text-sm font-semibold text-navy">42 rapprochées</p></div>
-            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">À traiter</p><p class="mt-1 text-sm font-semibold text-navy">0</p></div>
+            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">Banque</p><p class="mt-1 text-sm font-medium text-navy">Synchronisée</p></div>
+            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">Factures</p><p class="mt-1 text-sm font-data text-navy">42 rapprochées</p></div>
+            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">À traiter</p><p class="mt-1 text-sm font-data text-navy">0</p></div>
           </div>
         </div>
       </div>
@@ -572,14 +655,13 @@
   <div class="max-w-content mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-14 items-center">
     <div class="reveal lg:col-span-5">
       <div class="relative max-w-md mx-auto lg:mx-0">
-        <span class="absolute -top-4 -left-4 w-full h-full border border-brass/60" aria-hidden="true"></span>
         <!-- IMG : photo de Davy Lebelle -->
         <img src="assets/davy-lebelle.jpg" alt="Portrait de Davy Lebelle, expert-comptable fondateur du cabinet Lebelle Expertise & Audit à Paris" width="800" height="800" class="relative w-full aspect-[4/5] object-cover object-top rounded-sm" loading="lazy">
       </div>
     </div>
 
     <div class="reveal lg:col-span-7">
-      <p class="text-xs tracking-[0.25em] uppercase text-brass-400 font-semibold mb-4">Votre expert-comptable</p>
+      <p class="text-base text-white/70 mb-4">Votre expert-comptable</p>
       <h2 class="font-serif text-4xl sm:text-5xl font-medium leading-tight">Davy Lebelle, expert-comptable et ancien banquier</h2>
 
       <ul class="mt-8 space-y-3 text-white/85">
@@ -608,11 +690,11 @@
       <img src="assets/rendez-vous-dirigeant.jpg" alt="Échange entre un expert-comptable et une dirigeante d'entreprise autour d'un bureau, Paris" width="1600" height="873" class="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy">
     </div>
     <div class="reveal lg:col-span-6">
-      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Nos valeurs</p>
+      <p class="text-base text-ink-500 mb-4">Nos valeurs</p>
       <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Trois engagements envers vous</h2>
       <ul class="mt-10 space-y-8">
         <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-users"/></svg>
           </span>
           <div>
@@ -621,7 +703,7 @@
           </div>
         </li>
         <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bulb"/></svg>
           </span>
           <div>
@@ -630,7 +712,7 @@
           </div>
         </li>
         <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-award"/></svg>
           </span>
           <div>
@@ -646,14 +728,14 @@
 <!-- ============================================================
      9. GAGE DE CONFIANCE (mission LCB-FT)
      ============================================================ -->
-<section class="bg-white border-y border-navy-100 py-20 sm:py-24">
+<section class="bg-surface border-y border-navy-100 py-20 sm:py-24">
   <div class="max-w-content mx-auto px-5 sm:px-8">
     <div class="reveal max-w-4xl mx-auto flex flex-col sm:flex-row gap-8 items-start">
-      <span class="shrink-0 w-16 h-16 rounded-full border border-brass flex items-center justify-center text-navy">
+      <span class="shrink-0 w-16 h-16 rounded-sm border border-brass flex items-center justify-center text-navy">
         <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg>
       </span>
       <div>
-        <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-3">Gage de confiance</p>
+        <p class="text-base text-ink-500 mb-3">Gage de confiance</p>
         <h2 class="font-serif text-3xl sm:text-4xl text-navy font-medium leading-tight">Un cabinet qui contrôle sa propre profession</h2>
         <p class="mt-4 text-ink-600 text-lg">Le Conseil supérieur de l'Ordre des experts-comptables nous confie des missions de contrôle LCB-FT. Nous vérifions le respect des diligences anti-blanchiment au sein de la profession.</p>
       </div>
@@ -667,7 +749,7 @@
 <section id="faq" class="py-24 sm:py-32">
   <div class="max-w-3xl mx-auto px-5 sm:px-8">
     <div class="reveal text-center">
-      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Questions fréquentes</p>
+      <p class="text-base text-ink-500 mb-4">Questions fréquentes</p>
       <h2 class="rule rule-center font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Vos questions, nos réponses</h2>
     </div>
 
@@ -717,12 +799,12 @@
 <section class="relative overflow-hidden" aria-label="Prendre rendez-vous">
   <!-- IMG : poignée de main -->
   <img src="assets/poignee-de-main-cabinet.jpg" alt="Poignée de main entre un expert-comptable et un dirigeant dans un cabinet parisien" width="1600" height="873" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-  <div class="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/30" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-navy/75" aria-hidden="true"></div>
   <div class="relative max-w-content mx-auto px-5 sm:px-8 py-28 sm:py-36">
     <div class="reveal max-w-xl">
       <h2 class="font-serif text-4xl sm:text-5xl text-white font-medium leading-tight">Un premier rendez-vous pour faire le point</h2>
       <p class="mt-5 text-lg text-white/85">Trente minutes pour comprendre votre situation et vous dire ce que nous pouvons apporter.</p>
-      <a href="#contact" class="mt-8 inline-flex items-center gap-2 bg-brass text-white px-7 py-3.5 rounded-sm font-medium hover:bg-brass-600 transition-colors">
+      <a href="#contact" class="mt-8 inline-flex items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-sm font-medium hover:bg-cta-600 transition-colors">
         Prendre rendez-vous
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
       </a>
@@ -733,10 +815,10 @@
 <!-- ============================================================
      11. CONTACT (coordonnées, carte, formulaire)
      ============================================================ -->
-<section id="contact" class="bg-white border-t border-navy-100 py-24 sm:py-32">
+<section id="contact" class="bg-surface border-t border-navy-100 py-24 sm:py-32">
   <div class="max-w-content mx-auto px-5 sm:px-8">
     <div class="reveal max-w-2xl">
-      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Contact</p>
+      <p class="text-base text-ink-500 mb-4">Contact</p>
       <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Parlons de votre projet</h2>
       <p class="mt-6 text-lg text-ink-600">Premier échange sans engagement, au cabinet ou en visioconférence.</p>
     </div>
@@ -772,23 +854,23 @@
       <form id="contact-form" class="reveal lg:col-span-7 bg-ivory border border-navy-100 p-8 sm:p-10 rounded-sm grid sm:grid-cols-2 gap-5" novalidate>
         <div>
           <label for="nom" class="block text-sm font-medium text-navy mb-1.5">Nom</label>
-          <input id="nom" name="nom" type="text" required autocomplete="name" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+          <input id="nom" name="nom" type="text" required autocomplete="name" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
         </div>
         <div>
           <label for="entreprise" class="block text-sm font-medium text-navy mb-1.5">Entreprise</label>
-          <input id="entreprise" name="entreprise" type="text" autocomplete="organization" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+          <input id="entreprise" name="entreprise" type="text" autocomplete="organization" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
         </div>
         <div>
           <label for="email" class="block text-sm font-medium text-navy mb-1.5">E-mail</label>
-          <input id="email" name="email" type="email" required autocomplete="email" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+          <input id="email" name="email" type="email" required autocomplete="email" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
         </div>
         <div>
           <label for="telephone" class="block text-sm font-medium text-navy mb-1.5">Téléphone</label>
-          <input id="telephone" name="telephone" type="tel" autocomplete="tel" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+          <input id="telephone" name="telephone" type="tel" autocomplete="tel" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
         </div>
         <div class="sm:col-span-2">
           <label for="besoin" class="block text-sm font-medium text-navy mb-1.5">Votre besoin</label>
-          <select id="besoin" name="besoin" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+          <select id="besoin" name="besoin" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
             <option value="">Sélectionnez</option>
             <option>Création d'entreprise</option>
             <option>Expertise comptable et fiscale</option>
@@ -801,10 +883,10 @@
         </div>
         <div class="sm:col-span-2">
           <label for="message" class="block text-sm font-medium text-navy mb-1.5">Message</label>
-          <textarea id="message" name="message" rows="4" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass"></textarea>
+          <textarea id="message" name="message" rows="4" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass"></textarea>
         </div>
         <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-4">
-          <button type="submit" class="inline-flex justify-center items-center gap-2 whitespace-nowrap bg-navy text-white px-7 py-3.5 rounded-sm font-medium hover:bg-navy-700 transition-colors">
+          <button type="submit" class="inline-flex justify-center items-center gap-2 whitespace-nowrap bg-cta text-white px-7 py-3.5 rounded-sm font-medium hover:bg-cta-600 transition-colors">
             Envoyer ma demande
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
           </button>
@@ -824,8 +906,13 @@
 <footer class="bg-navy text-white/80">
   <div class="max-w-content mx-auto px-5 sm:px-8 py-16 grid md:grid-cols-3 gap-12">
     <div>
-      <!-- IMG : logo version claire (fichier provisoire, à remplacer) -->
-      <img src="assets/logo-blanc.svg" alt="Logo Lebelle Expertise & Audit" width="220" height="47" class="h-11 w-auto">
+      <!-- Logo provisoire version claire (SVG inline) : à remplacer par le logo officiel -->
+      <svg width="220" height="47" viewBox="0 0 260 56" role="img" aria-label="Lebelle Expertise & Audit" class="h-11 w-auto">
+        <rect x="1" y="1" width="54" height="54" rx="2" fill="#fff"/>
+        <text x="28" y="37" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="30" font-weight="600" fill="rgb(var(--c-primary))">L</text>
+        <text x="68" y="26" font-family="var(--font-heading), Georgia, serif" font-size="22" font-weight="600" fill="#fff">Lebelle</text>
+        <text x="68" y="45" font-family="var(--font-body), system-ui, sans-serif" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.7)" letter-spacing="2">EXPERTISE &amp; AUDIT</text>
+      </svg>
       <p class="mt-5 text-sm leading-relaxed">Cabinet d'expertise comptable à Paris 7e. Conseil en financement, croissance et transmission pour les dirigeants de TPE et PME d'Île-de-France.</p>
     </div>
     <div>
@@ -861,10 +948,26 @@
   </div>
 </footer>
 
+<!-- Sélecteur de thème (maquette) : A Rigueur financière, B Presse économique, C Maison contemporaine -->
+<div id="theme-switch" role="group" aria-label="Choix du thème graphique">
+  <button type="button" data-theme="a" aria-pressed="true" title="Thème A, Rigueur financière">A</button>
+  <button type="button" data-theme="b" aria-pressed="false" title="Thème B, Presse économique">B</button>
+  <button type="button" data-theme="c" aria-pressed="false" title="Thème C, Maison contemporaine">C</button>
+</div>
+
 <!-- ============================================================
-     JS vanilla : menu mobile, ombre du header, apparition au scroll, formulaire
+     JS vanilla : thèmes, menu mobile, bordure du header, apparition au scroll, formulaire
      ============================================================ -->
 <script>
+  // Thèmes : bascule des variables CSS via l'attribut data-theme sur <html>
+  const applyTheme = (t) => {
+    document.documentElement.dataset.theme = t;
+    document.querySelectorAll('#theme-switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.theme === t)));
+    try { localStorage.setItem('lea-theme', t); } catch (e) {}
+  };
+  document.querySelectorAll('#theme-switch button').forEach(b => b.addEventListener('click', () => applyTheme(b.dataset.theme)));
+  try { applyTheme(localStorage.getItem('lea-theme') || 'a'); } catch (e) { applyTheme('a'); }
+
   // Menu burger
   const btn = document.getElementById('menu-btn');
   const menu = document.getElementById('mobile-menu');

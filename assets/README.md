@@ -6,8 +6,7 @@ des emplacements provisoires (SVG) à remplacer par les fichiers réels.
 
 | Fichier provisoire        | À remplacer par                                  | Où il est utilisé                       |
 |---------------------------|--------------------------------------------------|-----------------------------------------|
-| `logo.svg`                | Logo officiel sur fond clair (SVG ou PNG)        | Header de `index.html` et `mentions-legales.html` |
-| `logo-blanc.svg`          | Logo officiel en version claire (fond marine)    | Footer                                  |
+| `logo.svg`, `logo-blanc.svg` | Logo officiel (fond clair, puis version claire pour le footer) | Le header et le footer utilisent pour l'instant un logo provisoire en SVG inline qui suit le thème choisi ; remplacer le bloc `<svg>` repéré par le commentaire « Logo provisoire » par une balise `<img>` vers ces fichiers |
 
 Pour remplacer un visuel : déposer le fichier ici, puis mettre à jour l'attribut `src`
 correspondant dans le HTML (une ligne par image, repérée par le commentaire `<!-- IMG -->`).
