@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="56" viewBox="0 0 260 56" role="img" aria-label="Lebelle Expertise &amp; Audit">
+  <!-- PLACEHOLDER version claire pour fond bleu marine : à remplacer par le logo officiel -->
+  <rect x="1" y="1" width="54" height="54" rx="4" fill="#F7F5F0"/>
+  <text x="28" y="37" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="30" font-weight="600" fill="#0F1F3D">L</text>
+  <text x="68" y="26" font-family="Cormorant Garamond, Georgia, serif" font-size="22" font-weight="600" fill="#F7F5F0" letter-spacing="0.5">Lebelle</text>
+  <text x="68" y="45" font-family="Manrope, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#C9A96A" letter-spacing="2.4">EXPERTISE &amp; AUDIT</text>
+</svg>

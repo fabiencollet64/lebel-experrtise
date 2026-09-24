@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     MAQUETTE DE REFONTE : Lebelle Expertise & Audit (Paris 7e)
+     Réalisée par Collet Marketing. Fichier autonome : HTML + Tailwind CDN + JS vanilla.
+     Les éléments surlignés en jaune [XX ...] sont à compléter par le dirigeant.
+     ============================================================ -->
+
+<!-- SEO : title et meta description -->
+<title>Expert-comptable Paris 7e | Financement, croissance, Pennylane</title>
+<meta name="description" content="Lebelle Expertise & Audit, expert-comptable à Paris 7e. Comptabilité digitalisée sur Pennylane, conseil en financement, acquisition et transmission pour les dirigeants de TPE et PME d'Île-de-France.">
+<link rel="canonical" href="https://www.lebelle-expertise.com/">
+<meta property="og:title" content="Lebelle Expertise & Audit, expert-comptable à Paris 7e">
+<meta property="og:description" content="L'expert-comptable qui parle aussi le langage des banques. Comptabilité automatisée sur Pennylane, conseil en financement et croissance.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="theme-color" content="#0F1F3D">
+
+<!-- Typographies : Cormorant Garamond (titres) et Manrope (texte) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS via CDN + configuration de la palette -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          /* Palette : bleu marine profond, blanc cassé, laiton doux */
+          navy:  { DEFAULT: '#0F1F3D', 800: '#16294F', 700: '#1E3563', 100: '#E4E8F0' },
+          ivory: { DEFAULT: '#F7F5F0', 50: '#FBFAF7', 200: '#ECE8DF' },
+          brass: { DEFAULT: '#B8935A', 400: '#C9A96A', 600: '#9C7A45', 100: '#F3EBDC' },
+          ink:   { DEFAULT: '#1F2433', 600: '#4B5163', 500: '#6B7280' }
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans:  ['Manrope', 'system-ui', 'sans-serif']
+        },
+        maxWidth: { content: '72rem' }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Styles complémentaires (hors utilitaires Tailwind) */
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { -webkit-font-smoothing: antialiased; }
+
+  /* Apparition discrète au scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* Emplacements à compléter par le dirigeant */
+  .todo { background: #FFF07A; color: #1F2433; padding: 0 .25em; border-radius: .15em; font-weight: 600; }
+
+  /* Filet décoratif laiton sous les titres de section */
+  .rule::after { content: ""; display: block; width: 3rem; height: 1px; background: #B8935A; margin-top: 1rem; }
+  .rule-center::after { margin-left: auto; margin-right: auto; }
+
+  /* Trame fine de fond du hero */
+  .grid-bg { background-image: linear-gradient(rgba(15,31,61,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(15,31,61,.045) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 70%); }
+
+  /* Menu mobile */
+  #mobile-menu { transition: opacity .25s ease, transform .25s ease; }
+  #mobile-menu[hidden] { display: none; }
+
+  /* FAQ : rotation du chevron */
+  details[open] .chev { transform: rotate(180deg); }
+  details summary::-webkit-details-marker { display: none; }
+
+  /* Tableau de bord stylisé (section Méthode) */
+  .bar { transform-origin: bottom; animation: grow 1.2s ease-out both; }
+  @keyframes grow { from { transform: scaleY(0); } }
+  @media (prefers-reduced-motion: reduce) { .bar { animation: none; } }
+</style>
+
+<!-- Données structurées : cabinet (AccountingService + LocalBusiness) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["AccountingService", "LocalBusiness"],
+  "@id": "https://www.lebelle-expertise.com/#cabinet",
+  "name": "Lebelle Expertise & Audit",
+  "description": "Cabinet d'expertise comptable à Paris 7e. Comptabilité digitalisée sur Pennylane et conseil en financement, acquisition et transmission pour les dirigeants de TPE et PME d'Île-de-France.",
+  "url": "https://www.lebelle-expertise.com/",
+  "telephone": "+33666641768",
+  "email": "davy.lebelle@lebelle-expertise.com",
+  "foundingDate": "2022",
+  "founder": { "@id": "https://www.lebelle-expertise.com/#davy-lebelle" },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "58-60 avenue Bosquet",
+    "postalCode": "75007",
+    "addressLocality": "Paris",
+    "addressRegion": "Île-de-France",
+    "addressCountry": "FR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 48.8568, "longitude": 2.3040 },
+  "areaServed": [
+    { "@type": "City", "name": "Paris" },
+    { "@type": "AdministrativeArea", "name": "Île-de-France" }
+  ],
+  "knowsAbout": ["Expertise comptable", "Financement d'entreprise", "Acquisition d'entreprise", "Transmission d'entreprise", "Pennylane", "Contrôle LCB-FT"],
+  "sameAs": ["https://fr.linkedin.com/company/lebelle-expertise-et-audit"],
+  "priceRange": "$$"
+}
+</script>
+
+<!-- Données structurées : Davy Lebelle (Person) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.lebelle-expertise.com/#davy-lebelle",
+  "name": "Davy Lebelle",
+  "jobTitle": "Expert-comptable, fondateur",
+  "worksFor": { "@id": "https://www.lebelle-expertise.com/#cabinet" },
+  "memberOf": { "@type": "Organization", "name": "Ordre des experts-comptables de Paris Île-de-France" },
+  "email": "davy.lebelle@lebelle-expertise.com",
+  "telephone": "+33666641768",
+  "knowsAbout": ["Expertise comptable", "Audit", "Finance d'entreprise", "Banque privée", "Marchés financiers", "LCB-FT"],
+  "sameAs": ["https://fr.linkedin.com/company/lebelle-expertise-et-audit"]
+}
+</script>
+
+<!-- Données structurées : FAQ (FAQPage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Pourquoi choisir un expert-comptable avec une expérience bancaire ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment une banque lit un dossier et prépare le vôtre en conséquence." }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment fonctionne la comptabilité sur Pennylane ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Vos comptes bancaires, vos factures et vos outils métier se synchronisent automatiquement dans Pennylane. Vous suivez votre trésorerie et vos résultats en temps réel, sur PC et sur mobile." }
+    },
+    {
+      "@type": "Question",
+      "name": "Accompagnez-vous les rachats d'entreprise ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Nous évaluons la cible, structurons l'opération et recherchons les financements, jusqu'à la signature." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelles entreprises accompagnez-vous ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Des dirigeants de TPE et PME et des entrepreneurs en croissance, à Paris et en Île-de-France. Le cabinet intervient de la création à la transmission." }
+    },
+    {
+      "@type": "Question",
+      "name": "Qu'est-ce que la mission de contrôle LCB-FT ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "La lutte contre le blanchiment des capitaux et le financement du terrorisme impose des diligences aux experts-comptables. Nous assistons le Conseil supérieur de l'Ordre pour vérifier leur respect au sein de la profession." }
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="bg-ivory text-ink font-sans">
+
+<!-- Sprite d'icônes (style Lucide, trait fin) -->
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-trending" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></symbol>
+  <symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+  <symbol id="i-coins" viewBox="0 0 24 24"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+</svg>
+
+<!-- Lien d'évitement (accessibilité) -->
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] bg-navy text-white px-3 py-2 rounded">Aller au contenu</a>
+
+<!-- ============================================================
+     1. HEADER STICKY
+     ============================================================ -->
+<header id="header" class="sticky top-0 z-50 bg-ivory/90 backdrop-blur border-b border-transparent transition-colors duration-300">
+  <div class="max-w-content mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-center" aria-label="Lebelle Expertise & Audit, retour à l'accueil">
+      <!-- IMG : logo (fichier provisoire, à remplacer) -->
+      <img src="assets/logo.svg" alt="Logo Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris" width="220" height="47" class="h-11 w-auto">
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-medium text-navy" aria-label="Navigation principale">
+      <a href="#cabinet" class="hover:text-brass-600 transition-colors">Le cabinet</a>
+      <a href="#missions" class="hover:text-brass-600 transition-colors">Missions</a>
+      <a href="#methode" class="hover:text-brass-600 transition-colors">Méthode</a>
+      <a href="#contact" class="hover:text-brass-600 transition-colors">Contact</a>
+      <a href="#contact" class="ml-2 inline-flex items-center gap-2 bg-navy text-white px-5 py-2.5 rounded-sm hover:bg-navy-700 transition-colors">
+        Prendre rendez-vous
+      </a>
+    </nav>
+
+    <button id="menu-btn" type="button" class="lg:hidden p-2 -mr-2 text-navy" aria-controls="mobile-menu" aria-expanded="false" aria-label="Ouvrir le menu">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use id="menu-icon" href="#i-menu"/></svg>
+    </button>
+  </div>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" hidden class="lg:hidden border-t border-navy-100 bg-ivory">
+    <nav class="max-w-content mx-auto px-5 py-4 flex flex-col text-lg font-medium text-navy" aria-label="Navigation mobile">
+      <a href="#cabinet" class="py-3 border-b border-navy-100">Le cabinet</a>
+      <a href="#missions" class="py-3 border-b border-navy-100">Missions</a>
+      <a href="#methode" class="py-3 border-b border-navy-100">Méthode</a>
+      <a href="#contact" class="py-3">Contact</a>
+      <a href="#contact" class="mt-3 inline-flex justify-center items-center bg-navy text-white px-5 py-3 rounded-sm">Prendre rendez-vous</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     2. HERO
+     Promesse retenue : « L'expert-comptable qui parle aussi le langage des banques. »
+     Variantes proposées :
+       A. Votre comptabilité automatisée. Votre croissance accompagnée.
+       B. Un expert-comptable formé en banque, au service de votre croissance.
+       C. Vos comptes en temps réel. Votre croissance financée.
+     ============================================================ -->
+<section id="top" class="relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-content mx-auto px-5 sm:px-8 pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-36 lg:pb-40">
+    <div class="max-w-3xl">
+      <p class="reveal text-xs sm:text-sm tracking-[0.25em] uppercase text-brass-600 font-semibold mb-6">Expert-comptable, Paris 7e</p>
+      <h1 class="reveal font-serif text-[2.6rem] leading-[1.08] sm:text-6xl lg:text-7xl text-navy font-medium">
+        L'expert-comptable qui parle aussi le langage des banques.
+      </h1>
+      <p class="reveal mt-7 text-lg sm:text-xl text-ink-600 leading-relaxed max-w-2xl">
+        Nous tenons vos comptes sur Pennylane et consacrons notre temps à financer, développer et transmettre votre entreprise, à Paris et en Île-de-France.
+      </p>
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-4">
+        <a href="#contact" class="inline-flex justify-center items-center gap-2 bg-brass text-white px-7 py-3.5 rounded-sm font-medium hover:bg-brass-600 transition-colors">
+          Prendre rendez-vous
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
+        </a>
+        <a href="#missions" class="inline-flex justify-center items-center gap-2 border border-navy text-navy px-7 py-3.5 rounded-sm font-medium hover:bg-navy hover:text-white transition-colors">
+          Découvrir nos missions
+        </a>
+      </div>
+
+      <!-- Marqueurs de réassurance -->
+      <ul class="reveal mt-14 flex flex-wrap gap-x-10 gap-y-4 text-sm font-medium text-navy">
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-badge"/></svg>
+          Inscrit à l'Ordre des experts-comptables
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-award"/></svg>
+          20 ans d'expérience
+        </li>
+        <li class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-zap"/></svg>
+          100&nbsp;% digital
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. BANDEAU CHIFFRES CLÉS
+     Les valeurs [XX] sont à fournir par le dirigeant (aucune valeur inventée).
+     ============================================================ -->
+<section class="bg-navy text-white" aria-label="Chiffres clés">
+  <div class="max-w-content mx-auto px-5 sm:px-8 py-14 sm:py-16 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+    <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
+      <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none">20<span class="text-3xl align-top">+</span></p>
+      <p class="mt-3 text-sm text-white/75">années d'expérience</p>
+    </div>
+    <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
+      <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none">10<span class="text-3xl align-top">+</span></p>
+      <p class="mt-3 text-sm text-white/75">années en banque</p>
+    </div>
+    <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
+      <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none"><span class="todo text-3xl align-middle">XX</span></p>
+      <p class="mt-3 text-sm text-white/75">clients accompagnés</p>
+    </div>
+    <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
+      <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none"><span class="todo text-3xl align-middle">XX</span></p>
+      <p class="mt-3 text-sm text-white/75">opérations de croissance</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. MISSIONS (4 cartes, 2 mises en avant)
+     ============================================================ -->
+<section id="missions" class="py-24 sm:py-32">
+  <div class="max-w-content mx-auto px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Nos missions</p>
+      <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Quatre missions au service de votre croissance</h2>
+      <p class="mt-6 text-lg text-ink-600">De la tenue des comptes au financement d'une acquisition, un seul interlocuteur.</p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 gap-6">
+      <!-- Carte mise en avant : Opérations de croissance -->
+      <article class="reveal bg-navy text-white p-8 sm:p-10 rounded-sm relative overflow-hidden">
+        <span class="absolute top-0 left-0 w-full h-1 bg-brass" aria-hidden="true"></span>
+        <svg class="w-9 h-9 text-brass-400" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-trending"/></svg>
+        <h3 class="mt-6 font-serif text-3xl font-medium">Opérations de croissance</h3>
+        <p class="mt-3 text-white/80">Nous structurons et finançons vos projets, de la levée de fonds à la cession.</p>
+        <ul class="mt-6 space-y-2.5 text-sm">
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Recherche de financements bancaires et en fonds propres</li>
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Acquisition et cession d'entreprise</li>
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Structuration financière et prévisionnels</li>
+        </ul>
+      </article>
+
+      <!-- Carte mise en avant : Conseil auprès des banques -->
+      <article class="reveal bg-navy text-white p-8 sm:p-10 rounded-sm relative overflow-hidden">
+        <span class="absolute top-0 left-0 w-full h-1 bg-brass" aria-hidden="true"></span>
+        <svg class="w-9 h-9 text-brass-400" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-landmark"/></svg>
+        <h3 class="mt-6 font-serif text-3xl font-medium">Conseil auprès des banques</h3>
+        <p class="mt-3 text-white/80">Dix ans en banque privée et sur les marchés financiers, au service des établissements financiers.</p>
+        <ul class="mt-6 space-y-2.5 text-sm">
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Audit et évaluation de dispositifs</li>
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Conseil financier et réglementaire</li>
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Interlocuteur des directions financières</li>
+        </ul>
+      </article>
+
+      <!-- Carte : Expertise comptable -->
+      <article class="reveal bg-white border border-navy-100 p-8 sm:p-10 rounded-sm">
+        <svg class="w-9 h-9 text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-calculator"/></svg>
+        <h3 class="mt-6 font-serif text-3xl font-medium text-navy">Expertise comptable</h3>
+        <p class="mt-3 text-ink-600">Comptabilité, fiscalité et social, produits sur Pennylane et suivis en temps réel.</p>
+        <ul class="mt-6 space-y-2.5 text-sm text-ink-600">
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Tenue et révision des comptes</li>
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Déclarations fiscales et sociales, paie</li>
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Bilan annuel et liasse fiscale</li>
+        </ul>
+      </article>
+
+      <!-- Carte : Contrôle LCB-FT -->
+      <article class="reveal bg-white border border-navy-100 p-8 sm:p-10 rounded-sm">
+        <svg class="w-9 h-9 text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg>
+        <h3 class="mt-6 font-serif text-3xl font-medium text-navy">Contrôle LCB-FT</h3>
+        <p class="mt-3 text-ink-600">Nous assistons le Conseil supérieur de l'Ordre sur le respect des diligences de la profession.</p>
+        <ul class="mt-6 space-y-2.5 text-sm text-ink-600">
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Audit des dispositifs anti-blanchiment</li>
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Évaluation des procédures internes</li>
+          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Missions pour le compte de l'Ordre</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. ACCOMPAGNEMENT DE A À Z (frise horizontale)
+     ============================================================ -->
+<section class="bg-white border-y border-navy-100 py-24 sm:py-32">
+  <div class="max-w-content mx-auto px-5 sm:px-8">
+    <div class="reveal max-w-2xl mx-auto text-center">
+      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Accompagnement de A à Z</p>
+      <h2 class="rule rule-center font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Présents de la création à la transmission</h2>
+    </div>
+
+    <ol class="mt-16 relative grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6">
+      <!-- Ligne de la frise (desktop) -->
+      <span class="hidden lg:block absolute top-6 left-[10%] right-[10%] h-px bg-brass/50" aria-hidden="true"></span>
+
+      <li class="reveal relative text-center lg:px-2">
+        <span class="relative z-10 mx-auto w-12 h-12 rounded-full bg-ivory border border-brass flex items-center justify-center text-navy">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-sprout"/></svg>
+        </span>
+        <h3 class="mt-5 font-serif text-2xl text-navy font-medium">Créer</h3>
+        <p class="mt-2 text-sm text-ink-600">Choix du statut, prévisionnel et premiers financements.</p>
+      </li>
+      <li class="reveal relative text-center lg:px-2">
+        <span class="relative z-10 mx-auto w-12 h-12 rounded-full bg-ivory border border-brass flex items-center justify-center text-navy">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chart"/></svg>
+        </span>
+        <h3 class="mt-5 font-serif text-2xl text-navy font-medium">Développer</h3>
+        <p class="mt-2 text-sm text-ink-600">Pilotage en temps réel et conseil de gestion.</p>
+      </li>
+      <li class="reveal relative text-center lg:px-2">
+        <span class="relative z-10 mx-auto w-12 h-12 rounded-full bg-ivory border border-brass flex items-center justify-center text-navy">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-coins"/></svg>
+        </span>
+        <h3 class="mt-5 font-serif text-2xl text-navy font-medium">Financer</h3>
+        <p class="mt-2 text-sm text-ink-600">Dossier bancaire solide, négociation avec les banques.</p>
+      </li>
+      <li class="reveal relative text-center lg:px-2">
+        <span class="relative z-10 mx-auto w-12 h-12 rounded-full bg-ivory border border-brass flex items-center justify-center text-navy">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-briefcase"/></svg>
+        </span>
+        <h3 class="mt-5 font-serif text-2xl text-navy font-medium">Acquérir</h3>
+        <p class="mt-2 text-sm text-ink-600">Évaluation, structuration et financement du rachat.</p>
+      </li>
+      <li class="reveal relative text-center lg:px-2">
+        <span class="relative z-10 mx-auto w-12 h-12 rounded-full bg-ivory border border-brass flex items-center justify-center text-navy">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-key"/></svg>
+        </span>
+        <h3 class="mt-5 font-serif text-2xl text-navy font-medium">Transmettre</h3>
+        <p class="mt-2 text-sm text-ink-600">Préparation de la cession et vision patrimoniale du dirigeant.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. MÉTHODE DIGITALE (Pennylane) + tableau de bord stylisé en CSS
+     ============================================================ -->
+<section id="methode" class="py-24 sm:py-32">
+  <div class="max-w-content mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 items-center">
+    <div class="reveal">
+      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Notre méthode</p>
+      <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Une comptabilité automatisée, du temps pour le conseil</h2>
+      <p class="mt-6 text-lg text-ink-600">Votre production comptable est 100&nbsp;% digitalisée sur Pennylane.</p>
+
+      <ul class="mt-10 space-y-8">
+        <li class="flex gap-5">
+          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-clock"/></svg>
+          </span>
+          <div>
+            <h3 class="font-serif text-2xl text-navy font-medium">Temps réel</h3>
+            <p class="mt-1.5 text-ink-600">Vos comptes sont synchronisés avec votre banque. Vous suivez votre trésorerie sur PC et sur mobile.</p>
+          </div>
+        </li>
+        <li class="flex gap-5">
+          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-zap"/></svg>
+          </span>
+          <div>
+            <h3 class="font-serif text-2xl text-navy font-medium">Zéro saisie</h3>
+            <p class="mt-1.5 text-ink-600">Factures, relevés et outils métier remontent automatiquement dans Pennylane. La ressaisie disparaît.</p>
+          </div>
+        </li>
+        <li class="flex gap-5">
+          <span class="shrink-0 w-11 h-11 rounded-full bg-brass-100 text-brass-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-message"/></svg>
+          </span>
+          <div>
+            <h3 class="font-serif text-2xl text-navy font-medium">Plus de temps pour le conseil</h3>
+            <p class="mt-1.5 text-ink-600">Le temps gagné sur la production est consacré à vos décisions&nbsp;: financement, croissance, transmission.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Visuel : tableau de bord stylisé (CSS uniquement, données fictives d'illustration) -->
+    <div class="reveal" aria-hidden="true">
+      <div class="relative">
+        <div class="absolute -inset-4 bg-brass/10 rounded-sm -rotate-1" ></div>
+        <div class="relative bg-white border border-navy-100 rounded-sm shadow-[0_30px_60px_-30px_rgba(15,31,61,.35)] p-6 sm:p-8">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.2em] text-ink-500">Trésorerie</p>
+              <p class="mt-1 font-serif text-4xl text-navy">128&nbsp;450&nbsp;€</p>
+            </div>
+            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">+12&nbsp;% ce mois</span>
+          </div>
+
+          <div class="mt-8 flex items-end gap-2 h-36">
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:38%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:52%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:46%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:64%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:58%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:72%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:69%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:80%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:76%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:88%"></div>
+            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:84%"></div>
+            <div class="bar flex-1 bg-brass rounded-t-sm" style="height:100%"></div>
+          </div>
+          <div class="mt-2 flex justify-between text-[10px] uppercase tracking-wider text-ink-500"><span>Janv.</span><span>Juin</span><span>Déc.</span></div>
+
+          <div class="mt-8 grid grid-cols-3 gap-4 border-t border-navy-100 pt-6">
+            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">Banque</p><p class="mt-1 text-sm font-semibold text-navy">Synchronisée</p></div>
+            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">Factures</p><p class="mt-1 text-sm font-semibold text-navy">42 rapprochées</p></div>
+            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">À traiter</p><p class="mt-1 text-sm font-semibold text-navy">0</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. VOTRE EXPERT-COMPTABLE (Davy Lebelle)
+     ============================================================ -->
+<section id="cabinet" class="bg-navy text-white py-24 sm:py-32">
+  <div class="max-w-content mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-14 items-center">
+    <div class="reveal lg:col-span-5">
+      <div class="relative max-w-md mx-auto lg:mx-0">
+        <span class="absolute -top-4 -left-4 w-full h-full border border-brass/60" aria-hidden="true"></span>
+        <!-- IMG : photo de Davy Lebelle (fichier provisoire, à remplacer) -->
+        <img src="assets/davy-lebelle.svg" alt="Davy Lebelle, expert-comptable fondateur du cabinet Lebelle Expertise & Audit à Paris" width="640" height="800" class="relative w-full aspect-[4/5] object-cover rounded-sm">
+      </div>
+    </div>
+
+    <div class="reveal lg:col-span-7">
+      <p class="text-xs tracking-[0.25em] uppercase text-brass-400 font-semibold mb-4">Votre expert-comptable</p>
+      <h2 class="font-serif text-4xl sm:text-5xl font-medium leading-tight">Davy Lebelle, expert-comptable et ancien banquier</h2>
+
+      <ul class="mt-8 space-y-3 text-white/85">
+        <li class="flex gap-3"><svg class="w-5 h-5 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Expert-comptable inscrit à l'Ordre de Paris Île-de-France</li>
+        <li class="flex gap-3"><svg class="w-5 h-5 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Plus de 20 ans en cabinet d'expertise comptable, d'audit et en banque</li>
+        <li class="flex gap-3"><svg class="w-5 h-5 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Plus de 10 ans en banque, sur les marchés financiers et en banque privée</li>
+        <li class="flex gap-3"><svg class="w-5 h-5 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Double cursus&nbsp;: expertise comptable et finance d'entreprise</li>
+      </ul>
+
+      <!-- Citation : proposition de rédaction, à valider par Davy Lebelle -->
+      <blockquote class="mt-10 border-l-2 border-brass pl-6">
+        <p class="font-serif text-2xl sm:text-[1.7rem] italic leading-snug text-white">«&nbsp;J'ai créé le cabinet fin 2022 pour apporter aux dirigeants ce que j'ai appris en banque&nbsp;: un regard de financier sur leurs comptes.&nbsp;»</p>
+        <footer class="mt-4 text-sm text-brass-400 font-medium">Davy Lebelle, fondateur</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. VALEURS
+     ============================================================ -->
+<section class="py-24 sm:py-32">
+  <div class="max-w-content mx-auto px-5 sm:px-8">
+    <div class="reveal max-w-2xl mx-auto text-center">
+      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Nos valeurs</p>
+      <h2 class="rule rule-center font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Trois engagements envers vous</h2>
+    </div>
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+      <div class="reveal bg-white border border-navy-100 p-8 rounded-sm text-center">
+        <svg class="w-8 h-8 mx-auto text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-users"/></svg>
+        <h3 class="mt-5 font-serif text-2xl text-navy font-medium">Proximité</h3>
+        <p class="mt-3 text-ink-600">Un interlocuteur unique, joignable, qui connaît votre dossier.</p>
+      </div>
+      <div class="reveal bg-white border border-navy-100 p-8 rounded-sm text-center">
+        <svg class="w-8 h-8 mx-auto text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bulb"/></svg>
+        <h3 class="mt-5 font-serif text-2xl text-navy font-medium">Innovation</h3>
+        <p class="mt-3 text-ink-600">Des outils digitaux pour anticiper plutôt que constater.</p>
+      </div>
+      <div class="reveal bg-white border border-navy-100 p-8 rounded-sm text-center">
+        <svg class="w-8 h-8 mx-auto text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-award"/></svg>
+        <h3 class="mt-5 font-serif text-2xl text-navy font-medium">Exigence</h3>
+        <p class="mt-3 text-ink-600">Des comptes justes, des délais tenus, un conseil argumenté.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. GAGE DE CONFIANCE (mission LCB-FT)
+     ============================================================ -->
+<section class="bg-white border-y border-navy-100 py-20 sm:py-24">
+  <div class="max-w-content mx-auto px-5 sm:px-8">
+    <div class="reveal max-w-4xl mx-auto flex flex-col sm:flex-row gap-8 items-start">
+      <span class="shrink-0 w-16 h-16 rounded-full border border-brass flex items-center justify-center text-navy">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg>
+      </span>
+      <div>
+        <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-3">Gage de confiance</p>
+        <h2 class="font-serif text-3xl sm:text-4xl text-navy font-medium leading-tight">Un cabinet qui contrôle sa propre profession</h2>
+        <p class="mt-4 text-ink-600 text-lg">Le Conseil supérieur de l'Ordre des experts-comptables nous confie des missions de contrôle LCB-FT. Nous vérifions le respect des diligences anti-blanchiment au sein de la profession.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     10. FAQ (5 questions, réponses courtes, reprises en JSON-LD FAQPage)
+     ============================================================ -->
+<section id="faq" class="py-24 sm:py-32">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="reveal text-center">
+      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Questions fréquentes</p>
+      <h2 class="rule rule-center font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Vos questions, nos réponses</h2>
+    </div>
+
+    <div class="mt-12 divide-y divide-navy-100 border-y border-navy-100">
+      <details class="reveal group py-5">
+        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+          <h3 class="font-serif text-2xl text-navy font-medium">Pourquoi choisir un expert-comptable avec une expérience bancaire&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-3 text-ink-600 pr-10">Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment une banque lit un dossier et prépare le vôtre en conséquence.</p>
+      </details>
+      <details class="reveal group py-5">
+        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+          <h3 class="font-serif text-2xl text-navy font-medium">Comment fonctionne la comptabilité sur Pennylane&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-3 text-ink-600 pr-10">Vos comptes bancaires, vos factures et vos outils métier se synchronisent automatiquement dans Pennylane. Vous suivez votre trésorerie et vos résultats en temps réel, sur PC et sur mobile.</p>
+      </details>
+      <details class="reveal group py-5">
+        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+          <h3 class="font-serif text-2xl text-navy font-medium">Accompagnez-vous les rachats d'entreprise&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-3 text-ink-600 pr-10">Oui. Nous évaluons la cible, structurons l'opération et recherchons les financements, jusqu'à la signature.</p>
+      </details>
+      <details class="reveal group py-5">
+        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+          <h3 class="font-serif text-2xl text-navy font-medium">Quelles entreprises accompagnez-vous&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-3 text-ink-600 pr-10">Des dirigeants de TPE et PME et des entrepreneurs en croissance, à Paris et en Île-de-France. Le cabinet intervient de la création à la transmission.</p>
+      </details>
+      <details class="reveal group py-5">
+        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+          <h3 class="font-serif text-2xl text-navy font-medium">Qu'est-ce que la mission de contrôle LCB-FT&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-3 text-ink-600 pr-10">La lutte contre le blanchiment des capitaux et le financement du terrorisme impose des diligences aux experts-comptables. Nous assistons le Conseil supérieur de l'Ordre pour vérifier leur respect au sein de la profession.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     11. CONTACT (coordonnées, carte, formulaire)
+     ============================================================ -->
+<section id="contact" class="bg-white border-t border-navy-100 py-24 sm:py-32">
+  <div class="max-w-content mx-auto px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <p class="text-xs tracking-[0.25em] uppercase text-brass-600 font-semibold mb-4">Contact</p>
+      <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Parlons de votre projet</h2>
+      <p class="mt-6 text-lg text-ink-600">Premier échange sans engagement, au cabinet ou en visioconférence.</p>
+    </div>
+
+    <div class="mt-14 grid lg:grid-cols-12 gap-12">
+      <!-- Coordonnées + carte -->
+      <div class="reveal lg:col-span-5 space-y-8">
+        <ul class="space-y-5 text-ink-600">
+          <li class="flex gap-4">
+            <svg class="w-5 h-5 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pin"/></svg>
+            <address class="not-italic">58-60 avenue Bosquet<br>75007 Paris</address>
+          </li>
+          <li class="flex gap-4">
+            <svg class="w-5 h-5 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg>
+            <a href="tel:+33666641768" class="hover:text-navy">+33 6 66 64 17 68</a>
+          </li>
+          <li class="flex gap-4">
+            <svg class="w-5 h-5 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg>
+            <a href="mailto:davy.lebelle@lebelle-expertise.com" class="hover:text-navy break-all">davy.lebelle@lebelle-expertise.com</a>
+          </li>
+          <li class="flex gap-4">
+            <svg class="w-5 h-5 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-linkedin"/></svg>
+            <a href="https://fr.linkedin.com/company/lebelle-expertise-et-audit" target="_blank" rel="noopener" class="hover:text-navy">Lebelle Expertise & Audit sur LinkedIn</a>
+          </li>
+        </ul>
+
+        <div class="aspect-[4/3] w-full border border-navy-100 rounded-sm overflow-hidden grayscale-[35%]">
+          <iframe title="Carte : cabinet Lebelle Expertise & Audit, 58-60 avenue Bosquet, Paris 7e" src="https://www.google.com/maps?q=58-60+avenue+Bosquet+75007+Paris&z=16&output=embed" width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Formulaire (maquette : aucun envoi réel) -->
+      <form id="contact-form" class="reveal lg:col-span-7 bg-ivory border border-navy-100 p-8 sm:p-10 rounded-sm grid sm:grid-cols-2 gap-5" novalidate>
+        <div>
+          <label for="nom" class="block text-sm font-medium text-navy mb-1.5">Nom</label>
+          <input id="nom" name="nom" type="text" required autocomplete="name" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+        </div>
+        <div>
+          <label for="entreprise" class="block text-sm font-medium text-navy mb-1.5">Entreprise</label>
+          <input id="entreprise" name="entreprise" type="text" autocomplete="organization" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-navy mb-1.5">E-mail</label>
+          <input id="email" name="email" type="email" required autocomplete="email" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+        </div>
+        <div>
+          <label for="telephone" class="block text-sm font-medium text-navy mb-1.5">Téléphone</label>
+          <input id="telephone" name="telephone" type="tel" autocomplete="tel" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+        </div>
+        <div class="sm:col-span-2">
+          <label for="besoin" class="block text-sm font-medium text-navy mb-1.5">Votre besoin</label>
+          <select id="besoin" name="besoin" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
+            <option value="">Sélectionnez</option>
+            <option>Création d'entreprise</option>
+            <option>Expertise comptable et fiscale</option>
+            <option>Financement, prêt bancaire</option>
+            <option>Acquisition ou cession d'entreprise</option>
+            <option>Transmission</option>
+            <option>Conseil auprès d'un établissement financier</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="message" class="block text-sm font-medium text-navy mb-1.5">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full bg-white border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass"></textarea>
+        </div>
+        <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-4">
+          <button type="submit" class="inline-flex justify-center items-center gap-2 whitespace-nowrap bg-navy text-white px-7 py-3.5 rounded-sm font-medium hover:bg-navy-700 transition-colors">
+            Envoyer ma demande
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
+          </button>
+          <p class="text-xs text-ink-500">Réponse sous 48&nbsp;h ouvrées. Vos données restent confidentielles.</p>
+        </div>
+        <p id="form-ok" hidden class="sm:col-span-2 text-sm font-medium text-emerald-700 bg-emerald-50 border border-emerald-100 px-4 py-3 rounded-sm">Merci, votre demande est bien reçue. Nous vous recontactons rapidement.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     12. FOOTER
+     ============================================================ -->
+<footer class="bg-navy text-white/80">
+  <div class="max-w-content mx-auto px-5 sm:px-8 py-16 grid md:grid-cols-3 gap-12">
+    <div>
+      <!-- IMG : logo version claire (fichier provisoire, à remplacer) -->
+      <img src="assets/logo-blanc.svg" alt="Logo Lebelle Expertise & Audit" width="220" height="47" class="h-11 w-auto">
+      <p class="mt-5 text-sm leading-relaxed">Cabinet d'expertise comptable à Paris 7e. Conseil en financement, croissance et transmission pour les dirigeants de TPE et PME d'Île-de-France.</p>
+    </div>
+    <div>
+      <h2 class="font-serif text-xl text-white font-medium">Navigation</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="#cabinet" class="hover:text-brass-400">Le cabinet</a></li>
+        <li><a href="#missions" class="hover:text-brass-400">Missions</a></li>
+        <li><a href="#methode" class="hover:text-brass-400">Méthode</a></li>
+        <li><a href="#faq" class="hover:text-brass-400">Questions fréquentes</a></li>
+        <li><a href="#contact" class="hover:text-brass-400">Contact</a></li>
+        <li><a href="mentions-legales.html" class="hover:text-brass-400">Mentions légales</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="font-serif text-xl text-white font-medium">Coordonnées</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li>58-60 avenue Bosquet, 75007 Paris</li>
+        <li><a href="tel:+33666641768" class="hover:text-brass-400">+33 6 66 64 17 68</a></li>
+        <li><a href="mailto:davy.lebelle@lebelle-expertise.com" class="hover:text-brass-400">davy.lebelle@lebelle-expertise.com</a></li>
+        <li>
+          <a href="https://fr.linkedin.com/company/lebelle-expertise-et-audit" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-brass-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-linkedin"/></svg>LinkedIn
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="max-w-content mx-auto px-5 sm:px-8 py-6 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/60">
+      <p>© <span id="year">2026</span> Lebelle Expertise & Audit. Expert-comptable inscrit à l'Ordre de Paris Île-de-France, n°&nbsp;<span class="todo">[à compléter]</span>.</p>
+      <p>Maquette réalisée par Collet Marketing.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JS vanilla : menu mobile, ombre du header, apparition au scroll, formulaire
+     ============================================================ -->
+<script>
+  // Menu burger
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const icon = document.getElementById('menu-icon');
+  btn.addEventListener('click', () => {
+    const open = menu.hasAttribute('hidden');
+    if (open) menu.removeAttribute('hidden'); else menu.setAttribute('hidden', '');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    icon.setAttribute('href', open ? '#i-x' : '#i-menu');
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => btn.click()));
+
+  // Bordure du header une fois la page défilée
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('border-navy-100', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Apparition discrète au scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Formulaire : simulation d'envoi (maquette)
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    document.getElementById('form-ok').hidden = false;
+    form.reset();
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
