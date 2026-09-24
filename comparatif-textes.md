@@ -243,7 +243,7 @@ Alternatives (présentes en commentaire dans `index.html`, section Hero) :
 
 ## Éléments à fournir par le dirigeant
 
-- Numéro d'inscription à l'Ordre (footer et mentions légales).
+- Numéro d'inscription à l'Ordre, si le dirigeant souhaite l'afficher (page Mentions légales).
 - Logo officiel et photo portrait de Davy Lebelle (voir `assets/README.md`).
 - Validation de la citation signée dans la section « Votre expert-comptable ».
 - Éventuels témoignages ou logos clients (aucun n'a été inventé, aucune section vide n'a été créée).

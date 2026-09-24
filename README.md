@@ -20,5 +20,6 @@ les polices Google Fonts et la carte Google Maps.
 
 ## Éléments surlignés en jaune
 
-Les mentions `[à compléter]` sont des données à fournir par le dirigeant
-(numéro d'inscription à l'Ordre). Aucune valeur n'a été inventée.
+Les mentions `[à compléter]` de la page Mentions légales (forme juridique, capital,
+SIREN, numéro d'inscription à l'Ordre, hébergeur) sont à renseigner par le dirigeant.
+Aucune valeur n'a été inventée.
