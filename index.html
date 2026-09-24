@@ -302,8 +302,11 @@
      3. BANDEAU CHIFFRES CLÉS
      Les valeurs [XX] sont à fournir par le dirigeant (aucune valeur inventée).
      ============================================================ -->
-<section class="bg-navy text-white" aria-label="Chiffres clés">
-  <div class="max-w-content mx-auto px-5 sm:px-8 py-14 sm:py-16 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+<section class="relative bg-navy text-white overflow-hidden" aria-label="Chiffres clés">
+  <!-- IMG : avenue parisienne (fond) -->
+  <img src="assets/paris-7e-avenue.jpg" alt="" width="1600" height="873" class="absolute inset-0 w-full h-full object-cover opacity-60" loading="lazy" aria-hidden="true">
+  <div class="absolute inset-0 bg-navy/80" aria-hidden="true"></div>
+  <div class="relative max-w-content mx-auto px-5 sm:px-8 py-16 sm:py-20 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
     <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
       <p class="font-serif text-5xl sm:text-6xl text-brass-400 leading-none">20<span class="text-3xl align-top">+</span></p>
       <p class="mt-3 text-sm text-white/75">années d'expérience</p>
@@ -336,8 +339,11 @@
 
     <div class="mt-14 grid md:grid-cols-2 gap-6">
       <!-- Carte mise en avant : Opérations de croissance -->
-      <article class="reveal bg-navy text-white p-8 sm:p-10 rounded-sm relative overflow-hidden">
-        <span class="absolute top-0 left-0 w-full h-1 bg-brass" aria-hidden="true"></span>
+      <article class="reveal bg-navy text-white rounded-sm relative overflow-hidden flex flex-col">
+        <span class="absolute top-0 left-0 w-full h-1 bg-brass z-10" aria-hidden="true"></span>
+        <!-- IMG : opérations de croissance -->
+        <img src="assets/mission-croissance.jpg" alt="Rapports financiers, prévisionnel et calculatrice sur un sous-main bleu marine" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
+        <div class="p-8 sm:p-10">
         <svg class="w-9 h-9 text-brass-400" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-trending"/></svg>
         <h3 class="mt-6 font-serif text-3xl font-medium">Opérations de croissance</h3>
         <p class="mt-3 text-white/80">Nous structurons et finançons vos projets, de la levée de fonds à la cession.</p>
@@ -346,11 +352,15 @@
           <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Acquisition et cession d'entreprise</li>
           <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Structuration financière et prévisionnels</li>
         </ul>
+        </div>
       </article>
 
       <!-- Carte mise en avant : Conseil auprès des banques -->
-      <article class="reveal bg-navy text-white p-8 sm:p-10 rounded-sm relative overflow-hidden">
-        <span class="absolute top-0 left-0 w-full h-1 bg-brass" aria-hidden="true"></span>
+      <article class="reveal bg-navy text-white rounded-sm relative overflow-hidden flex flex-col">
+        <span class="absolute top-0 left-0 w-full h-1 bg-brass z-10" aria-hidden="true"></span>
+        <!-- IMG : conseil auprès des banques -->
+        <img src="assets/mission-banques.jpg" alt="Hall d'une banque privée parisienne, colonnes de marbre et lustres" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
+        <div class="p-8 sm:p-10">
         <svg class="w-9 h-9 text-brass-400" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-landmark"/></svg>
         <h3 class="mt-6 font-serif text-3xl font-medium">Conseil auprès des banques</h3>
         <p class="mt-3 text-white/80">Dix ans en banque privée et sur les marchés financiers, au service des établissements financiers.</p>
@@ -359,10 +369,14 @@
           <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Conseil financier et réglementaire</li>
           <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Interlocuteur des directions financières</li>
         </ul>
+        </div>
       </article>
 
       <!-- Carte : Expertise comptable -->
-      <article class="reveal bg-white border border-navy-100 p-8 sm:p-10 rounded-sm">
+      <article class="reveal bg-white border border-navy-100 rounded-sm overflow-hidden flex flex-col">
+        <!-- IMG : expertise comptable -->
+        <img src="assets/mission-expertise.jpg" alt="Dirigeant consultant ses tableaux de bord financiers sur mobile et ordinateur à une terrasse parisienne" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
+        <div class="p-8 sm:p-10">
         <svg class="w-9 h-9 text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-calculator"/></svg>
         <h3 class="mt-6 font-serif text-3xl font-medium text-navy">Expertise comptable</h3>
         <p class="mt-3 text-ink-600">Comptabilité, fiscalité et social, produits sur Pennylane et suivis en temps réel.</p>
@@ -371,10 +385,14 @@
           <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Déclarations fiscales et sociales, paie</li>
           <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Bilan annuel et liasse fiscale</li>
         </ul>
+        </div>
       </article>
 
       <!-- Carte : Contrôle LCB-FT -->
-      <article class="reveal bg-white border border-navy-100 p-8 sm:p-10 rounded-sm">
+      <article class="reveal bg-white border border-navy-100 rounded-sm overflow-hidden flex flex-col">
+        <!-- IMG : contrôle LCB-FT -->
+        <img src="assets/mission-lcbft.jpg" alt="Loupe examinant un registre de conformité réglementaire sous une lampe de bureau" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
+        <div class="p-8 sm:p-10">
         <svg class="w-9 h-9 text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg>
         <h3 class="mt-6 font-serif text-3xl font-medium text-navy">Contrôle LCB-FT</h3>
         <p class="mt-3 text-ink-600">Nous assistons le Conseil supérieur de l'Ordre sur le respect des diligences de la profession.</p>
@@ -383,6 +401,7 @@
           <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Évaluation des procédures internes</li>
           <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Missions pour le compte de l'Ordre</li>
         </ul>
+        </div>
       </article>
     </div>
   </div>

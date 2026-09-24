@@ -26,3 +26,5 @@ dans la configuration Tailwind en tête de `index.html`.
 | `rendez-vous-dirigeant.jpg` | Section « Nos valeurs » |
 | `poignee-de-main-cabinet.jpg` | Bandeau d'appel à rendez-vous avant le contact |
 | `etape-creer.jpg`, `etape-developper.jpg`, `etape-financer.jpg`, `etape-acquerir.jpg`, `etape-transmettre.jpg` | Frise « Accompagnement de A à Z » (recadrées en 4:3, 800 px) |
+| `mission-croissance.jpg`, `mission-banques.jpg`, `mission-expertise.jpg`, `mission-lcbft.jpg` | En-tête des quatre cartes « Nos missions » (16:9, 1200 px) |
+| `paris-7e-avenue.jpg` | Fond du bandeau chiffres clés, sous un voile bleu marine |
