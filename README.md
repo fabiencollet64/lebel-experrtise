@@ -20,6 +20,5 @@ les polices Google Fonts et la carte Google Maps.
 
 ## Éléments surlignés en jaune
 
-Les mentions `[XX]` et `[à compléter]` sont des données à fournir par le dirigeant
-(nombre de clients, nombre d'opérations de croissance, numéro d'inscription à l'Ordre).
-Aucune valeur n'a été inventée.
+Les mentions `[à compléter]` sont des données à fournir par le dirigeant
+(numéro d'inscription à l'Ordre). Aucune valeur n'a été inventée.

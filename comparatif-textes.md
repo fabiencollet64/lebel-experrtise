@@ -78,10 +78,10 @@ Total de la maquette, tous textes visibles compris (menus, formulaire, footer) :
 
 - 20+ années d'expérience
 - 10+ années en banque
-- [XX] clients accompagnés
-- [XX] opérations de croissance
+- 109 clients accompagnés
+- 94 opérations de croissance
 
-**Pourquoi :** Deux chiffres sont factuels et affichés en dur (aucun script de compteur). Les deux autres sont des emplacements surlignés à compléter par le dirigeant.
+**Pourquoi :** Les quatre chiffres sont affichés en dur (aucun script de compteur). Le nombre de clients et le nombre d'opérations de croissance ont été communiqués par le dirigeant.
 
 ### Missions
 
@@ -243,7 +243,6 @@ Alternatives (présentes en commentaire dans `index.html`, section Hero) :
 
 ## Éléments à fournir par le dirigeant
 
-- Nombre de clients accompagnés et nombre d'opérations de croissance (bandeau chiffres clés).
 - Numéro d'inscription à l'Ordre (footer et mentions légales).
 - Logo officiel et photo portrait de Davy Lebelle (voir `assets/README.md`).
 - Validation de la citation signée dans la section « Votre expert-comptable ».
