@@ -1,29 +1,22 @@
-# Visuels de la maquette
+# Visuels de la maquette R2
 
-Le site actuel (www.lebelle-expertise.com) n'était pas accessible depuis l'environnement
-de travail : le logo d'origine n'a pas pu être récupéré. Les deux logos ci-dessous sont
-des emplacements provisoires (SVG) à remplacer par les fichiers réels.
-
-| Fichier provisoire        | À remplacer par                                  | Où il est utilisé                       |
-|---------------------------|--------------------------------------------------|-----------------------------------------|
-| `logo.svg`, `logo-blanc.svg` | Logo officiel (fond clair, puis version claire pour le footer) | Le header et le footer utilisent pour l'instant un logo provisoire en SVG inline qui suit le thème choisi ; remplacer le bloc `<svg>` repéré par le commentaire « Logo provisoire » par une balise `<img>` vers ces fichiers |
-
-Pour remplacer un visuel : déposer le fichier ici, puis mettre à jour l'attribut `src`
-correspondant dans le HTML (une ligne par image, repérée par le commentaire `<!-- IMG -->`).
-
-Couleurs : la palette a été définie d'après le brief (bleu marine, blanc cassé, laiton).
-Une fois le logo récupéré, ajuster si besoin les deux variables `navy` et `brass`
-dans la configuration Tailwind en tête de `index.html`.
-
-## Photos intégrées (fournies par Collet Marketing, optimisées à 1600 px, JPEG qualité 82)
-
-| Fichier | Emplacement dans `index.html` |
+| Fichier | Rôle |
 |---|---|
-| `davy-lebelle.jpg` | Section « Votre expert-comptable » |
-| `bureau-haussmannien.jpg` | Hero (colonne droite) et image Open Graph |
-| `balcon-paris-7e.jpg` | Bandeau d'ambiance après les missions |
-| `rendez-vous-dirigeant.jpg` | Section « Nos valeurs » |
-| `poignee-de-main-cabinet.jpg` | Bandeau d'appel à rendez-vous avant le contact |
-| `etape-creer.jpg`, `etape-developper.jpg`, `etape-financer.jpg`, `etape-acquerir.jpg`, `etape-transmettre.jpg` | Frise « Accompagnement de A à Z » (recadrées en 4:3, 800 px) |
-| `mission-croissance.jpg`, `mission-banques.jpg`, `mission-expertise.jpg`, `mission-lcbft.jpg` | En-tête des quatre cartes « Nos missions » (16:9, 1200 px) |
-| `paris-7e-avenue.jpg` | Fond du bandeau chiffres clés, sous un voile bleu marine |
+| `logo-lebelle-couleur.png` | Logo officiel, emblème rond (header). Strictement tel quel. |
+| `logo-lebelle-blanc.png` | Logo officiel, version blanche horizontale (footer, fonds sombres). |
+| `davy-lebelle.jpg` | Photo officielle de Davy Lebelle (section Le cabinet). |
+| `spirale-or.svg` | Spirale logarithmique dorée (r = a·φ^(2θ/π)), trait de 1 px, utilisée en filigrane dans le hero et la section Le cabinet. |
+| `tableaux/` | Emplacements des quatre peintures du domaine public (voir `tableaux/README.md`). |
+
+Les autres JPEG du dossier proviennent de la maquette R1 archivée dans `archive-r1/`.
+
+## Couleurs extraites du logo (analyse des pixels)
+
+| Jeton | Valeur | Origine |
+|---|---|---|
+| Bleu finance | `#3473A9` | Moyenne du dégradé du L (`#3878B0` en haut, `#3470A8` au milieu) |
+| Bleu nuit | `#304060` | Bas du L |
+| Encre | `#1C2428` | Texte circulaire « Lebelle Expertise & Audit » |
+| Bleu poudre | `#EAF1F6` | Bleu finance éclairci à 90 % |
+| Écru | `#F4F1EA` | Fond de page |
+| Vieil or | `#9A7B3C` | Spirale et filets d'exergue uniquement |

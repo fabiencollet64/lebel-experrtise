@@ -5,197 +5,155 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ============================================================
-     MAQUETTE DE REFONTE : Lebelle Expertise & Audit (Paris 7e)
-     Réalisée par Collet Marketing. Fichier autonome : HTML + Tailwind CDN + JS vanilla.
-     Les éléments surlignés en jaune [XX ...] sont à compléter par le dirigeant.
+     MAQUETTE R2 : Lebelle Expertise & Audit (Paris 7e)
+     Collet Marketing. Fichier autonome : HTML + Tailwind CDN + JS vanilla.
+     Axes : acquisition d'entreprise et financement bancaire.
+     Structure sur le nombre d'or (grilles 61,8 / 38,2, échelle 1,618, espacements Fibonacci).
+     Les mentions surlignées en jaune [à compléter] sont à fournir par le dirigeant.
      ============================================================ -->
 
-<!-- SEO : title et meta description -->
-<title>Expert-comptable Paris 7e | Financement, croissance, Pennylane</title>
-<meta name="description" content="Lebelle Expertise & Audit, expert-comptable à Paris 7e. Comptabilité digitalisée sur Pennylane, conseil en financement, acquisition et transmission pour les dirigeants de TPE et PME d'Île-de-France.">
+<!-- SEO -->
+<title>Expert-comptable Paris 7e | Acquisition d'entreprise et financement bancaire</title>
+<meta name="description" content="Lebelle Expertise & Audit, expert-comptable à Paris 7e : accompagnement à l'acquisition d'entreprise et au financement bancaire, expertise comptable sur Pennylane, contrôle LCB-FT. Davy Lebelle, plus de dix ans en banque.">
 <link rel="canonical" href="https://www.lebelle-expertise.com/">
 <meta property="og:title" content="Lebelle Expertise & Audit, expert-comptable à Paris 7e">
-<meta property="og:description" content="L'expert-comptable qui parle aussi le langage des banques. Comptabilité automatisée sur Pennylane, conseil en financement et croissance.">
+<meta property="og:description" content="Acquérir une entreprise, obtenir son financement. Un expert-comptable passé par la banque, à Paris 7e.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="https://www.lebelle-expertise.com/assets/bureau-haussmannien.jpg">
-<meta name="theme-color" content="#16181D">
+<meta name="theme-color" content="#304060">
 
-<!-- Typographies des trois thèmes (Google Fonts + Fontshare) -->
+<!-- GOOGLE SEARCH CONSOLE : coller la balise de vérification fournie par GSC (à compléter) -->
+<!-- <meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"> -->
+
+<!-- Typographies : Instrument Serif (titres, italique éditorial) et Inter (texte) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,87.5,500;0,87.5,600;1,87.5,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=zodiak@500&f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<!-- Tailwind CSS via CDN + configuration de la palette -->
+<!-- Tailwind CSS via CDN + jetons de design (couleurs du logo, nombre d'or, Fibonacci) -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-  /* Les couleurs et polices pointent vers des variables CSS définies sur :root (voir <style>),
-     ce qui permet de basculer entre les thèmes A / B / C sans recharger la page. */
-  const v = (name) => `rgb(var(${name}) / <alpha-value>)`;
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          navy:    { DEFAULT: v('--c-primary'), 800: v('--c-primary-2'), 700: v('--c-primary-2'), 100: v('--c-border') },
-          ivory:   { DEFAULT: v('--c-bg'), 50: v('--c-bg'), 200: v('--c-border') },
-          surface: v('--c-surface'),
-          brass:   { DEFAULT: v('--c-detail'), 400: v('--c-accent-dark'), 600: v('--c-accent'), 100: v('--c-tint') },
-          cta:     { DEFAULT: v('--c-cta'), 600: v('--c-cta-2') },
-          ink:     { DEFAULT: v('--c-ink'), 600: v('--c-ink-2'), 500: v('--c-ink-3') }
+          /* Bleus extraits du logo officiel : dégradé du L (#3878B0 vers #304060), texte circulaire #1C2428 */
+          bleu:   { DEFAULT: '#3473A9', 400: '#3878B0', 700: '#2A5D8A' },
+          nuit:   '#304060',
+          encre:  '#1C2428',
+          poudre: '#EAF1F6',   /* bleu finance éclairci à 90 % */
+          ecru:   '#F4F1EA',   /* fond de page, chaleur des vernis */
+          or:     '#9A7B3C',   /* vieil or, spirale et légendes seulement */
+          gris:   { DEFAULT: '#5C6470', 300: '#D9DDE3' }
         },
         fontFamily: {
-          serif: ['var(--font-heading)', 'Georgia', 'serif'],
-          sans:  ['var(--font-body)', 'system-ui', 'sans-serif'],
-          data:  ['var(--font-data)', 'monospace']
+          display: ['"Instrument Serif"', 'Georgia', 'serif'],
+          sans:    ['Inter', 'system-ui', 'sans-serif']
         },
-        maxWidth: { content: '72rem' }
+        /* Espacements verticaux : suite de Fibonacci */
+        spacing: { 'f1': '8px', 'f2': '13px', 'f3': '21px', 'f4': '34px', 'f5': '55px', 'f6': '89px', 'f7': '144px' },
+        /* Échelle typographique de ratio 1,618 (16, 26, 42, 68) et repli mobile (21, 34, 55) */
+        fontSize: {
+          'phi-0': ['16px', { lineHeight: '1.6' }],
+          'phi-1': ['26px', { lineHeight: '1.25' }],
+          'phi-2': ['42px', { lineHeight: '1.1' }],
+          'phi-3': ['68px', { lineHeight: '1.02' }],
+          'fib-1': ['21px', { lineHeight: '1.3' }],
+          'fib-2': ['34px', { lineHeight: '1.12' }],
+          'fib-3': ['55px', { lineHeight: '1.04' }],
+          'cap':   ['10px', { lineHeight: '1.4', letterSpacing: '0.08em' }]
+        },
+        maxWidth: { content: '76rem' }
       }
     }
   }
 </script>
 
 <style>
-  /* ============================================================
-     THÈMES : variables CSS sur :root (valeurs RVB pour l'opacité Tailwind)
-     Sélecteur A / B / C en bas à droite de l'écran, mémorisé en localStorage.
-     ============================================================ */
-
-  /* Thème A, « Rigueur financière » (par défaut) */
-  :root, :root[data-theme="a"] {
-    --font-heading: 'Archivo';  --h-weight: 600; --h-stretch: 87.5%; --h-tracking: -0.02em; --h-opsz: normal;
-    --font-body: 'IBM Plex Sans';
-    --font-data: 'IBM Plex Mono'; --data-weight: 500;
-    --c-ink: 22 24 29;        /* #16181D encre */
-    --c-ink-2: 74 78 87;      /* texte secondaire */
-    --c-ink-3: 111 115 123;   /* texte tertiaire, surtitres */
-    --c-bg: 255 255 255;      /* #FFFFFF fond */
-    --c-surface: 244 244 242; /* #F4F4F2 fond secondaire */
-    --c-border: 226 226 223;
-    --c-primary: 22 24 29;    /* sections sombres */
-    --c-primary-2: 42 45 53;
-    --c-accent: 15 92 110;    /* #0F5C6E */
-    --c-accent-dark: 127 195 210; /* accent sur fond sombre */
-    --c-detail: 15 92 110;    /* icônes, filets, coches */
-    --c-tint: 230 240 242;
-    --c-cta: 15 92 110;  --c-cta-2: 11 70 85;
-  }
-  /* Thème B, « Presse économique » */
-  :root[data-theme="b"] {
-    --font-heading: 'Newsreader'; --h-weight: 500; --h-stretch: 100%; --h-tracking: 0; --h-opsz: "opsz" 72;
-    --font-body: 'Public Sans';
-    --font-data: 'Public Sans'; --data-weight: 500;
-    --c-ink: 31 42 39;
-    --c-ink-2: 75 89 85;
-    --c-ink-3: 110 122 118;
-    --c-bg: 243 241 236;      /* #F3F1EC */
-    --c-surface: 251 250 247;
-    --c-border: 221 217 208;
-    --c-primary: 30 59 51;    /* #1E3B33 vert anglais */
-    --c-primary-2: 42 78 68;
-    --c-accent: 181 87 58;    /* #B5573A */
-    --c-accent-dark: 228 167 143;
-    --c-detail: 181 87 58;
-    --c-tint: 244 228 220;
-    --c-cta: 181 87 58;  --c-cta-2: 152 71 48;
-  }
-  /* Thème C, « Maison contemporaine » : accent utilisé avec parcimonie (CTA en encre, icônes en gris) */
-  :root[data-theme="c"] {
-    --font-heading: 'Zodiak'; --h-weight: 500; --h-stretch: 100%; --h-tracking: -0.01em; --h-opsz: normal;
-    --font-body: 'Switzer';
-    --font-data: 'Switzer'; --data-weight: 500;
-    --c-ink: 26 29 36;        /* #1A1D24 */
-    --c-ink-2: 77 80 88;
-    --c-ink-3: 114 117 124;
-    --c-bg: 246 245 242;      /* #F6F5F2 */
-    --c-surface: 255 255 255;
-    --c-border: 227 225 220;
-    --c-primary: 26 29 36;
-    --c-primary-2: 44 48 56;
-    --c-accent: 138 106 59;   /* #8A6A3B */
-    --c-accent-dark: 197 172 130;
-    --c-detail: 77 80 88;
-    --c-tint: 236 233 227;
-    --c-cta: 26 29 36;  --c-cta-2: 13 15 19;
-  }
-
-  /* Titres : famille, graisse, chasse et interlettrage pilotés par le thème */
-  .font-serif { font-family: var(--font-heading), Georgia, serif; font-weight: var(--h-weight) !important; font-stretch: var(--h-stretch); letter-spacing: var(--h-tracking); font-variation-settings: var(--h-opsz); font-optical-sizing: auto; }
-  /* Chiffres clés et données : chiffres tabulaires */
-  .font-data { font-family: var(--font-data), monospace; font-weight: var(--data-weight) !important; font-variant-numeric: tabular-nums; letter-spacing: 0; }
-  /* Lien secondaire souligné avec flèche */
-  .link-arrow { display: inline-flex; align-items: center; gap: .5rem; font-weight: 500; color: rgb(var(--c-ink)); text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; text-decoration-color: rgb(var(--c-ink) / .4); transition: color .2s, text-decoration-color .2s; }
-  .link-arrow:hover { color: rgb(var(--c-accent)); text-decoration-color: currentColor; }
-  .link-arrow svg { transition: transform .2s; } .link-arrow:hover svg { transform: translateX(3px); }
-
-  /* Sélecteur de thème */
-  #theme-switch { position: fixed; right: 1rem; bottom: 1rem; z-index: 60; display: flex; gap: 2px; padding: 2px; background: rgb(var(--c-surface)); border: 1px solid rgb(var(--c-border)); border-radius: 2px; }
-  #theme-switch button { width: 2rem; height: 2rem; font: 500 .8rem/1 var(--font-body), system-ui, sans-serif; color: rgb(var(--c-ink-2)); background: transparent; border: 0; border-radius: 2px; cursor: pointer; }
-  #theme-switch button[aria-pressed="true"] { background: rgb(var(--c-primary)); color: #fff; }
-
-  /* Styles complémentaires (hors utilitaires Tailwind) */
-  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  html { scroll-behavior: smooth; scroll-padding-top: 89px; }
   body { -webkit-font-smoothing: antialiased; }
 
-  /* Apparition discrète au scroll */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.is-visible { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  /* Titres en Instrument Serif italique, comme une signature éditoriale */
+  .t-display { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.005em; }
+  .t-roman   { font-family: "Instrument Serif", Georgia, serif; font-style: normal; font-weight: 400; }
+
+  /* Numérotation de section, façon catalogue */
+  .num { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 21px; color: #5C6470; }
+
+  /* Exergue mythologique : une par section au maximum */
+  .exergue { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.35; padding-left: 21px; border-left: 1px solid #9A7B3C; color: #5C6470; }
+  .exergue small { display: block; font-family: Inter, system-ui, sans-serif; font-style: normal; font-size: 12px; letter-spacing: .04em; margin-top: 8px; color: #9A7B3C; }
+
+  /* Tableaux : traitement commun (légère désaturation + voile bleu finance) et emplacement si l'image manque */
+  .painting-img { filter: grayscale(.25) sepia(.06) contrast(1.02); }
+  .painting-missing { display: none; }
+  .painting.is-missing .painting-img, .painting.is-missing .painting-tint { display: none; }
+  .painting.is-missing .painting-missing { display: flex; }
+  .museum-caption { font-family: Inter, system-ui, sans-serif; font-size: 12px; color: #5C6470; margin-top: 13px; }
+  .museum-caption i { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 15px; color: #1C2428; }
+
+  /* Chiffres clés : chiffres tabulaires pour une animation stable */
+  .num-tab { font-variant-numeric: tabular-nums; }
 
   /* Emplacements à compléter par le dirigeant */
+  .todo { background: #FFF07A; color: #1C2428; padding: 0 .3em; border-radius: 2px; font-weight: 500; }
 
-  /* Filet décoratif laiton sous les titres de section */
-  .rule::after { content: ""; display: block; width: 3rem; height: 1px; background: rgb(var(--c-detail)); margin-top: 1rem; }
-  .rule-center::after { margin-left: auto; margin-right: auto; }
+  /* Lien secondaire : souligné avec flèche */
+  .link-arrow { display: inline-flex; align-items: center; gap: .5rem; font-weight: 500; text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; text-decoration-color: rgba(28,36,40,.4); }
+  .link-arrow:hover { color: #3473A9; text-decoration-color: currentColor; }
 
-
-  /* Menu mobile */
-  #mobile-menu { transition: opacity .25s ease, transform .25s ease; }
+  /* Menu mobile et FAQ */
   #mobile-menu[hidden] { display: none; }
-
-  /* FAQ : rotation du chevron */
-  details[open] .chev { transform: rotate(180deg); }
   details summary::-webkit-details-marker { display: none; }
+  details[open] .chev { transform: rotate(180deg); }
 
-  /* Tableau de bord stylisé (section Méthode) */
-  .bar { transform-origin: bottom; animation: grow 1.2s ease-out both; }
-  @keyframes grow { from { transform: scaleY(0); } }
-  @media (prefers-reduced-motion: reduce) { .bar { animation: none; } }
+  /* Bandeau cookies et bouton chatbot (démonstration) */
+  #cookie-banner[hidden], #chat-tip[hidden] { display: none; }
 </style>
 
-<!-- Données structurées : cabinet (AccountingService + LocalBusiness) -->
+<!-- ============================================================
+     GA4 : ne se charge qu'après acceptation dans le bandeau cookies (type="text/plain", voir JS)
+     Remplacer G-XXXXXXX par l'ID de mesure GA4 du cabinet (à compléter)
+     ============================================================ -->
+<script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script type="text/plain" data-consent="analytics">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX', { anonymize_ip: true });
+</script>
+
+<!-- Données structurées : cabinet -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": ["AccountingService", "LocalBusiness"],
   "@id": "https://www.lebelle-expertise.com/#cabinet",
   "name": "Lebelle Expertise & Audit",
-  "description": "Cabinet d'expertise comptable à Paris 7e. Comptabilité digitalisée sur Pennylane et conseil en financement, acquisition et transmission pour les dirigeants de TPE et PME d'Île-de-France.",
+  "description": "Cabinet d'expertise comptable à Paris 7e spécialisé dans l'accompagnement à l'acquisition d'entreprise et au financement bancaire des entreprises. Expertise comptable digitalisée sur Pennylane, conseil, contrôle LCB-FT.",
   "url": "https://www.lebelle-expertise.com/",
   "telephone": "+33666641768",
   "email": "davy.lebelle@lebelle-expertise.com",
   "foundingDate": "2022",
   "founder": { "@id": "https://www.lebelle-expertise.com/#davy-lebelle" },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "58-60 avenue Bosquet",
-    "postalCode": "75007",
-    "addressLocality": "Paris",
-    "addressRegion": "Île-de-France",
-    "addressCountry": "FR"
-  },
+  "image": "https://www.lebelle-expertise.com/assets/logo-lebelle-couleur.png",
+  "address": { "@type": "PostalAddress", "streetAddress": "58-60 avenue Bosquet", "postalCode": "75007", "addressLocality": "Paris", "addressRegion": "Île-de-France", "addressCountry": "FR" },
   "geo": { "@type": "GeoCoordinates", "latitude": 48.8568, "longitude": 2.3040 },
-  "areaServed": [
-    { "@type": "City", "name": "Paris" },
-    { "@type": "AdministrativeArea", "name": "Île-de-France" }
-  ],
-  "knowsAbout": ["Expertise comptable", "Financement d'entreprise", "Acquisition d'entreprise", "Transmission d'entreprise", "Pennylane", "Contrôle LCB-FT"],
-  "sameAs": ["https://fr.linkedin.com/company/lebelle-expertise-et-audit"],
-  "priceRange": "$$"
+  "areaServed": [ { "@type": "City", "name": "Paris" }, { "@type": "AdministrativeArea", "name": "Île-de-France" } ],
+  "knowsAbout": ["Acquisition d'entreprise", "Financement bancaire des entreprises", "Expertise comptable", "Pennylane", "Contrôle LCB-FT", "Conseil aux établissements financiers"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog", "name": "Accompagnements",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accompagnement à l'acquisition d'entreprise" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accompagnement au financement bancaire" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Expertise comptable digitalisée" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mission de contrôle LCB-FT" } }
+    ]
+  },
+  "sameAs": ["https://fr.linkedin.com/company/lebelle-expertise-et-audit"]
 }
 </script>
-
-<!-- Données structurées : Davy Lebelle (Person) -->
+<!-- Données structurées : Davy Lebelle -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -203,123 +161,91 @@
   "@id": "https://www.lebelle-expertise.com/#davy-lebelle",
   "name": "Davy Lebelle",
   "jobTitle": "Expert-comptable, fondateur",
+  "image": "https://www.lebelle-expertise.com/assets/davy-lebelle.jpg",
   "worksFor": { "@id": "https://www.lebelle-expertise.com/#cabinet" },
   "memberOf": { "@type": "Organization", "name": "Ordre des experts-comptables de Paris Île-de-France" },
+  "knowsAbout": ["Acquisition d'entreprise", "Financement bancaire", "Expertise comptable", "Audit", "Banque privée", "Marchés financiers", "LCB-FT"],
   "email": "davy.lebelle@lebelle-expertise.com",
-  "telephone": "+33666641768",
-  "knowsAbout": ["Expertise comptable", "Audit", "Finance d'entreprise", "Banque privée", "Marchés financiers", "LCB-FT"],
-  "sameAs": ["https://fr.linkedin.com/company/lebelle-expertise-et-audit"]
+  "telephone": "+33666641768"
 }
 </script>
-
-<!-- Données structurées : FAQ (FAQPage) -->
+<!-- Données structurées : FAQ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Pourquoi choisir un expert-comptable avec une expérience bancaire ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment une banque lit un dossier et prépare le vôtre en conséquence." }
-    },
-    {
-      "@type": "Question",
-      "name": "Comment fonctionne la comptabilité sur Pennylane ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Vos comptes bancaires, vos factures et vos outils métier se synchronisent automatiquement dans Pennylane. Vous suivez votre trésorerie et vos résultats en temps réel, sur PC et sur mobile." }
-    },
-    {
-      "@type": "Question",
-      "name": "Accompagnez-vous les rachats d'entreprise ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Nous évaluons la cible, structurons l'opération et recherchons les financements, jusqu'à la signature." }
-    },
-    {
-      "@type": "Question",
-      "name": "Quelles entreprises accompagnez-vous ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Des dirigeants de TPE et PME et des entrepreneurs en croissance, à Paris et en Île-de-France. Le cabinet intervient de la création à la transmission." }
-    },
-    {
-      "@type": "Question",
-      "name": "Qu'est-ce que la mission de contrôle LCB-FT ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "La lutte contre le blanchiment des capitaux et le financement du terrorisme impose des diligences aux experts-comptables. Nous assistons le Conseil supérieur de l'Ordre pour vérifier leur respect au sein de la profession." }
-    }
+    { "@type": "Question", "name": "Comment préparer un dossier de financement bancaire solide ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Un dossier solide présente un besoin chiffré, un prévisionnel réaliste et une capacité de remboursement démontrée. Nous le construisons avec vous et le présentons aux banques." } },
+    { "@type": "Question", "name": "Qui peut m'accompagner dans le rachat d'une entreprise à Paris ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris 7e, accompagne les repreneurs de l'évaluation de la cible jusqu'à la signature. Le financement de l'opération fait partie de la mission." } },
+    { "@type": "Question", "name": "Pourquoi choisir un expert-comptable avec une expérience bancaire ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment un comité de crédit lit un dossier et le prépare en conséquence." } },
+    { "@type": "Question", "name": "Que vérifie une banque avant d'accorder un prêt professionnel ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "La banque examine la capacité de remboursement, l'apport, la cohérence du prévisionnel et les garanties proposées. Un dossier complet et argumenté accélère la décision." } },
+    { "@type": "Question", "name": "Comment fonctionne la comptabilité sur Pennylane ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Vos comptes bancaires, vos factures et vos outils métier se synchronisent automatiquement dans Pennylane. Vous suivez votre trésorerie en temps réel, sur ordinateur et sur mobile." } }
   ]
 }
 </script>
 </head>
 
-<body class="bg-ivory text-ink font-sans">
+<body class="bg-ecru text-encre font-sans text-phi-0">
 
-<!-- Sprite d'icônes (style Lucide, trait fin) -->
+<!-- Pictogrammes en trait fin (symboles revisités) et icônes d'interface -->
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
-  <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <!-- Caducée d'Hermès, épuré : bâton, deux serpents, ailes suggérées -->
+  <symbol id="p-caducee" viewBox="0 0 24 24"><path d="M12 3v19"/><circle cx="12" cy="3.5" r="1.2"/><path d="M8.5 6.5 6 5M15.5 6.5 18 5"/><path d="M8 9c0 1.6 8 1.6 8 3.4S8 14.2 8 16s8 1.8 8 3.4"/><path d="M16 9c0 1.6-8 1.6-8 3.4s8 1.8 8 3.6-8 1.8-8 3.4"/></symbol>
+  <!-- Corne d'abondance de Ploutos -->
+  <symbol id="p-corne" viewBox="0 0 24 24"><path d="M20 4c-8-1-15 5-15 12 0 2.2 1.4 3.5 3.3 3.5 4.7 0 8.7-4 9.7-9.5"/><path d="M8.3 19.5c-.3-3 .7-5.3 2.7-6.5"/><path d="M15 6.5c1.5-.5 3-1 4.5-2.5"/></symbol>
+  <!-- Balance de Maât -->
+  <symbol id="p-balance" viewBox="0 0 24 24"><path d="M12 3v18M8 21h8M4 7h16"/><path d="M6 7l-3.2 7.5a3.2 3.2 0 0 0 6.4 0L6 7zM18 7l-3.2 7.5a3.2 3.2 0 0 0 6.4 0L18 7z"/></symbol>
+  <!-- Plume de Thot -->
+  <symbol id="p-plume" viewBox="0 0 24 24"><path d="M4 20 17.5 6.5"/><path d="M19.5 4.5c-.6 6.6-4.9 11.1-11.5 12 .9-6.6 5.4-10.9 11.5-12z"/><path d="M12 12.5 15.5 9"/></symbol>
+  <!-- Œil d'Horus, très épuré -->
+  <symbol id="p-oeil" viewBox="0 0 24 24"><path d="M2 11.5c3-3.8 6.3-5.7 10-5.7s7 1.9 10 5.7c-3 3.8-6.3 5.7-10 5.7S5 15.3 2 11.5z"/><circle cx="12" cy="11.5" r="2.6"/><path d="M12 17.2V21M8.5 16.6c-1 2-2.6 3.1-4.8 3.3"/></symbol>
+  <!-- Interface -->
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
-  <symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="i-trending" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
-  <symbol id="i-landmark" viewBox="0 0 24 24"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></symbol>
-  <symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
-  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
-  <symbol id="i-coins" viewBox="0 0 24 24"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></symbol>
-  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
-  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></symbol>
-  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
-  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
-  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
-  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
-  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
-  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
   <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
 </svg>
 
-<!-- Lien d'évitement (accessibilité) -->
-<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] bg-navy text-white px-3 py-2 rounded">Aller au contenu</a>
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] bg-nuit text-white px-3 py-2">Aller au contenu</a>
 
 <!-- ============================================================
-     1. HEADER STICKY
+     1. HEADER
      ============================================================ -->
-<header id="header" class="sticky top-0 z-50 bg-ivory/90 backdrop-blur border-b border-transparent transition-colors duration-300">
-  <div class="max-w-content mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+<header id="header" class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-transparent transition-colors">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 h-[89px] flex items-center justify-between">
     <a href="#top" class="flex items-center" aria-label="Lebelle Expertise & Audit, retour à l'accueil">
-      <!-- Logo provisoire (SVG inline, couleurs du thème) : à remplacer par le logo officiel -->
-      <svg width="220" height="47" viewBox="0 0 260 56" role="img" aria-label="Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris" class="h-11 w-auto">
-        <rect x="1" y="1" width="54" height="54" rx="2" fill="rgb(var(--c-primary))"/>
-        <text x="28" y="37" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="30" font-weight="600" fill="#fff">L</text>
-        <text x="68" y="26" font-family="var(--font-heading), Georgia, serif" font-size="22" font-weight="600" fill="rgb(var(--c-ink))">Lebelle</text>
-        <text x="68" y="45" font-family="var(--font-body), system-ui, sans-serif" font-size="10.5" font-weight="500" fill="rgb(var(--c-ink-2))" letter-spacing="2">EXPERTISE &amp; AUDIT</text>
-      </svg>
+      <!-- Logo officiel, strictement tel quel -->
+      <img src="assets/logo-lebelle-couleur.png" alt="Logo Lebelle Expertise & Audit" width="400" height="364" class="h-[68px] w-auto">
     </a>
-
-    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-medium text-navy" aria-label="Navigation principale">
-      <a href="#cabinet" class="hover:text-brass-600 transition-colors">Le cabinet</a>
-      <a href="#missions" class="hover:text-brass-600 transition-colors">Missions</a>
-      <a href="#methode" class="hover:text-brass-600 transition-colors">Méthode</a>
-      <a href="#contact" class="hover:text-brass-600 transition-colors">Contact</a>
-      <a href="#contact" class="ml-2 inline-flex items-center gap-2 bg-cta text-white px-5 py-2.5 rounded-sm hover:bg-cta-600 transition-colors">
-        Prendre rendez-vous
-      </a>
+    <nav class="hidden lg:flex items-center gap-f4 text-[15px] font-medium" aria-label="Navigation principale">
+      <a href="#acquisition" class="hover:text-bleu transition-colors">Acquisition</a>
+      <a href="#financement" class="hover:text-bleu transition-colors">Financement</a>
+      <a href="#cabinet" class="hover:text-bleu transition-colors">Le cabinet</a>
+      <a href="#contact" class="hover:text-bleu transition-colors">Contact</a>
+      <a href="#contact" class="inline-flex items-center bg-nuit text-white px-f3 py-[10px] hover:bg-bleu transition-colors">Prendre rendez-vous</a>
     </nav>
-
-    <button id="menu-btn" type="button" class="lg:hidden p-2 -mr-2 text-navy" aria-controls="mobile-menu" aria-expanded="false" aria-label="Ouvrir le menu">
+    <button id="menu-btn" type="button" class="lg:hidden p-2 -mr-2" aria-controls="mobile-menu" aria-expanded="false" aria-label="Ouvrir le menu">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use id="menu-icon" href="#i-menu"/></svg>
     </button>
   </div>
-
-  <!-- Menu mobile -->
-  <div id="mobile-menu" hidden class="lg:hidden border-t border-navy-100 bg-ivory">
-    <nav class="max-w-content mx-auto px-5 py-4 flex flex-col text-lg font-medium text-navy" aria-label="Navigation mobile">
-      <a href="#cabinet" class="py-3 border-b border-navy-100">Le cabinet</a>
-      <a href="#missions" class="py-3 border-b border-navy-100">Missions</a>
-      <a href="#methode" class="py-3 border-b border-navy-100">Méthode</a>
-      <a href="#contact" class="py-3">Contact</a>
-      <a href="#contact" class="mt-3 inline-flex justify-center items-center bg-cta text-white px-5 py-3 rounded-sm">Prendre rendez-vous</a>
+  <div id="mobile-menu" hidden class="lg:hidden border-t border-gris-300 bg-white">
+    <nav class="max-w-content mx-auto px-f3 py-f3 flex flex-col text-fib-1 t-display" aria-label="Navigation mobile">
+      <a href="#acquisition" class="py-f2 border-b border-gris-300">Acquisition</a>
+      <a href="#financement" class="py-f2 border-b border-gris-300">Financement</a>
+      <a href="#cabinet" class="py-f2 border-b border-gris-300">Le cabinet</a>
+      <a href="#contact" class="py-f2">Contact</a>
+      <a href="#contact" class="mt-f3 inline-flex justify-center bg-nuit text-white px-f3 py-f2 font-sans text-base font-medium not-italic">Prendre rendez-vous</a>
     </nav>
   </div>
 </header>
@@ -327,681 +253,454 @@
 <main id="main">
 
 <!-- ============================================================
-     2. HERO
-     Promesse retenue : « L'expert-comptable qui parle aussi le langage des banques. »
-     Variantes proposées :
-       A. Votre comptabilité automatisée. Votre croissance accompagnée.
-       B. Un expert-comptable formé en banque, au service de votre croissance.
-       C. Vos comptes en temps réel. Votre croissance financée.
+     2. HERO : promesse acquisition + financement, tableau en 61,8 %
      ============================================================ -->
 <section id="top" class="relative overflow-hidden">
-  <div class="relative max-w-content mx-auto px-5 sm:px-8 pt-16 pb-20 sm:pt-24 sm:pb-28 lg:pt-28 lg:pb-32 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-    <div class="lg:col-span-7">
-      <p class="reveal text-base text-ink-500 mb-5">Expert-comptable, Paris 7e</p>
-      <h1 class="reveal font-serif text-[2.4rem] leading-[1.08] sm:text-5xl lg:text-6xl text-navy font-medium">
-        L'expert-comptable qui parle aussi le langage des banques.
-      </h1>
-      <p class="reveal mt-7 text-lg sm:text-xl text-ink-600 leading-relaxed max-w-2xl">
-        Nous tenons vos comptes sur Pennylane et consacrons notre temps à financer, développer et transmettre votre entreprise, à Paris et en Île-de-France.
-      </p>
-      <div class="reveal mt-10 flex flex-col sm:flex-row gap-4">
-        <a href="#contact" class="inline-flex justify-center items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-sm font-medium hover:bg-cta-600 transition-colors">
+  <img src="assets/spirale-or.svg" alt="" aria-hidden="true" class="pointer-events-none absolute right-[-6%] bottom-[-4%] w-[46%] opacity-60 hidden lg:block" style="filter: invert(52%) sepia(38%) saturate(500%) hue-rotate(5deg) brightness(.9);">
+  <div class="relative max-w-content mx-auto px-f3 sm:px-f4 pt-f5 pb-f6 lg:pt-f6 lg:pb-f7 grid lg:grid-cols-[1fr_1.618fr] gap-f5 lg:gap-f6 items-center">
+    <div class="relative z-10">
+      <p class="text-gris mb-f3">Expert-comptable, Paris 7e</p>
+      <h1 class="t-display text-fib-3 lg:text-phi-3 text-encre">Acquérir une entreprise, obtenir son financement.</h1>
+      <p class="mt-f4 text-fib-1 text-gris leading-snug">Davy Lebelle, expert-comptable, a passé plus de dix ans en banque. Il structure votre acquisition et défend votre dossier auprès des banques.</p>
+      <div class="mt-f5 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-f3">
+        <a href="#contact" class="inline-flex justify-center items-center gap-2 whitespace-nowrap bg-nuit text-white px-f4 py-f2 font-medium hover:bg-bleu transition-colors">
           Prendre rendez-vous
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
         </a>
-        <a href="#missions" class="link-arrow py-3.5">
-          Découvrir nos missions
+        <a href="#acquisition" class="link-arrow whitespace-nowrap py-f2">
+          Voir nos accompagnements
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
         </a>
       </div>
-
-      <!-- Marqueurs de réassurance -->
-      <ul class="reveal mt-14 flex flex-wrap gap-x-10 gap-y-4 text-sm font-medium text-navy">
-        <li class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-badge"/></svg>
-          Inscrit à l'Ordre des experts-comptables
-        </li>
-        <li class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-award"/></svg>
-          20 ans d'expérience
-        </li>
-        <li class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-zap"/></svg>
-          100&nbsp;% digital
-        </li>
-      </ul>
     </div>
 
-    <!-- Visuel du hero : bureau haussmannien, cadre laiton décalé -->
-    <div class="reveal lg:col-span-5">
-      <div class="relative">
-        <!-- IMG : bureau -->
-        <img src="assets/bureau-haussmannien.jpg" alt="Bureau d'un cabinet d'expertise comptable dans un appartement haussmannien à Paris, parquet et vue sur les toits" width="1600" height="873" class="w-full aspect-[4/3] lg:aspect-[5/6] object-cover rounded-sm" loading="eager" fetchpriority="high">
+    <!-- Tableau du hero (la spirale dorée passe derrière, voir fin de section) -->
+    <div class="relative z-10">
+      <figure class="painting relative">
+        <div class="relative aspect-[4/3] lg:aspect-[1.618/1] overflow-hidden bg-poudre border border-gris-300">
+          <!-- IMG : La Vocation de saint Matthieu (domaine public, à déposer dans assets/tableaux/) -->
+          <img src="assets/tableaux/vocation-saint-matthieu.jpg" alt="La Vocation de saint Matthieu, Caravage : des hommes comptent de l'argent autour d'une table, un rai de lumière désigne Matthieu" class="painting-img absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high">
+          <div class="painting-tint absolute inset-0 bg-bleu/20 mix-blend-multiply pointer-events-none" aria-hidden="true"></div>
+          <div class="painting-missing absolute inset-[13px] border border-gris-300 items-center justify-center text-center p-f4">
+            <p class="text-gris"><span class="block text-cap uppercase tracking-widest">Emplacement image</span><span class="t-display text-fib-1 text-encre block mt-f2">La Vocation de saint Matthieu</span><span class="block text-sm mt-f1">Œuvre du domaine public à insérer</span></p>
+          </div>
+        </div>
+        <figcaption class="museum-caption"><i>La Vocation de saint Matthieu</i>, Caravage, 1599-1600. Église Saint-Louis-des-Français, Rome.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. COMPTEUR ANIMÉ DE CHIFFRES CLÉS (reprise du site actuel, animation au défilement)
+     Valeurs connues : 20 ans d'expérience, 10 ans en banque. Les deux autres sont à compléter.
+     ============================================================ -->
+<section class="bg-encre text-white" aria-label="Chiffres clés">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f5 lg:py-f6 grid grid-cols-2 lg:grid-cols-4 gap-y-f4 gap-x-f3">
+    <div class="lg:border-l lg:border-white/15 lg:pl-f4">
+      <p class="num-tab t-roman text-fib-3 lg:text-phi-3 leading-none"><span class="counter" data-count="20">0</span><span class="text-fib-1 align-top">+</span></p>
+      <p class="mt-f2 text-sm text-white/70">années d'expérience</p>
+    </div>
+    <div class="lg:border-l lg:border-white/15 lg:pl-f4">
+      <p class="num-tab t-roman text-fib-3 lg:text-phi-3 leading-none"><span class="counter" data-count="10">0</span><span class="text-fib-1 align-top">+</span></p>
+      <p class="mt-f2 text-sm text-white/70">années en banque</p>
+    </div>
+    <div class="lg:border-l lg:border-white/15 lg:pl-f4">
+      <!-- Pour animer : remplacer le contenu par <span class="counter" data-count="NN">0</span> -->
+      <p class="num-tab t-roman text-fib-2 leading-none"><span class="todo text-base">[à compléter]</span></p>
+      <p class="mt-f2 text-sm text-white/70">acquisitions accompagnées</p>
+    </div>
+    <div class="lg:border-l lg:border-white/15 lg:pl-f4">
+      <p class="num-tab t-roman text-fib-2 leading-none"><span class="todo text-base">[à compléter]</span></p>
+      <p class="mt-f2 text-sm text-white/70">financements obtenus</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. GRAND ENCART : ACQUISITION D'ENTREPRISE (Hermès, caducée)
+     Grille 61,8 % texte / 38,2 % tableau
+     ============================================================ -->
+<section id="acquisition" class="bg-poudre">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f6 lg:py-f7 grid lg:grid-cols-[1.618fr_1fr] gap-f5 lg:gap-f6">
+    <div class="lg:pr-f5 lg:border-r lg:border-gris-300">
+      <p class="num">01.</p>
+      <div class="flex items-center gap-f2 mt-f4 text-bleu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><use href="#p-caducee"/></svg>
+        <p class="text-sm font-medium">Acquisition d'entreprise</p>
       </div>
+      <h2 class="t-display text-fib-2 lg:text-phi-2 mt-f3">Racheter une entreprise sans naviguer à vue</h2>
+      <p class="mt-f4 text-fib-1 leading-snug">Lebelle Expertise & Audit accompagne les dirigeants et repreneurs dans l'acquisition d'entreprise, à Paris et en Île-de-France. Nous évaluons la cible, structurons l'opération et sécurisons son financement.</p>
+
+      <ol class="mt-f5 grid sm:grid-cols-2 gap-x-f4 gap-y-f4">
+        <li><p class="num">1</p><h3 class="t-roman text-phi-1 mt-f1">Évaluer la cible</h3><p class="mt-f1 text-gris">Analyse des comptes, des risques et du prix de référence.</p></li>
+        <li><p class="num">2</p><h3 class="t-roman text-phi-1 mt-f1">Structurer l'opération</h3><p class="mt-f1 text-gris">Montage juridique et financier, calendrier, points de négociation.</p></li>
+        <li><p class="num">3</p><h3 class="t-roman text-phi-1 mt-f1">Financer</h3><p class="mt-f1 text-gris">Dossier bancaire, recherche de financements, négociation des conditions.</p></li>
+        <li><p class="num">4</p><h3 class="t-roman text-phi-1 mt-f1">Signer et reprendre</h3><p class="mt-f1 text-gris">Sécurisation des actes, premiers mois de la reprise.</p></li>
+      </ol>
+
+      <p class="exergue mt-f5">« Hermès, dieu des échanges, guidait marchands et voyageurs. »<small>Mythologie grecque</small></p>
+    </div>
+
+    <figure class="painting self-start">
+      <div class="relative aspect-[4/3] lg:aspect-[1/1.618] lg:max-h-[560px] overflow-hidden bg-ecru border border-gris-300">
+        <!-- IMG : Mercure et Argus (Rubens), à déposer dans assets/tableaux/ -->
+        <img src="assets/tableaux/mercure-et-argus.jpg" alt="Mercure et Argus, Rubens : Mercure, caducée à la main, endort Argus pour libérer la génisse Io" class="painting-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="painting-tint absolute inset-0 bg-bleu/20 mix-blend-multiply pointer-events-none" aria-hidden="true"></div>
+        <div class="painting-missing absolute inset-[13px] border border-gris-300 items-center justify-center text-center p-f4">
+          <p class="text-gris"><span class="block text-cap uppercase tracking-widest">Emplacement image</span><span class="t-display text-fib-1 text-encre block mt-f2">Mercure et Argus</span><span class="block text-sm mt-f1">Œuvre du domaine public à insérer</span></p>
+        </div>
+      </div>
+      <figcaption class="museum-caption"><i>Mercure et Argus</i>, Pierre Paul Rubens, vers 1636-1638. Musée du Prado, Madrid.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. GRAND ENCART : FINANCEMENT BANCAIRE (Ploutos, corne d'abondance)
+     Bloc sombre, tableau en 38,2 % à gauche, texte en 61,8 % à droite
+     ============================================================ -->
+<section id="financement" class="bg-nuit text-white">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f6 lg:py-f7 grid lg:grid-cols-[1fr_1.618fr] gap-f5 lg:gap-f6">
+    <figure class="painting self-start order-2 lg:order-1">
+      <div class="relative aspect-[4/3] lg:aspect-[1/1.2] overflow-hidden bg-encre border border-white/15">
+        <!-- IMG : Le Prêteur et sa femme (Quentin Metsys), à déposer dans assets/tableaux/ -->
+        <img src="assets/tableaux/le-preteur-et-sa-femme.jpg" alt="Le Prêteur et sa femme, Quentin Metsys : un prêteur pèse des pièces d'or sur une balance pendant que sa femme feuillette un livre d'heures" class="painting-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="painting-tint absolute inset-0 bg-bleu/25 mix-blend-multiply pointer-events-none" aria-hidden="true"></div>
+        <div class="painting-missing absolute inset-[13px] border border-white/20 items-center justify-center text-center p-f4">
+          <p class="text-white/70"><span class="block text-cap uppercase tracking-widest">Emplacement image</span><span class="t-display text-fib-1 text-white block mt-f2">Le Prêteur et sa femme</span><span class="block text-sm mt-f1">Œuvre du domaine public à insérer</span></p>
+        </div>
+      </div>
+      <figcaption class="museum-caption !text-white/60"><i class="!text-white">Le Prêteur et sa femme</i>, Quentin Metsys, 1514. Musée du Louvre, Paris.</figcaption>
+    </figure>
+
+    <div class="order-1 lg:order-2 lg:pl-f5 lg:border-l lg:border-white/15">
+      <p class="num !text-white/60">02.</p>
+      <div class="flex items-center gap-f2 mt-f4 text-white/80">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><use href="#p-corne"/></svg>
+        <p class="text-sm font-medium">Financement bancaire</p>
+      </div>
+      <h2 class="t-display text-fib-2 lg:text-phi-2 mt-f3">Un dossier bancaire lu par un ancien banquier</h2>
+      <p class="mt-f4 text-fib-1 leading-snug text-white/85">Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait ce qu'un comité de crédit attend et bâtit votre dossier pour y répondre.</p>
+
+      <ol class="mt-f5 grid sm:grid-cols-2 gap-x-f4 gap-y-f4">
+        <li><p class="num !text-white/60">1</p><h3 class="t-roman text-phi-1 mt-f1">Cadrer le besoin</h3><p class="mt-f1 text-white/70">Montant, durée, objet du financement et calendrier.</p></li>
+        <li><p class="num !text-white/60">2</p><h3 class="t-roman text-phi-1 mt-f1">Bâtir le prévisionnel</h3><p class="mt-f1 text-white/70">Hypothèses défendables, trésorerie et capacité de remboursement.</p></li>
+        <li><p class="num !text-white/60">3</p><h3 class="t-roman text-phi-1 mt-f1">Constituer le dossier</h3><p class="mt-f1 text-white/70">Pièces, présentation du projet, réponses aux objections.</p></li>
+        <li><p class="num !text-white/60">4</p><h3 class="t-roman text-phi-1 mt-f1">Négocier avec les banques</h3><p class="mt-f1 text-white/70">Mise en concurrence, taux, garanties et covenants.</p></li>
+      </ol>
+
+      <p class="exergue mt-f5 !text-white/70">« Ploutos, dieu de la richesse, naquit d'un champ trois fois labouré. »<small>Hésiode, Théogonie</small></p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     3. BANDEAU CHIFFRES CLÉS
-     Valeurs communiquées par le dirigeant : 109 clients, 94 opérations de croissance.
+     6. AUTRES MISSIONS, format compact (Thot, Maât, œil d'Horus) + tableau Les Changeurs
      ============================================================ -->
-<section class="relative bg-navy text-white overflow-hidden" aria-label="Chiffres clés">
-  <!-- IMG : avenue parisienne (fond) -->
-  <img src="assets/paris-7e-avenue.jpg" alt="" width="1600" height="873" class="absolute inset-0 w-full h-full object-cover opacity-60" loading="lazy" aria-hidden="true">
-  <div class="absolute inset-0 bg-navy/80" aria-hidden="true"></div>
-  <div class="relative max-w-content mx-auto px-5 sm:px-8 py-16 sm:py-20 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
-    <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
-      <p class="font-data text-5xl sm:text-6xl text-brass-400 leading-none">20<span class="text-3xl align-top">+</span></p>
-      <p class="mt-3 text-sm text-white/75">années d'expérience</p>
-    </div>
-    <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
-      <p class="font-data text-5xl sm:text-6xl text-brass-400 leading-none">10<span class="text-3xl align-top">+</span></p>
-      <p class="mt-3 text-sm text-white/75">années en banque</p>
-    </div>
-    <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
-      <p class="font-data text-5xl sm:text-6xl text-brass-400 leading-none">109</p>
-      <p class="mt-3 text-sm text-white/75">clients accompagnés</p>
-    </div>
-    <div class="reveal text-center lg:text-left lg:border-l lg:border-white/15 lg:pl-8">
-      <p class="font-data text-5xl sm:text-6xl text-brass-400 leading-none">94</p>
-      <p class="mt-3 text-sm text-white/75">opérations de croissance</p>
-    </div>
-  </div>
-</section>
+<section id="missions" class="bg-ecru">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f6 lg:py-f7 grid lg:grid-cols-[1.618fr_1fr] gap-f5 lg:gap-f6 items-start">
+    <div>
+      <p class="num">03.</p>
+      <h2 class="t-display text-fib-2 lg:text-phi-2 mt-f3">Trois missions qui tiennent vos comptes</h2>
+      <p class="mt-f4 text-gris">Le socle du cabinet, produit sur Pennylane pour libérer du temps de conseil.</p>
 
-<!-- ============================================================
-     4. MISSIONS (4 cartes, 2 mises en avant)
-     ============================================================ -->
-<section id="missions" class="py-24 sm:py-32">
-  <div class="max-w-content mx-auto px-5 sm:px-8">
-    <div class="reveal max-w-2xl">
-      <p class="text-base text-ink-500 mb-4">Nos missions</p>
-      <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Quatre missions au service de votre croissance</h2>
-      <p class="mt-6 text-lg text-ink-600">De la tenue des comptes au financement d'une acquisition, un seul interlocuteur.</p>
-    </div>
-
-    <div class="mt-14 grid md:grid-cols-2 gap-6">
-      <!-- Carte mise en avant : Opérations de croissance -->
-      <article class="reveal bg-navy text-white rounded-sm relative overflow-hidden flex flex-col">
-        <span class="absolute top-0 left-0 w-full h-1 bg-brass z-10" aria-hidden="true"></span>
-        <!-- IMG : opérations de croissance -->
-        <img src="assets/mission-croissance.jpg" alt="Rapports financiers, prévisionnel et calculatrice sur un sous-main bleu marine" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
-        <div class="p-8 sm:p-10">
-        <svg class="w-9 h-9 text-brass-400" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-trending"/></svg>
-        <h3 class="mt-6 font-serif text-3xl font-medium">Opérations de croissance</h3>
-        <p class="mt-3 text-white/80">Nous structurons et finançons vos projets, de la levée de fonds à la cession.</p>
-        <ul class="mt-6 space-y-2.5 text-sm">
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Recherche de financements bancaires et en fonds propres</li>
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Acquisition et cession d'entreprise</li>
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Structuration financière et prévisionnels</li>
-        </ul>
-        </div>
-      </article>
-
-      <!-- Carte mise en avant : Conseil auprès des banques -->
-      <article class="reveal bg-navy text-white rounded-sm relative overflow-hidden flex flex-col">
-        <span class="absolute top-0 left-0 w-full h-1 bg-brass z-10" aria-hidden="true"></span>
-        <!-- IMG : conseil auprès des banques -->
-        <img src="assets/mission-banques.jpg" alt="Hall d'une banque privée parisienne, colonnes de marbre et lustres" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
-        <div class="p-8 sm:p-10">
-        <svg class="w-9 h-9 text-brass-400" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-landmark"/></svg>
-        <h3 class="mt-6 font-serif text-3xl font-medium">Conseil auprès des banques</h3>
-        <p class="mt-3 text-white/80">Dix ans en banque privée et sur les marchés financiers, au service des établissements financiers.</p>
-        <ul class="mt-6 space-y-2.5 text-sm">
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Audit et évaluation de dispositifs</li>
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Conseil financier et réglementaire</li>
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Interlocuteur des directions financières</li>
-        </ul>
-        </div>
-      </article>
-
-      <!-- Carte : Expertise comptable -->
-      <article class="reveal bg-surface border border-navy-100 rounded-sm overflow-hidden flex flex-col">
-        <!-- IMG : expertise comptable -->
-        <img src="assets/mission-expertise.jpg" alt="Dirigeant consultant ses tableaux de bord financiers sur mobile et ordinateur à une terrasse parisienne" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
-        <div class="p-8 sm:p-10">
-        <svg class="w-9 h-9 text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-calculator"/></svg>
-        <h3 class="mt-6 font-serif text-3xl font-medium text-navy">Expertise comptable</h3>
-        <p class="mt-3 text-ink-600">Comptabilité, fiscalité et social, produits sur Pennylane et suivis en temps réel.</p>
-        <ul class="mt-6 space-y-2.5 text-sm text-ink-600">
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Tenue et révision des comptes</li>
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Déclarations fiscales et sociales, paie</li>
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Bilan annuel et liasse fiscale</li>
-        </ul>
-        </div>
-      </article>
-
-      <!-- Carte : Contrôle LCB-FT -->
-      <article class="reveal bg-surface border border-navy-100 rounded-sm overflow-hidden flex flex-col">
-        <!-- IMG : contrôle LCB-FT -->
-        <img src="assets/mission-lcbft.jpg" alt="Loupe examinant un registre de conformité réglementaire sous une lampe de bureau" width="1200" height="675" class="w-full aspect-[16/9] object-cover" loading="lazy">
-        <div class="p-8 sm:p-10">
-        <svg class="w-9 h-9 text-brass" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg>
-        <h3 class="mt-6 font-serif text-3xl font-medium text-navy">Contrôle LCB-FT</h3>
-        <p class="mt-3 text-ink-600">Nous assistons le Conseil supérieur de l'Ordre sur le respect des diligences de la profession.</p>
-        <ul class="mt-6 space-y-2.5 text-sm text-ink-600">
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Audit des dispositifs anti-blanchiment</li>
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Évaluation des procédures internes</li>
-          <li class="flex gap-3"><svg class="w-4 h-4 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Missions pour le compte de l'Ordre</li>
-        </ul>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     4 bis. BANDEAU D'AMBIANCE : Paris 7e (image pleine largeur, texte court)
-     ============================================================ -->
-<section class="relative h-[36vh] min-h-[240px] max-h-[420px] overflow-hidden" aria-label="Le cabinet, avenue Bosquet, Paris 7e">
-  <!-- IMG : balcon parisien -->
-  <img src="assets/balcon-paris-7e.jpg" alt="Balcon en fer forgé d'un immeuble en pierre de taille, Paris 7e, lumière du soir" width="1600" height="678" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-  <div class="absolute inset-0 bg-navy/70" aria-hidden="true"></div>
-  <div class="relative h-full max-w-content mx-auto px-5 sm:px-8 flex items-end pb-10">
-    <p class="reveal text-white font-serif text-3xl sm:text-4xl font-medium leading-tight ">Avenue Bosquet, Paris 7e.<br><span class="text-brass-400">Entre le Champ-de-Mars et les Invalides.</span></p>
-  </div>
-</section>
-
-<!-- ============================================================
-     5. ACCOMPAGNEMENT DE A À Z (frise horizontale)
-     ============================================================ -->
-<section class="bg-surface border-y border-navy-100 py-24 sm:py-32">
-  <div class="max-w-content mx-auto px-5 sm:px-8">
-    <div class="reveal max-w-2xl mx-auto text-center">
-      <p class="text-base text-ink-500 mb-4">Accompagnement de A à Z</p>
-      <h2 class="rule rule-center font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Présents de la création à la transmission</h2>
-    </div>
-
-    <ol class="mt-14 grid lg:grid-cols-5 gap-6 lg:gap-6">
-      <li class="reveal flex gap-5 items-start lg:block">
-        <div class="relative overflow-hidden rounded-sm border border-navy-100 bg-ivory w-32 sm:w-44 shrink-0 lg:w-auto">
-          <!-- IMG : étape Créer -->
-          <img src="assets/etape-creer.jpg" alt="Jeune pousse dans un pot en céramique, symbole de la création d'entreprise" width="800" height="600" class="w-full aspect-[4/3] object-cover" loading="lazy">
-        </div>
-        <div>
-          <h3 class="font-serif text-2xl text-navy font-medium lg:mt-5">Créer</h3>
-          <p class="mt-1.5 text-sm text-ink-600">Choix du statut, prévisionnel et premiers financements.</p>
-        </div>
-      </li>
-      <li class="reveal flex gap-5 items-start lg:block">
-        <div class="relative overflow-hidden rounded-sm border border-navy-100 bg-ivory w-32 sm:w-44 shrink-0 lg:w-auto">
-          <!-- IMG : étape Développer -->
-          <img src="assets/etape-developper.jpg" alt="Pile de pièces de monnaie qui s'élève, symbole du développement de l'activité" width="800" height="600" class="w-full aspect-[4/3] object-cover" loading="lazy">
-        </div>
-        <div>
-          <h3 class="font-serif text-2xl text-navy font-medium lg:mt-5">Développer</h3>
-          <p class="mt-1.5 text-sm text-ink-600">Pilotage en temps réel et conseil de gestion.</p>
-        </div>
-      </li>
-      <li class="reveal flex gap-5 items-start lg:block">
-        <div class="relative overflow-hidden rounded-sm border border-navy-100 bg-ivory w-32 sm:w-44 shrink-0 lg:w-auto">
-          <!-- IMG : étape Financer -->
-          <img src="assets/etape-financer.jpg" alt="Clé ancienne posée sur un portefeuille en cuir, symbole du financement bancaire" width="800" height="600" class="w-full aspect-[4/3] object-cover" loading="lazy">
-        </div>
-        <div>
-          <h3 class="font-serif text-2xl text-navy font-medium lg:mt-5">Financer</h3>
-          <p class="mt-1.5 text-sm text-ink-600">Dossier bancaire solide, négociation avec les banques.</p>
-        </div>
-      </li>
-      <li class="reveal flex gap-5 items-start lg:block">
-        <div class="relative overflow-hidden rounded-sm border border-navy-100 bg-ivory w-32 sm:w-44 shrink-0 lg:w-auto">
-          <!-- IMG : étape Acquérir -->
-          <img src="assets/etape-acquerir.jpg" alt="Deux pièces de puzzle en bois assemblées, symbole d'une acquisition d'entreprise" width="800" height="600" class="w-full aspect-[4/3] object-cover" loading="lazy">
-        </div>
-        <div>
-          <h3 class="font-serif text-2xl text-navy font-medium lg:mt-5">Acquérir</h3>
-          <p class="mt-1.5 text-sm text-ink-600">Évaluation, structuration et financement du rachat.</p>
-        </div>
-      </li>
-      <li class="reveal flex gap-5 items-start lg:block">
-        <div class="relative overflow-hidden rounded-sm border border-navy-100 bg-ivory w-32 sm:w-44 shrink-0 lg:w-auto">
-          <!-- IMG : étape Transmettre -->
-          <img src="assets/etape-transmettre.jpg" alt="Deux mains se transmettant une clé, symbole de la transmission d'entreprise" width="800" height="600" class="w-full aspect-[4/3] object-cover" loading="lazy">
-        </div>
-        <div>
-          <h3 class="font-serif text-2xl text-navy font-medium lg:mt-5">Transmettre</h3>
-          <p class="mt-1.5 text-sm text-ink-600">Préparation de la cession et vision patrimoniale du dirigeant.</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ============================================================
-     6. MÉTHODE DIGITALE (Pennylane) + tableau de bord stylisé en CSS
-     ============================================================ -->
-<section id="methode" class="py-24 sm:py-32">
-  <div class="max-w-content mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 items-center">
-    <div class="reveal">
-      <p class="text-base text-ink-500 mb-4">Notre méthode</p>
-      <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Une comptabilité automatisée, du temps pour le conseil</h2>
-      <p class="mt-6 text-lg text-ink-600">Votre production comptable est 100&nbsp;% digitalisée sur Pennylane.</p>
-
-      <ul class="mt-10 space-y-8">
-        <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-clock"/></svg>
-          </span>
+      <ul class="mt-f5 divide-y divide-gris-300 border-y border-gris-300">
+        <li class="py-f4 grid sm:grid-cols-[34px_1fr] gap-f3">
+          <svg class="w-6 h-6 text-bleu" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><use href="#p-plume"/></svg>
           <div>
-            <h3 class="font-serif text-2xl text-navy font-medium">Temps réel</h3>
-            <p class="mt-1.5 text-ink-600">Vos comptes sont synchronisés avec votre banque. Vous suivez votre trésorerie sur PC et sur mobile.</p>
+            <h3 class="t-roman text-phi-1">Expertise comptable digitalisée</h3>
+            <p class="mt-f1 text-gris">Comptabilité, fiscalité, social et paie, produits sur Pennylane. Vous suivez vos chiffres en temps réel, sur ordinateur et sur mobile.</p>
           </div>
         </li>
-        <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-zap"/></svg>
-          </span>
+        <li class="py-f4 grid sm:grid-cols-[34px_1fr] gap-f3">
+          <svg class="w-6 h-6 text-bleu" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><use href="#p-oeil"/></svg>
           <div>
-            <h3 class="font-serif text-2xl text-navy font-medium">Zéro saisie</h3>
-            <p class="mt-1.5 text-ink-600">Factures, relevés et outils métier remontent automatiquement dans Pennylane. La ressaisie disparaît.</p>
+            <h3 class="t-roman text-phi-1">Conseil aux dirigeants et aux banques</h3>
+            <p class="mt-f1 text-gris">Structuration financière, prévisionnels et vision patrimoniale du dirigeant. Le cabinet conseille aussi des établissements financiers.</p>
           </div>
         </li>
-        <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-message"/></svg>
-          </span>
+        <li class="py-f4 grid sm:grid-cols-[34px_1fr] gap-f3">
+          <svg class="w-6 h-6 text-bleu" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><use href="#p-balance"/></svg>
           <div>
-            <h3 class="font-serif text-2xl text-navy font-medium">Plus de temps pour le conseil</h3>
-            <p class="mt-1.5 text-ink-600">Le temps gagné sur la production est consacré à vos décisions&nbsp;: financement, croissance, transmission.</p>
+            <h3 class="t-roman text-phi-1">Contrôle LCB-FT pour l'Ordre</h3>
+            <p class="mt-f1 text-gris">Le Conseil supérieur de l'Ordre des experts-comptables nous confie des missions de contrôle. Nous vérifions le respect des diligences anti-blanchiment de la profession.</p>
           </div>
         </li>
       </ul>
+
+      <p class="exergue mt-f5">« Maât pesait les cœurs sur sa balance, à la plume près. »<small>Mythologie égyptienne</small></p>
     </div>
 
-    <!-- Visuel : tableau de bord stylisé (CSS uniquement, données fictives d'illustration) -->
-    <div class="reveal" aria-hidden="true">
-      <div class="relative">
-        <div class="relative bg-surface border border-navy-100 rounded-sm p-6 sm:p-8">
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-[11px] uppercase tracking-[0.2em] text-ink-500">Trésorerie</p>
-              <p class="mt-1 font-data text-4xl text-navy">128&nbsp;450&nbsp;€</p>
-            </div>
-            <span class="text-xs font-data text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-sm">+12&nbsp;% ce mois</span>
-          </div>
-
-          <div class="mt-8 flex items-end gap-2 h-36">
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:38%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:52%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:46%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:64%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:58%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:72%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:69%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:80%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:76%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:88%"></div>
-            <div class="bar flex-1 bg-navy-100 rounded-t-sm" style="height:84%"></div>
-            <div class="bar flex-1 bg-brass rounded-t-sm" style="height:100%"></div>
-          </div>
-          <div class="mt-2 flex justify-between text-[10px] uppercase tracking-wider text-ink-500"><span>Janv.</span><span>Juin</span><span>Déc.</span></div>
-
-          <div class="mt-8 grid grid-cols-3 gap-4 border-t border-navy-100 pt-6">
-            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">Banque</p><p class="mt-1 text-sm font-medium text-navy">Synchronisée</p></div>
-            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">Factures</p><p class="mt-1 text-sm font-data text-navy">42 rapprochées</p></div>
-            <div><p class="text-[11px] uppercase tracking-wider text-ink-500">À traiter</p><p class="mt-1 text-sm font-data text-navy">0</p></div>
-          </div>
+    <figure class="painting lg:mt-f6">
+      <div class="relative aspect-[4/3] overflow-hidden bg-poudre border border-gris-300">
+        <!-- IMG : Les Changeurs (Marinus van Reymerswaele), à déposer dans assets/tableaux/ -->
+        <img src="assets/tableaux/les-changeurs.jpg" alt="Les Changeurs, Marinus van Reymerswaele : deux hommes comptent des pièces et tiennent un registre" class="painting-img absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <div class="painting-tint absolute inset-0 bg-bleu/20 mix-blend-multiply pointer-events-none" aria-hidden="true"></div>
+        <div class="painting-missing absolute inset-[13px] border border-gris-300 items-center justify-center text-center p-f4">
+          <p class="text-gris"><span class="block text-cap uppercase tracking-widest">Emplacement image</span><span class="t-display text-fib-1 text-encre block mt-f2">Les Changeurs</span><span class="block text-sm mt-f1">Œuvre du domaine public à insérer</span></p>
         </div>
       </div>
-    </div>
+      <figcaption class="museum-caption"><i>Les Changeurs</i>, Marinus van Reymerswaele, vers 1540. Musée des Beaux-Arts, Valenciennes.</figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- ============================================================
-     7. VOTRE EXPERT-COMPTABLE (Davy Lebelle)
+     7. VOTRE EXPERT-COMPTABLE : photo, parcours en 4 puces, spirale en filigrane
      ============================================================ -->
-<section id="cabinet" class="bg-navy text-white py-24 sm:py-32">
-  <div class="max-w-content mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-14 items-center">
-    <div class="reveal lg:col-span-5">
-      <div class="relative max-w-md mx-auto lg:mx-0">
-        <!-- IMG : photo de Davy Lebelle -->
-        <img src="assets/davy-lebelle.jpg" alt="Portrait de Davy Lebelle, expert-comptable fondateur du cabinet Lebelle Expertise & Audit à Paris" width="800" height="800" class="relative w-full aspect-[4/5] object-cover object-top rounded-sm" loading="lazy">
-      </div>
-    </div>
-
-    <div class="reveal lg:col-span-7">
-      <p class="text-base text-white/70 mb-4">Votre expert-comptable</p>
-      <h2 class="font-serif text-4xl sm:text-5xl font-medium leading-tight">Davy Lebelle, expert-comptable et ancien banquier</h2>
-
-      <ul class="mt-8 space-y-3 text-white/85">
-        <li class="flex gap-3"><svg class="w-5 h-5 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Expert-comptable inscrit à l'Ordre de Paris Île-de-France</li>
-        <li class="flex gap-3"><svg class="w-5 h-5 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Plus de 20 ans en cabinet d'expertise comptable, d'audit et en banque</li>
-        <li class="flex gap-3"><svg class="w-5 h-5 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Plus de 10 ans en banque, sur les marchés financiers et en banque privée</li>
-        <li class="flex gap-3"><svg class="w-5 h-5 mt-0.5 shrink-0 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Double cursus&nbsp;: expertise comptable et finance d'entreprise</li>
+<section id="cabinet" class="bg-white border-y border-gris-300 relative overflow-hidden">
+  <img src="assets/spirale-or.svg" alt="" aria-hidden="true" class="pointer-events-none absolute -right-f6 -top-f5 w-[38%] opacity-50 hidden lg:block" style="filter: invert(52%) sepia(38%) saturate(500%) hue-rotate(5deg) brightness(.9);">
+  <div class="relative max-w-content mx-auto px-f3 sm:px-f4 py-f6 lg:py-f7 grid lg:grid-cols-[1fr_1.618fr] gap-f5 lg:gap-f6 items-center">
+    <figure>
+      <!-- Photo officielle de Davy Lebelle -->
+      <img src="assets/davy-lebelle.jpg" alt="Portrait de Davy Lebelle, expert-comptable fondateur de Lebelle Expertise & Audit, Paris 7e" width="800" height="800" class="w-full max-w-md aspect-[4/5] object-cover object-top border border-gris-300" loading="lazy">
+      <figcaption class="museum-caption"><i>Davy Lebelle</i>, expert-comptable, fondateur du cabinet.</figcaption>
+    </figure>
+    <div>
+      <p class="num">04.</p>
+      <h2 class="t-display text-fib-2 lg:text-phi-2 mt-f3">Un expert-comptable formé en banque</h2>
+      <ul class="mt-f5 space-y-f2">
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Expert-comptable inscrit à l'Ordre de Paris Île-de-France</li>
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Plus de 20 ans en cabinet d'expertise comptable, d'audit et en banque</li>
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Plus de 10 ans en banque, marchés financiers et banque privée</li>
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Double cursus&nbsp;: expertise comptable et finance d'entreprise</li>
       </ul>
-
-      <!-- Citation : proposition de rédaction, à valider par Davy Lebelle -->
-      <blockquote class="mt-10 border-l-2 border-brass pl-6">
-        <p class="font-serif text-2xl sm:text-[1.7rem] italic leading-snug text-white">«&nbsp;J'ai créé le cabinet fin 2022 pour apporter aux dirigeants ce que j'ai appris en banque&nbsp;: un regard de financier sur leurs comptes.&nbsp;»</p>
-        <footer class="mt-4 text-sm text-brass-400 font-medium">Davy Lebelle, fondateur</footer>
-      </blockquote>
+      <p class="mt-f5 text-gris">Le cabinet a été créé fin 2022, avenue Bosquet, à Paris 7e. Il accompagne des dirigeants de TPE et PME et des repreneurs d'Île-de-France.</p>
+      <p class="exergue mt-f5">« Thot, scribe des dieux, tenait le compte des jours et des âmes. »<small>Mythologie égyptienne</small></p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     8. VALEURS (photo de rendez-vous + trois engagements)
+     8. FAQ (5 questions formulées comme à un assistant IA), reprise en JSON-LD
      ============================================================ -->
-<section class="py-24 sm:py-32">
-  <div class="max-w-content mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-14 items-center">
-    <div class="reveal lg:col-span-6">
-      <!-- IMG : rendez-vous -->
-      <img src="assets/rendez-vous-dirigeant.jpg" alt="Échange entre un expert-comptable et une dirigeante d'entreprise autour d'un bureau, Paris" width="1600" height="873" class="w-full aspect-[4/3] object-cover rounded-sm" loading="lazy">
+<section id="faq" class="bg-ecru">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f6 lg:py-f7 grid lg:grid-cols-[1fr_1.618fr] gap-f5 lg:gap-f6">
+    <div>
+      <p class="num">05.</p>
+      <h2 class="t-display text-fib-2 lg:text-phi-2 mt-f3">Les questions que vous vous posez</h2>
+      <p class="mt-f4 text-gris">Des réponses courtes, à relire avant un rendez-vous bancaire ou une première approche de cible.</p>
     </div>
-    <div class="reveal lg:col-span-6">
-      <p class="text-base text-ink-500 mb-4">Nos valeurs</p>
-      <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Trois engagements envers vous</h2>
-      <ul class="mt-10 space-y-8">
-        <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-users"/></svg>
-          </span>
-          <div>
-            <h3 class="font-serif text-2xl text-navy font-medium">Proximité</h3>
-            <p class="mt-1.5 text-ink-600">Un interlocuteur unique, joignable, qui connaît votre dossier.</p>
-          </div>
-        </li>
-        <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bulb"/></svg>
-          </span>
-          <div>
-            <h3 class="font-serif text-2xl text-navy font-medium">Innovation</h3>
-            <p class="mt-1.5 text-ink-600">Des outils digitaux pour anticiper plutôt que constater.</p>
-          </div>
-        </li>
-        <li class="flex gap-5">
-          <span class="shrink-0 w-11 h-11 rounded-sm bg-brass-100 text-brass flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-award"/></svg>
-          </span>
-          <div>
-            <h3 class="font-serif text-2xl text-navy font-medium">Exigence</h3>
-            <p class="mt-1.5 text-ink-600">Des comptes justes, des délais tenus, un conseil argumenté.</p>
-          </div>
-        </li>
+    <div class="divide-y divide-gris-300 border-y border-gris-300">
+      <details class="py-f3">
+        <summary class="flex items-center justify-between gap-f3 cursor-pointer list-none">
+          <h3 class="t-roman text-phi-1">Comment préparer un dossier de financement bancaire solide&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-bleu transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-f2 text-gris pr-f4">Un dossier solide présente un besoin chiffré, un prévisionnel réaliste et une capacité de remboursement démontrée. Nous le construisons avec vous et le présentons aux banques.</p>
+      </details>
+      <details class="py-f3">
+        <summary class="flex items-center justify-between gap-f3 cursor-pointer list-none">
+          <h3 class="t-roman text-phi-1">Qui peut m'accompagner dans le rachat d'une entreprise à Paris&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-bleu transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-f2 text-gris pr-f4">Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris 7e, accompagne les repreneurs de l'évaluation de la cible jusqu'à la signature. Le financement de l'opération fait partie de la mission.</p>
+      </details>
+      <details class="py-f3">
+        <summary class="flex items-center justify-between gap-f3 cursor-pointer list-none">
+          <h3 class="t-roman text-phi-1">Pourquoi choisir un expert-comptable avec une expérience bancaire&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-bleu transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-f2 text-gris pr-f4">Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment un comité de crédit lit un dossier et le prépare en conséquence.</p>
+      </details>
+      <details class="py-f3">
+        <summary class="flex items-center justify-between gap-f3 cursor-pointer list-none">
+          <h3 class="t-roman text-phi-1">Que vérifie une banque avant d'accorder un prêt professionnel&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-bleu transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-f2 text-gris pr-f4">La banque examine la capacité de remboursement, l'apport, la cohérence du prévisionnel et les garanties proposées. Un dossier complet et argumenté accélère la décision.</p>
+      </details>
+      <details class="py-f3">
+        <summary class="flex items-center justify-between gap-f3 cursor-pointer list-none">
+          <h3 class="t-roman text-phi-1">Comment fonctionne la comptabilité sur Pennylane&#8239;?</h3>
+          <svg class="chev w-5 h-5 shrink-0 text-bleu transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
+        </summary>
+        <p class="mt-f2 text-gris pr-f4">Vos comptes bancaires, vos factures et vos outils métier se synchronisent automatiquement dans Pennylane. Vous suivez votre trésorerie en temps réel, sur ordinateur et sur mobile.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. CONTACT : coordonnées, carte, formulaire court
+     ============================================================ -->
+<section id="contact" class="bg-white border-t border-gris-300">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f6 lg:py-f7 grid lg:grid-cols-[1fr_1.618fr] gap-f5 lg:gap-f6">
+    <div>
+      <p class="num">06.</p>
+      <h2 class="t-display text-fib-2 lg:text-phi-2 mt-f3">Parlons de votre projet</h2>
+      <p class="mt-f4 text-gris">Premier échange sans engagement, au cabinet ou en visioconférence.</p>
+      <ul class="mt-f5 space-y-f2 text-gris">
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-0.5 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pin"/></svg><address class="not-italic">58-60 avenue Bosquet, 75007 Paris</address></li>
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-0.5 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg><a href="tel:+33666641768" class="hover:text-encre">+33 6 66 64 17 68</a></li>
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-0.5 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg><a href="mailto:davy.lebelle@lebelle-expertise.com" class="hover:text-encre break-all">davy.lebelle@lebelle-expertise.com</a></li>
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-0.5 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-linkedin"/></svg><a href="https://fr.linkedin.com/company/lebelle-expertise-et-audit" target="_blank" rel="noopener" class="hover:text-encre">LinkedIn du cabinet</a></li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     9. GAGE DE CONFIANCE (mission LCB-FT)
-     ============================================================ -->
-<section class="bg-surface border-y border-navy-100 py-20 sm:py-24">
-  <div class="max-w-content mx-auto px-5 sm:px-8">
-    <div class="reveal max-w-4xl mx-auto flex flex-col sm:flex-row gap-8 items-start">
-      <span class="shrink-0 w-16 h-16 rounded-sm border border-brass flex items-center justify-center text-navy">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg>
-      </span>
-      <div>
-        <p class="text-base text-ink-500 mb-3">Gage de confiance</p>
-        <h2 class="font-serif text-3xl sm:text-4xl text-navy font-medium leading-tight">Un cabinet qui contrôle sa propre profession</h2>
-        <p class="mt-4 text-ink-600 text-lg">Le Conseil supérieur de l'Ordre des experts-comptables nous confie des missions de contrôle LCB-FT. Nous vérifions le respect des diligences anti-blanchiment au sein de la profession.</p>
+      <div class="mt-f5 aspect-[1.618/1] border border-gris-300 overflow-hidden grayscale-[40%]">
+        <iframe title="Carte : Lebelle Expertise & Audit, 58-60 avenue Bosquet, Paris 7e" src="https://www.google.com/maps?q=58-60+avenue+Bosquet+75007+Paris&z=16&output=embed" width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============================================================
-     10. FAQ (5 questions, réponses courtes, reprises en JSON-LD FAQPage)
-     ============================================================ -->
-<section id="faq" class="py-24 sm:py-32">
-  <div class="max-w-3xl mx-auto px-5 sm:px-8">
-    <div class="reveal text-center">
-      <p class="text-base text-ink-500 mb-4">Questions fréquentes</p>
-      <h2 class="rule rule-center font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Vos questions, nos réponses</h2>
-    </div>
-
-    <div class="mt-12 divide-y divide-navy-100 border-y border-navy-100">
-      <details class="reveal group py-5">
-        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
-          <h3 class="font-serif text-2xl text-navy font-medium">Pourquoi choisir un expert-comptable avec une expérience bancaire&#8239;?</h3>
-          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
-        </summary>
-        <p class="mt-3 text-ink-600 pr-10">Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment une banque lit un dossier et prépare le vôtre en conséquence.</p>
-      </details>
-      <details class="reveal group py-5">
-        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
-          <h3 class="font-serif text-2xl text-navy font-medium">Comment fonctionne la comptabilité sur Pennylane&#8239;?</h3>
-          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
-        </summary>
-        <p class="mt-3 text-ink-600 pr-10">Vos comptes bancaires, vos factures et vos outils métier se synchronisent automatiquement dans Pennylane. Vous suivez votre trésorerie et vos résultats en temps réel, sur PC et sur mobile.</p>
-      </details>
-      <details class="reveal group py-5">
-        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
-          <h3 class="font-serif text-2xl text-navy font-medium">Accompagnez-vous les rachats d'entreprise&#8239;?</h3>
-          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
-        </summary>
-        <p class="mt-3 text-ink-600 pr-10">Oui. Nous évaluons la cible, structurons l'opération et recherchons les financements, jusqu'à la signature.</p>
-      </details>
-      <details class="reveal group py-5">
-        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
-          <h3 class="font-serif text-2xl text-navy font-medium">Quelles entreprises accompagnez-vous&#8239;?</h3>
-          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
-        </summary>
-        <p class="mt-3 text-ink-600 pr-10">Des dirigeants de TPE et PME et des entrepreneurs en croissance, à Paris et en Île-de-France. Le cabinet intervient de la création à la transmission.</p>
-      </details>
-      <details class="reveal group py-5">
-        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
-          <h3 class="font-serif text-2xl text-navy font-medium">Qu'est-ce que la mission de contrôle LCB-FT&#8239;?</h3>
-          <svg class="chev w-5 h-5 shrink-0 text-brass transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
-        </summary>
-        <p class="mt-3 text-ink-600 pr-10">La lutte contre le blanchiment des capitaux et le financement du terrorisme impose des diligences aux experts-comptables. Nous assistons le Conseil supérieur de l'Ordre pour vérifier leur respect au sein de la profession.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     10 bis. APPEL À RENDEZ-VOUS (image pleine largeur + CTA)
-     ============================================================ -->
-<section class="relative overflow-hidden" aria-label="Prendre rendez-vous">
-  <!-- IMG : poignée de main -->
-  <img src="assets/poignee-de-main-cabinet.jpg" alt="Poignée de main entre un expert-comptable et un dirigeant dans un cabinet parisien" width="1600" height="873" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-  <div class="absolute inset-0 bg-navy/75" aria-hidden="true"></div>
-  <div class="relative max-w-content mx-auto px-5 sm:px-8 py-28 sm:py-36">
-    <div class="reveal max-w-xl">
-      <h2 class="font-serif text-4xl sm:text-5xl text-white font-medium leading-tight">Un premier rendez-vous pour faire le point</h2>
-      <p class="mt-5 text-lg text-white/85">Trente minutes pour comprendre votre situation et vous dire ce que nous pouvons apporter.</p>
-      <a href="#contact" class="mt-8 inline-flex items-center gap-2 bg-cta text-white px-7 py-3.5 rounded-sm font-medium hover:bg-cta-600 transition-colors">
-        Prendre rendez-vous
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     11. CONTACT (coordonnées, carte, formulaire)
-     ============================================================ -->
-<section id="contact" class="bg-surface border-t border-navy-100 py-24 sm:py-32">
-  <div class="max-w-content mx-auto px-5 sm:px-8">
-    <div class="reveal max-w-2xl">
-      <p class="text-base text-ink-500 mb-4">Contact</p>
-      <h2 class="rule font-serif text-4xl sm:text-5xl text-navy font-medium leading-tight">Parlons de votre projet</h2>
-      <p class="mt-6 text-lg text-ink-600">Premier échange sans engagement, au cabinet ou en visioconférence.</p>
-    </div>
-
-    <div class="mt-14 grid lg:grid-cols-12 gap-12">
-      <!-- Coordonnées + carte -->
-      <div class="reveal lg:col-span-5 space-y-8">
-        <ul class="space-y-5 text-ink-600">
-          <li class="flex gap-4">
-            <svg class="w-5 h-5 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pin"/></svg>
-            <address class="not-italic">58-60 avenue Bosquet<br>75007 Paris</address>
-          </li>
-          <li class="flex gap-4">
-            <svg class="w-5 h-5 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg>
-            <a href="tel:+33666641768" class="hover:text-navy">+33 6 66 64 17 68</a>
-          </li>
-          <li class="flex gap-4">
-            <svg class="w-5 h-5 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg>
-            <a href="mailto:davy.lebelle@lebelle-expertise.com" class="hover:text-navy break-all">davy.lebelle@lebelle-expertise.com</a>
-          </li>
-          <li class="flex gap-4">
-            <svg class="w-5 h-5 mt-0.5 shrink-0 text-brass" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-linkedin"/></svg>
-            <a href="https://fr.linkedin.com/company/lebelle-expertise-et-audit" target="_blank" rel="noopener" class="hover:text-navy">Lebelle Expertise & Audit sur LinkedIn</a>
-          </li>
-        </ul>
-
-        <div class="aspect-[4/3] w-full border border-navy-100 rounded-sm overflow-hidden grayscale-[35%]">
-          <iframe title="Carte : cabinet Lebelle Expertise & Audit, 58-60 avenue Bosquet, Paris 7e" src="https://www.google.com/maps?q=58-60+avenue+Bosquet+75007+Paris&z=16&output=embed" width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        </div>
+    <form id="contact-form" class="bg-ecru border border-gris-300 p-f4 lg:p-f5 grid sm:grid-cols-2 gap-f3 self-start" novalidate>
+      <div><label for="nom" class="block text-sm font-medium mb-f1">Nom</label><input id="nom" name="nom" type="text" required autocomplete="name" class="w-full bg-white border border-gris-300 px-f2 py-f2 focus:outline-none focus:border-bleu"></div>
+      <div><label for="entreprise" class="block text-sm font-medium mb-f1">Entreprise</label><input id="entreprise" name="entreprise" type="text" autocomplete="organization" class="w-full bg-white border border-gris-300 px-f2 py-f2 focus:outline-none focus:border-bleu"></div>
+      <div><label for="email" class="block text-sm font-medium mb-f1">E-mail</label><input id="email" name="email" type="email" required autocomplete="email" class="w-full bg-white border border-gris-300 px-f2 py-f2 focus:outline-none focus:border-bleu"></div>
+      <div><label for="telephone" class="block text-sm font-medium mb-f1">Téléphone</label><input id="telephone" name="telephone" type="tel" autocomplete="tel" class="w-full bg-white border border-gris-300 px-f2 py-f2 focus:outline-none focus:border-bleu"></div>
+      <div class="sm:col-span-2"><label for="besoin" class="block text-sm font-medium mb-f1">Votre projet</label>
+        <select id="besoin" name="besoin" class="w-full bg-white border border-gris-300 px-f2 py-f2 focus:outline-none focus:border-bleu">
+          <option value="">Sélectionnez</option><option>Acquisition d'entreprise</option><option>Financement bancaire</option><option>Expertise comptable</option><option>Conseil</option><option>Autre</option>
+        </select></div>
+      <div class="sm:col-span-2"><label for="message" class="block text-sm font-medium mb-f1">Message</label><textarea id="message" name="message" rows="4" class="w-full bg-white border border-gris-300 px-f2 py-f2 focus:outline-none focus:border-bleu"></textarea></div>
+      <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-f3">
+        <button type="submit" class="inline-flex justify-center items-center gap-2 whitespace-nowrap bg-nuit text-white px-f4 py-f2 font-medium hover:bg-bleu transition-colors">Envoyer ma demande<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></button>
+        <p class="text-xs text-gris">Réponse sous 48&nbsp;h ouvrées. Données traitées pour répondre à votre demande, voir la <a href="politique-confidentialite.html" class="underline">politique de confidentialité</a>.</p>
       </div>
-
-      <!-- Formulaire (maquette : aucun envoi réel) -->
-      <form id="contact-form" class="reveal lg:col-span-7 bg-ivory border border-navy-100 p-8 sm:p-10 rounded-sm grid sm:grid-cols-2 gap-5" novalidate>
-        <div>
-          <label for="nom" class="block text-sm font-medium text-navy mb-1.5">Nom</label>
-          <input id="nom" name="nom" type="text" required autocomplete="name" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
-        </div>
-        <div>
-          <label for="entreprise" class="block text-sm font-medium text-navy mb-1.5">Entreprise</label>
-          <input id="entreprise" name="entreprise" type="text" autocomplete="organization" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
-        </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-navy mb-1.5">E-mail</label>
-          <input id="email" name="email" type="email" required autocomplete="email" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
-        </div>
-        <div>
-          <label for="telephone" class="block text-sm font-medium text-navy mb-1.5">Téléphone</label>
-          <input id="telephone" name="telephone" type="tel" autocomplete="tel" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
-        </div>
-        <div class="sm:col-span-2">
-          <label for="besoin" class="block text-sm font-medium text-navy mb-1.5">Votre besoin</label>
-          <select id="besoin" name="besoin" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass">
-            <option value="">Sélectionnez</option>
-            <option>Création d'entreprise</option>
-            <option>Expertise comptable et fiscale</option>
-            <option>Financement, prêt bancaire</option>
-            <option>Acquisition ou cession d'entreprise</option>
-            <option>Transmission</option>
-            <option>Conseil auprès d'un établissement financier</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div class="sm:col-span-2">
-          <label for="message" class="block text-sm font-medium text-navy mb-1.5">Message</label>
-          <textarea id="message" name="message" rows="4" class="w-full bg-surface border border-navy-100 rounded-sm px-4 py-3 focus:outline-none focus:border-brass focus:ring-1 focus:ring-brass"></textarea>
-        </div>
-        <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-4">
-          <button type="submit" class="inline-flex justify-center items-center gap-2 whitespace-nowrap bg-cta text-white px-7 py-3.5 rounded-sm font-medium hover:bg-cta-600 transition-colors">
-            Envoyer ma demande
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg>
-          </button>
-          <p class="text-xs text-ink-500">Réponse sous 48&nbsp;h ouvrées. Vos données restent confidentielles.</p>
-        </div>
-        <p id="form-ok" hidden class="sm:col-span-2 text-sm font-medium text-emerald-700 bg-emerald-50 border border-emerald-100 px-4 py-3 rounded-sm">Merci, votre demande est bien reçue. Nous vous recontactons rapidement.</p>
-      </form>
-    </div>
+      <p id="form-ok" hidden class="sm:col-span-2 text-sm font-medium text-emerald-800 bg-emerald-50 border border-emerald-100 px-f2 py-f2">Merci, votre demande est bien reçue. Nous vous recontactons rapidement.</p>
+    </form>
   </div>
 </section>
 
 </main>
 
 <!-- ============================================================
-     12. FOOTER
+     10. FOOTER
      ============================================================ -->
-<footer class="bg-navy text-white/80">
-  <div class="max-w-content mx-auto px-5 sm:px-8 py-16 grid md:grid-cols-3 gap-12">
+<footer class="bg-encre text-white/75">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f5 lg:py-f6 grid md:grid-cols-[1.618fr_1fr_1fr] gap-f5">
     <div>
-      <!-- Logo provisoire version claire (SVG inline) : à remplacer par le logo officiel -->
-      <svg width="220" height="47" viewBox="0 0 260 56" role="img" aria-label="Lebelle Expertise & Audit" class="h-11 w-auto">
-        <rect x="1" y="1" width="54" height="54" rx="2" fill="#fff"/>
-        <text x="28" y="37" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="30" font-weight="600" fill="rgb(var(--c-primary))">L</text>
-        <text x="68" y="26" font-family="var(--font-heading), Georgia, serif" font-size="22" font-weight="600" fill="#fff">Lebelle</text>
-        <text x="68" y="45" font-family="var(--font-body), system-ui, sans-serif" font-size="10.5" font-weight="500" fill="rgba(255,255,255,.7)" letter-spacing="2">EXPERTISE &amp; AUDIT</text>
-      </svg>
-      <p class="mt-5 text-sm leading-relaxed">Cabinet d'expertise comptable à Paris 7e. Conseil en financement, croissance et transmission pour les dirigeants de TPE et PME d'Île-de-France.</p>
+      <!-- Logo officiel, version blanche -->
+      <img src="assets/logo-lebelle-blanc.png" alt="Lebelle Expertise & Audit" width="600" height="105" class="h-9 w-auto">
+      <p class="mt-f3 text-sm max-w-md">Cabinet d'expertise comptable à Paris 7e. Accompagnement à l'acquisition d'entreprise et au financement bancaire, expertise comptable sur Pennylane, contrôle LCB-FT.</p>
     </div>
     <div>
-      <h2 class="font-serif text-xl text-white font-medium">Navigation</h2>
-      <ul class="mt-4 space-y-2 text-sm">
-        <li><a href="#cabinet" class="hover:text-brass-400">Le cabinet</a></li>
-        <li><a href="#missions" class="hover:text-brass-400">Missions</a></li>
-        <li><a href="#methode" class="hover:text-brass-400">Méthode</a></li>
-        <li><a href="#faq" class="hover:text-brass-400">Questions fréquentes</a></li>
-        <li><a href="#contact" class="hover:text-brass-400">Contact</a></li>
-        <li><a href="mentions-legales.html" class="hover:text-brass-400">Mentions légales</a></li>
+      <h2 class="t-roman text-fib-1 text-white">Navigation</h2>
+      <ul class="mt-f2 space-y-f1 text-sm">
+        <li><a href="#acquisition" class="hover:text-white">Acquisition</a></li>
+        <li><a href="#financement" class="hover:text-white">Financement</a></li>
+        <li><a href="#missions" class="hover:text-white">Autres missions</a></li>
+        <li><a href="#cabinet" class="hover:text-white">Le cabinet</a></li>
+        <li><a href="#faq" class="hover:text-white">Questions fréquentes</a></li>
+        <li><a href="#contact" class="hover:text-white">Contact</a></li>
       </ul>
     </div>
     <div>
-      <h2 class="font-serif text-xl text-white font-medium">Coordonnées</h2>
-      <ul class="mt-4 space-y-2 text-sm">
-        <li>58-60 avenue Bosquet, 75007 Paris</li>
-        <li><a href="tel:+33666641768" class="hover:text-brass-400">+33 6 66 64 17 68</a></li>
-        <li><a href="mailto:davy.lebelle@lebelle-expertise.com" class="hover:text-brass-400">davy.lebelle@lebelle-expertise.com</a></li>
-        <li>
-          <a href="https://fr.linkedin.com/company/lebelle-expertise-et-audit" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-brass-400">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><use href="#i-linkedin"/></svg>LinkedIn
-          </a>
-        </li>
+      <h2 class="t-roman text-fib-1 text-white">Informations</h2>
+      <ul class="mt-f2 space-y-f1 text-sm">
+        <li><a href="mentions-legales.html" class="hover:text-white">Mentions légales</a></li>
+        <li><a href="politique-confidentialite.html" class="hover:text-white">Politique de confidentialité</a></li>
+        <li><button type="button" id="cookie-open" class="hover:text-white underline-offset-2">Gestion des cookies</button></li>
+        <li><a href="https://fr.linkedin.com/company/lebelle-expertise-et-audit" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-white"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-linkedin"/></svg>LinkedIn</a></li>
       </ul>
     </div>
   </div>
   <div class="border-t border-white/10">
-    <div class="max-w-content mx-auto px-5 sm:px-8 py-6 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/60">
+    <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f3 flex flex-col sm:flex-row gap-f1 justify-between text-xs text-white/55">
       <p>© <span id="year">2026</span> Lebelle Expertise & Audit. Expert-comptable inscrit à l'Ordre de Paris Île-de-France.</p>
-      <p>Maquette réalisée par Collet Marketing.</p>
+      <p>Maquette Collet Marketing.</p>
     </div>
   </div>
 </footer>
 
-<!-- Sélecteur de thème (maquette) : A Rigueur financière, B Presse économique, C Maison contemporaine -->
-<div id="theme-switch" role="group" aria-label="Choix du thème graphique">
-  <button type="button" data-theme="a" aria-pressed="true" title="Thème A, Rigueur financière">A</button>
-  <button type="button" data-theme="b" aria-pressed="false" title="Thème B, Presse économique">B</button>
-  <button type="button" data-theme="c" aria-pressed="false" title="Thème C, Maison contemporaine">C</button>
+<!-- ============================================================
+     BANDEAU DE CONSENTEMENT COOKIES (CNIL) : accepter et refuser au même niveau,
+     choix conservé 6 mois, réouverture via « Gestion des cookies ». GA4 ne se charge qu'après acceptation.
+     ============================================================ -->
+<div id="cookie-banner" hidden role="dialog" aria-live="polite" aria-label="Gestion des cookies" class="fixed z-[70] left-f2 right-f2 bottom-f2 sm:left-f3 sm:right-auto sm:bottom-f3 sm:max-w-md bg-white border border-gris-300 p-f3 shadow-none">
+  <p class="t-roman text-fib-1">Cookies</p>
+  <p class="mt-f1 text-sm text-gris">Ce site utilise Google Analytics 4 pour mesurer son audience, uniquement avec votre accord. Aucun cookie de mesure n'est déposé avant votre choix (<a href="politique-confidentialite.html" class="underline">en savoir plus</a>).</p>
+  <div class="mt-f3 grid grid-cols-2 gap-f2">
+    <button type="button" id="cookie-refuse" class="border border-encre px-f2 py-f2 text-sm font-medium hover:bg-ecru">Tout refuser</button>
+    <button type="button" id="cookie-accept" class="bg-nuit text-white px-f2 py-f2 text-sm font-medium hover:bg-bleu">Tout accepter</button>
+  </div>
 </div>
 
 <!-- ============================================================
-     JS vanilla : thèmes, menu mobile, bordure du header, apparition au scroll, formulaire
+     CHATBOT SHOPINZEN : bouton flottant factice pour la démonstration.
+     En production, supprimer ce bouton et coller le script dans l'emplacement SHOPINZEN SCRIPT ci-dessous.
+     ============================================================ -->
+<div class="fixed z-[60] right-f2 bottom-f2 sm:right-f3 sm:bottom-f3 flex flex-col items-end gap-f1">
+  <p id="chat-tip" hidden class="bg-white border border-gris-300 text-sm px-f2 py-f1 max-w-[240px]">Chatbot Shopinzen (démonstration). Le script réel s'insérera ici.</p>
+  <button type="button" id="chat-btn" class="w-14 h-14 bg-bleu text-white flex items-center justify-center hover:bg-nuit transition-colors" aria-label="Ouvrir le chatbot Shopinzen (démonstration)" aria-expanded="false">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chat"/></svg>
+  </button>
+</div>
+
+<!-- ============================================================
+     JS vanilla : menu, compteur animé, tableaux manquants, formulaire, cookies, chatbot
      ============================================================ -->
 <script>
-  // Thèmes : bascule des variables CSS via l'attribut data-theme sur <html>
-  const applyTheme = (t) => {
-    document.documentElement.dataset.theme = t;
-    document.querySelectorAll('#theme-switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.theme === t)));
-    try { localStorage.setItem('lea-theme', t); } catch (e) {}
-  };
-  document.querySelectorAll('#theme-switch button').forEach(b => b.addEventListener('click', () => applyTheme(b.dataset.theme)));
-  try { applyTheme(localStorage.getItem('lea-theme') || 'a'); } catch (e) { applyTheme('a'); }
-
   // Menu burger
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const icon = document.getElementById('menu-icon');
+  const btn = document.getElementById('menu-btn'), menu = document.getElementById('mobile-menu'), icon = document.getElementById('menu-icon');
   btn.addEventListener('click', () => {
     const open = menu.hasAttribute('hidden');
-    if (open) menu.removeAttribute('hidden'); else menu.setAttribute('hidden', '');
+    menu.toggleAttribute('hidden', !open);
     btn.setAttribute('aria-expanded', String(open));
     btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
     icon.setAttribute('href', open ? '#i-x' : '#i-menu');
   });
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => btn.click()));
 
-  // Bordure du header une fois la page défilée
+  // Bordure du header au défilement
   const header = document.getElementById('header');
-  const onScroll = () => header.classList.toggle('border-navy-100', window.scrollY > 8);
+  const onScroll = () => header.classList.toggle('border-gris-300', window.scrollY > 8);
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  // Apparition discrète au scroll
+  // Compteur animé de chiffres clés (au défilement, une seule fois, respect de prefers-reduced-motion)
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.count, 10), duration = 1600, start = performance.now();
+    if (reduce) { el.textContent = target; return; }
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / duration), eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * eased);
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.counter').forEach(el => io.observe(el));
+
+  // Tableaux : si le fichier n'est pas encore déposé, afficher l'emplacement légendé
+  document.querySelectorAll('.painting .painting-img').forEach(img => {
+    const fig = img.closest('.painting');
+    const missing = () => fig.classList.add('is-missing');
+    if (img.complete && img.naturalWidth === 0) missing();
+    img.addEventListener('error', missing);
+  });
 
   // Formulaire : simulation d'envoi (maquette)
   const form = document.getElementById('contact-form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!form.reportValidity()) return;
-    document.getElementById('form-ok').hidden = false;
-    form.reset();
-  });
-
+  form.addEventListener('submit', (e) => { e.preventDefault(); if (!form.reportValidity()) return; document.getElementById('form-ok').hidden = false; form.reset(); });
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Consentement cookies : GA4 ne se charge qu'après « Tout accepter »
+  const banner = document.getElementById('cookie-banner');
+  const KEY = 'lea-consent', SIX_MONTHS = 1000 * 60 * 60 * 24 * 182;
+  const readConsent = () => { try { const c = JSON.parse(localStorage.getItem(KEY)); return c && (Date.now() - c.at < SIX_MONTHS) ? c.value : null; } catch (e) { return null; } };
+  const saveConsent = (value) => { try { localStorage.setItem(KEY, JSON.stringify({ value, at: Date.now() })); } catch (e) {} };
+  const loadAnalytics = () => {
+    document.querySelectorAll('script[type="text/plain"][data-consent="analytics"]').forEach(s => {
+      const n = document.createElement('script');
+      if (s.dataset.src) { n.src = s.dataset.src; n.async = true; } else { n.textContent = s.textContent; }
+      s.replaceWith(n);
+    });
+  };
+  const applyConsent = (value) => { saveConsent(value); banner.hidden = true; if (value === 'accept') loadAnalytics(); };
+  document.getElementById('cookie-accept').addEventListener('click', () => applyConsent('accept'));
+  document.getElementById('cookie-refuse').addEventListener('click', () => applyConsent('refuse'));
+  document.getElementById('cookie-open').addEventListener('click', () => { banner.hidden = false; });
+  const stored = readConsent();
+  if (stored === 'accept') loadAnalytics(); else if (stored === null) banner.hidden = false;
+
+  // Chatbot factice (démonstration)
+  const chatBtn = document.getElementById('chat-btn'), chatTip = document.getElementById('chat-tip');
+  chatBtn.addEventListener('click', () => { const open = chatTip.hidden; chatTip.hidden = !open; chatBtn.setAttribute('aria-expanded', String(open)); });
 </script>
+
+<!-- SHOPINZEN SCRIPT : coller ici le script fourni par Shopinzen (à compléter), puis supprimer le bouton factice ci-dessus -->
+<!-- <script src="https://…shopinzen…/widget.js" data-key="XXXXXXXX" defer></script> -->
 </body>
 </html>
