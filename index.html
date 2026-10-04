@@ -14,10 +14,10 @@
 
 <!-- SEO -->
 <title>Expert-comptable Paris 7e | Acquisition d'entreprise et financement bancaire</title>
-<meta name="description" content="Lebelle Expertise & Audit, expert-comptable à Paris 7e : accompagnement à l'acquisition d'entreprise et au financement bancaire, expertise comptable sur Pennylane, contrôle LCB-FT. Davy Lebelle, plus de dix ans en banque.">
+<meta name="description" content="Lebelle Expertise & Audit, expert-comptable à Paris 7e : accompagnement à l'acquisition d'entreprise et au financement bancaire, expertise comptable sur Pennylane, contrôle LCB-FT. Davy Lebelle, douze ans en banque.">
 <link rel="canonical" href="https://www.lebelle-expertise.com/">
 <meta property="og:title" content="Lebelle Expertise & Audit, expert-comptable à Paris 7e">
-<meta property="og:description" content="Acquérir une entreprise, obtenir son financement. Un expert-comptable passé par la banque, à Paris 7e.">
+<meta property="og:description" content="Acquérir une entreprise, obtenir son financement. Un expert-comptable passé douze ans par la banque, à Paris 7e.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta name="theme-color" content="#304060">
@@ -92,8 +92,10 @@
   .museum-caption { font-family: Inter, system-ui, sans-serif; font-size: 12px; color: #5C6470; margin-top: 13px; }
   .museum-caption i { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: 15px; color: #1C2428; }
 
-  /* Chiffres clés : chiffres tabulaires pour une animation stable */
+  /* Chiffres clés : chiffres tabulaires pour une animation stable, anneau qui se remplit */
   .num-tab { font-variant-numeric: tabular-nums; }
+  .ring-arc { transition: stroke-dashoffset 1.6s cubic-bezier(.22,.61,.36,1); }
+  @media (prefers-reduced-motion: reduce) { .ring-arc { transition: none; } }
 
   /* Emplacements à compléter par le dirigeant */
   .todo { background: #FFF07A; color: #1C2428; padding: 0 .3em; border-radius: 2px; font-weight: 500; }
@@ -180,7 +182,7 @@
     { "@type": "Question", "name": "Qui peut m'accompagner dans le rachat d'une entreprise à Paris ?",
       "acceptedAnswer": { "@type": "Answer", "text": "Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris 7e, accompagne les repreneurs de l'évaluation de la cible jusqu'à la signature. Le financement de l'opération fait partie de la mission." } },
     { "@type": "Question", "name": "Pourquoi choisir un expert-comptable avec une expérience bancaire ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment un comité de crédit lit un dossier et le prépare en conséquence." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Davy Lebelle a passé douze ans en banque, sur les marchés financiers et en banque privée. Il sait comment un comité de crédit lit un dossier et le prépare en conséquence." } },
     { "@type": "Question", "name": "Que vérifie une banque avant d'accorder un prêt professionnel ?",
       "acceptedAnswer": { "@type": "Answer", "text": "La banque examine la capacité de remboursement, l'apport, la cohérence du prévisionnel et les garanties proposées. Un dossier complet et argumenté accélère la décision." } },
     { "@type": "Question", "name": "Comment fonctionne la comptabilité sur Pennylane ?",
@@ -261,7 +263,7 @@
     <div class="relative z-10">
       <p class="text-gris mb-f3">Expert-comptable, Paris 7e</p>
       <h1 class="t-display text-fib-3 lg:text-phi-3 text-encre">Acquérir une entreprise, obtenir son financement.</h1>
-      <p class="mt-f4 text-fib-1 text-gris leading-snug">Davy Lebelle, expert-comptable, a passé plus de dix ans en banque. Il structure votre acquisition et défend votre dossier auprès des banques.</p>
+      <p class="mt-f4 text-fib-1 text-gris leading-snug">Davy Lebelle, expert-comptable, a passé douze ans en banque. Il structure votre acquisition et défend votre dossier auprès des banques.</p>
       <div class="mt-f5 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-f3">
         <a href="#contact" class="inline-flex justify-center items-center gap-2 whitespace-nowrap bg-nuit text-white px-f4 py-f2 font-medium hover:bg-bleu transition-colors">
           Prendre rendez-vous
@@ -292,28 +294,45 @@
 </section>
 
 <!-- ============================================================
-     3. COMPTEUR ANIMÉ DE CHIFFRES CLÉS (reprise du site actuel, animation au défilement)
-     Valeurs connues : 20 ans d'expérience, 10 ans en banque. Les deux autres sont à compléter.
+     3. COMPTEUR ANIMÉ DE CHIFFRES CLÉS
+     Reprise du bloc « Quelques chiffres » du site actuel : trois anneaux qui se remplissent
+     au défilement pendant que la valeur défile de 0 à sa cible. Valeurs du site actuel.
      ============================================================ -->
-<section class="bg-encre text-white" aria-label="Chiffres clés">
-  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f5 lg:py-f6 grid grid-cols-2 lg:grid-cols-4 gap-y-f4 gap-x-f3">
-    <div class="lg:border-l lg:border-white/15 lg:pl-f4">
-      <p class="num-tab t-roman text-fib-3 lg:text-phi-3 leading-none"><span class="counter" data-count="20">0</span><span class="text-fib-1 align-top">+</span></p>
-      <p class="mt-f2 text-sm text-white/70">années d'expérience</p>
-    </div>
-    <div class="lg:border-l lg:border-white/15 lg:pl-f4">
-      <p class="num-tab t-roman text-fib-3 lg:text-phi-3 leading-none"><span class="counter" data-count="10">0</span><span class="text-fib-1 align-top">+</span></p>
-      <p class="mt-f2 text-sm text-white/70">années en banque</p>
-    </div>
-    <div class="lg:border-l lg:border-white/15 lg:pl-f4">
-      <!-- Pour animer : remplacer le contenu par <span class="counter" data-count="NN">0</span> -->
-      <p class="num-tab t-roman text-fib-2 leading-none"><span class="todo text-base">[à compléter]</span></p>
-      <p class="mt-f2 text-sm text-white/70">acquisitions accompagnées</p>
-    </div>
-    <div class="lg:border-l lg:border-white/15 lg:pl-f4">
-      <p class="num-tab t-roman text-fib-2 leading-none"><span class="todo text-base">[à compléter]</span></p>
-      <p class="mt-f2 text-sm text-white/70">financements obtenus</p>
-    </div>
+<section class="bg-encre text-white" aria-label="Quelques chiffres">
+  <div class="max-w-content mx-auto px-f3 sm:px-f4 py-f6 lg:py-f7">
+    <h2 class="t-display text-fib-2 lg:text-phi-2 text-center">Quelques chiffres</h2>
+    <ul class="mt-f5 lg:mt-f6 grid grid-cols-1 sm:grid-cols-3 gap-f5 sm:gap-f4 justify-items-center">
+    <li class="flex flex-col items-center text-center">
+      <div class="gauge relative w-[144px] h-[144px] sm:w-[178px] sm:h-[178px]" data-pct="90">
+        <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="#304060" fill-opacity=".45" stroke="rgba(255,255,255,.12)" stroke-width="3"/>
+          <circle class="ring-arc" cx="50" cy="50" r="46" fill="none" stroke="#3878B0" stroke-width="3" stroke-linecap="butt" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+        </svg>
+        <p class="absolute inset-0 flex items-center justify-center num-tab t-roman text-fib-3 sm:text-phi-3 leading-none text-white"><span class="counter" data-count="109">0</span></p>
+      </div>
+      <p class="mt-f3 text-sm sm:text-base text-white/75 max-w-[200px]">clients accompagnés</p>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <div class="gauge relative w-[144px] h-[144px] sm:w-[178px] sm:h-[178px]" data-pct="78">
+        <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="#304060" fill-opacity=".45" stroke="rgba(255,255,255,.12)" stroke-width="3"/>
+          <circle class="ring-arc" cx="50" cy="50" r="46" fill="none" stroke="#3878B0" stroke-width="3" stroke-linecap="butt" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+        </svg>
+        <p class="absolute inset-0 flex items-center justify-center num-tab t-roman text-fib-3 sm:text-phi-3 leading-none text-white"><span class="counter" data-count="94">0</span></p>
+      </div>
+      <p class="mt-f3 text-sm sm:text-base text-white/75 max-w-[200px]">opérations de croissance</p>
+    </li>
+    <li class="flex flex-col items-center text-center">
+      <div class="gauge relative w-[144px] h-[144px] sm:w-[178px] sm:h-[178px]" data-pct="100">
+        <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="#304060" fill-opacity=".45" stroke="rgba(255,255,255,.12)" stroke-width="3"/>
+          <circle class="ring-arc" cx="50" cy="50" r="46" fill="none" stroke="#3878B0" stroke-width="3" stroke-linecap="butt" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+        </svg>
+        <p class="absolute inset-0 flex items-center justify-center num-tab t-roman text-fib-3 sm:text-phi-3 leading-none text-white"><span class="counter" data-count="12">0</span></p>
+      </div>
+      <p class="mt-f3 text-sm sm:text-base text-white/75 max-w-[200px]">ans dans le secteur bancaire</p>
+    </li>
+    </ul>
   </div>
 </section>
 
@@ -381,7 +400,7 @@
         <p class="text-sm font-medium">Financement bancaire</p>
       </div>
       <h2 class="t-display text-fib-2 lg:text-phi-2 mt-f3">Un dossier bancaire lu par un ancien banquier</h2>
-      <p class="mt-f4 text-fib-1 leading-snug text-white/85">Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait ce qu'un comité de crédit attend et bâtit votre dossier pour y répondre.</p>
+      <p class="mt-f4 text-fib-1 leading-snug text-white/85">Davy Lebelle a passé douze ans en banque, sur les marchés financiers et en banque privée. Il sait ce qu'un comité de crédit attend et bâtit votre dossier pour y répondre.</p>
 
       <ol class="mt-f5 grid sm:grid-cols-2 gap-x-f4 gap-y-f4">
         <li><p class="num !text-white/60">1</p><h3 class="t-roman text-phi-1 mt-f1">Cadrer le besoin</h3><p class="mt-f1 text-white/70">Montant, durée, objet du financement et calendrier.</p></li>
@@ -463,7 +482,7 @@
       <ul class="mt-f5 space-y-f2">
         <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Expert-comptable inscrit à l'Ordre de Paris Île-de-France</li>
         <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Plus de 20 ans en cabinet d'expertise comptable, d'audit et en banque</li>
-        <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Plus de 10 ans en banque, marchés financiers et banque privée</li>
+        <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>12 ans en banque, marchés financiers et banque privée</li>
         <li class="flex gap-f2"><svg class="w-5 h-5 mt-1 shrink-0 text-bleu" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Double cursus&nbsp;: expertise comptable et finance d'entreprise</li>
       </ul>
       <p class="mt-f5 text-gris">Le cabinet a été créé fin 2022, avenue Bosquet, à Paris 7e. Il accompagne des dirigeants de TPE et PME et des repreneurs d'Île-de-France.</p>
@@ -502,7 +521,7 @@
           <h3 class="t-roman text-phi-1">Pourquoi choisir un expert-comptable avec une expérience bancaire&#8239;?</h3>
           <svg class="chev w-5 h-5 shrink-0 text-bleu transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg>
         </summary>
-        <p class="mt-f2 text-gris pr-f4">Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment un comité de crédit lit un dossier et le prépare en conséquence.</p>
+        <p class="mt-f2 text-gris pr-f4">Davy Lebelle a passé douze ans en banque, sur les marchés financiers et en banque privée. Il sait comment un comité de crédit lit un dossier et le prépare en conséquence.</p>
       </details>
       <details class="py-f3">
         <summary class="flex items-center justify-between gap-f3 cursor-pointer list-none">
@@ -659,7 +678,13 @@
     requestAnimationFrame(step);
   };
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); io.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      animateCounter(e.target);
+      const gauge = e.target.closest(".gauge");
+      if (gauge) gauge.querySelector('.ring-arc').setAttribute('stroke-dashoffset', String(100 - parseInt(gauge.dataset.pct, 10)));
+      io.unobserve(e.target);
+    });
   }, { threshold: 0.6 });
   document.querySelectorAll('.counter').forEach(el => io.observe(el));
 

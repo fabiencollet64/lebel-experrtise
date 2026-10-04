@@ -28,7 +28,7 @@ python3 outils/compte-mots.py accueil.html le-cabinet.html nos-missions.html con
 | Section | Avant (extraits récupérés) | Après (maquette) | Variation |
 |---|---:|---:|---:|
 | Hero (accueil) | 106 | 36 | -66 % |
-| Chiffres clés | 0 | 15 | nouveau |
+| Chiffres clés | 15 | 15 | 0 % |
 | Acquisition d'entreprise | 46 | 84 | +83 % |
 | Financement bancaire | 26 | 93 | +258 % |
 | Autres missions | 228 | 101 | -56 % |
@@ -57,7 +57,7 @@ Total de la maquette, tous textes visibles compris (menus, formulaire, footer, l
 
 - Expert-comptable, Paris 7e
 - Acquérir une entreprise, obtenir son financement.
-- Davy Lebelle, expert-comptable, a passé plus de dix ans en banque. Il structure votre acquisition et défend votre dossier auprès des banques.
+- Davy Lebelle, expert-comptable, a passé douze ans en banque. Il structure votre acquisition et défend votre dossier auprès des banques.
 - Prendre rendez-vous / Voir nos accompagnements
 
 **Pourquoi :** Le site actuel ouvre sur une devise et la genèse du cabinet. Le nouveau hero nomme les deux spécialités demandées par le dirigeant et le fait qui les rend crédibles : dix ans en banque.
@@ -66,16 +66,16 @@ Total de la maquette, tous textes visibles compris (menus, formulaire, footer, l
 
 **Avant** (0 mots, extraits récupérés)
 
-> Compteurs affichant 0 (le script d'animation ne se charge pas).
+> Quelques chiffres. 109 Nombre de clients. 94 Nombre d'opérations de croissance. 12 ans dans le secteur bancaire. (compteurs affichant 0 à l'ouverture de la page)
 
 **Après** (15 mots)
 
-- 20+ années d'expérience
-- 10+ années en banque
-- [à compléter] acquisitions accompagnées
-- [à compléter] financements obtenus
+- Quelques chiffres
+- 109 clients accompagnés
+- 94 opérations de croissance
+- 12 ans dans le secteur bancaire
 
-**Pourquoi :** Le compteur animé au défilement est reproduit, avec deux valeurs factuelles et deux emplacements à fournir par le dirigeant.
+**Pourquoi :** Le bloc « Quelques chiffres » du site actuel est reproduit avec ses trois valeurs, ses anneaux circulaires et son animation au défilement, désormais fonctionnelle.
 
 ### Acquisition d'entreprise
 
@@ -108,7 +108,7 @@ Total de la maquette, tous textes visibles compris (menus, formulaire, footer, l
 **Après** (93 mots)
 
 - Un dossier bancaire lu par un ancien banquier
-- Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait ce qu'un comité de crédit attend et bâtit votre dossier pour y répondre.
+- Davy Lebelle a passé douze ans en banque, sur les marchés financiers et en banque privée. Il sait ce qu'un comité de crédit attend et bâtit votre dossier pour y répondre.
 - Cadrer le besoin. Montant, durée, objet du financement et calendrier.
 - Bâtir le prévisionnel. Hypothèses défendables, trésorerie et capacité de remboursement.
 - Constituer le dossier. Pièces, présentation du projet, réponses aux objections.
@@ -157,7 +157,7 @@ Total de la maquette, tous textes visibles compris (menus, formulaire, footer, l
 **Après** (78 mots)
 
 - Un expert-comptable formé en banque
-- Expert-comptable inscrit à l'Ordre de Paris Île-de-France. Plus de 20 ans en cabinet d'expertise comptable, d'audit et en banque. Plus de 10 ans en banque, marchés financiers et banque privée. Double cursus : expertise comptable et finance d'entreprise.
+- Expert-comptable inscrit à l'Ordre de Paris Île-de-France. Plus de 20 ans en cabinet d'expertise comptable, d'audit et en banque. 12 ans en banque, marchés financiers et banque privée. Double cursus : expertise comptable et finance d'entreprise.
 - Le cabinet a été créé fin 2022, avenue Bosquet, à Paris 7e. Il accompagne des dirigeants de TPE et PME et des repreneurs d'Île-de-France.
 - « Thot, scribe des dieux, tenait le compte des jours et des âmes. »
 
@@ -173,7 +173,7 @@ Total de la maquette, tous textes visibles compris (menus, formulaire, footer, l
 
 - Comment préparer un dossier de financement bancaire solide ? Un dossier solide présente un besoin chiffré, un prévisionnel réaliste et une capacité de remboursement démontrée. Nous le construisons avec vous et le présentons aux banques.
 - Qui peut m'accompagner dans le rachat d'une entreprise à Paris ? Lebelle Expertise & Audit, cabinet d'expertise comptable à Paris 7e, accompagne les repreneurs de l'évaluation de la cible jusqu'à la signature. Le financement de l'opération fait partie de la mission.
-- Pourquoi choisir un expert-comptable avec une expérience bancaire ? Davy Lebelle a passé plus de dix ans en banque, sur les marchés financiers et en banque privée. Il sait comment un comité de crédit lit un dossier et le prépare en conséquence.
+- Pourquoi choisir un expert-comptable avec une expérience bancaire ? Davy Lebelle a passé douze ans en banque, sur les marchés financiers et en banque privée. Il sait comment un comité de crédit lit un dossier et le prépare en conséquence.
 - Que vérifie une banque avant d'accorder un prêt professionnel ? La banque examine la capacité de remboursement, l'apport, la cohérence du prévisionnel et les garanties proposées. Un dossier complet et argumenté accélère la décision.
 - Comment fonctionne la comptabilité sur Pennylane ? Vos comptes bancaires, vos factures et vos outils métier se synchronisent automatiquement dans Pennylane. Vous suivez votre trésorerie en temps réel, sur ordinateur et sur mobile.
 

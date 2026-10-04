@@ -6,7 +6,7 @@ Maquette R2, Lebelle Expertise & Audit. Liste à parcourir avec Davy Lebelle au 
 
 | Élément | Où il s'insère | Détail |
 |---|---|---|
-| Chiffres du compteur | `index.html`, section 3 « Chiffres clés » | Nombre d'acquisitions accompagnées et de financements obtenus. Remplacer `[à compléter]` par `<span class="counter" data-count="NN">0</span>` pour animer. Lors du R1, le dirigeant avait indiqué 109 clients et 94 opérations de croissance : à confirmer et à ventiler. |
+| Chiffres du compteur | `index.html`, section 3 « Quelques chiffres » | Repris du site actuel : 109 clients, 94 opérations de croissance, 12 ans dans le secteur bancaire. À actualiser si besoin (attribut `data-count`, et `data-pct` pour le remplissage de l'anneau). |
 | Script Shopinzen | `index.html`, commentaire `<!-- SHOPINZEN SCRIPT -->` avant `</body>` | Coller le script fourni par Shopinzen, puis supprimer le bouton flottant factice (bloc « CHATBOT SHOPINZEN »). Ajouter le lien vers la politique de confidentialité de Shopinzen dans `politique-confidentialite.html`. |
 | ID de mesure GA4 | `index.html`, deux balises `<script type="text/plain" data-consent="analytics">` dans `<head>` | Remplacer `G-XXXXXXX` (deux occurrences). GA4 ne se charge qu'après « Tout accepter » dans le bandeau cookies. |
 | Balise Google Search Console | `index.html`, commentaire `GOOGLE SEARCH CONSOLE` dans `<head>` | Décommenter la balise `meta name="google-site-verification"` et coller le code fourni par GSC. |
