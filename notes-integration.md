@@ -13,7 +13,7 @@ Maquette R2, Lebelle Expertise & Audit. Liste à parcourir avec Davy Lebelle au 
 | Accès OVH | Hébergement et DNS | Identifiants du manager OVH (ou délégation) pour l'hébergement, le certificat SSL et les redirections des anciennes URL (`/va/`, `/le-cabinet/`, `/nos-missions/`, `/contact/`) vers les ancres de la one-page. |
 | Accès WordPress | Site actuel | Compte administrateur pour exporter le contenu, récupérer les médias et désactiver Elementor au moment de la bascule. |
 | Numéro d'inscription à l'Ordre | `mentions-legales.html` | Avec forme juridique, capital et SIREN (emplacements surlignés). |
-| Quatre tableaux du domaine public | `assets/tableaux/` | Fichiers nommés comme indiqué dans `assets/tableaux/README.md`, depuis Wikimedia Commons. La page affiche les emplacements légendés tant qu'ils manquent. |
+| Tableaux : version haute définition | `assets/tableaux/` | Les quatre œuvres sont en place (versions Wikimedia Commons à 960 px). Récupérer des fichiers d'au moins 1600 px pour les grands écrans. Confirmer le musée et la version retenue pour *Les Changeurs* (légende surlignée). |
 
 ## Déjà en place
 
